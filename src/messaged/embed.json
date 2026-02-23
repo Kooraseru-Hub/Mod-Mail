@@ -1,0 +1,122 @@
+{
+  "flags": 32768,
+  "components": [
+    {
+      "type": 17,
+      "components": [
+        {
+          "type": 10,
+          "content": "## WELCOME TO MOD MAIL\nMod Mail allows you to contact our moderation team privately."
+        },
+        {
+          "type": 14
+        },
+        {
+          "type": 12,
+          "items": [
+            {
+              "media": {
+                "url": "https://i.makeagif.com/media/7-27-2016/roNPCV.gif"
+              },
+              "spoiler": false,
+              "description": "Kooraseru Yapping While Writing This"
+            }
+          ]
+        },
+        {
+          "type": 14
+        },
+        {
+          "type": 10,
+          "content": "## PRIVACY INFORMATION\nAll conversations are private. Only you and the moderation team can see messages in your ticket."
+        },
+        {
+          "type": 14
+        },
+        {
+          "type": 10,
+          "content": "## NEXT STEP\nSelect an option from the dropdown below to continue."
+        },
+        {
+          "type": 14
+        },
+        {
+          "type": 1,
+          "components": [
+            {
+              "flows": {
+                "btn_general_support": {
+                  "actions": [
+                    {
+                      "type": 0
+                    }
+                  ]
+                }
+              },
+              "type": 3,
+              "options": [
+                {
+                  "label": "General Support / Questions",
+                  "value": "btn_general_support",
+                  "description": "Use for anything that is not a rule violation.",
+                  "default": true
+                },
+                {
+                  "label": "Player Report",
+                  "value": "btn_player_report",
+                  "description": "Reports about another user's behavior. Sub-details (user ID, evidence) are collected."
+                },
+                {
+                  "label": "Exploit / Bug Report",
+                  "value": "btn_exploit_report",
+                  "description": "For cheating, exploits, or game-breaking bugs."
+                },
+                {
+                  "label": "Appeal",
+                  "value": "btn_appeal",
+                  "description": "For bans, mutes, kicks, or warnings."
+                },
+                {
+                  "label": "Staff Report",
+                  "value": "btn_staff_report",
+                  "description": "Reports against moderators or administrators. Gets sent to senior moderation."
+                }
+              ],
+              "placeholder": "Message Type",
+              "disabled": false,
+              "flowIds": {},
+              "custom_id": "p_266055779117699181"
+            }
+          ]
+        },
+        {
+          "type": 1,
+          "components": [
+            {
+              "style": 4,
+              "type": 2,
+              "label": "Cancel",
+              "flowId": "266056984933961876",
+              "custom_id": "p_266056950012186771",
+              "flow": {
+                "actions": []
+              }
+            },
+            {
+              "style": 2,
+              "type": 2,
+              "label": "Create Message",
+              "disabled": true,
+              "flowId": "266056770357563426",
+              "custom_id": "p_266056692725190689",
+              "flow": {
+                "actions": []
+              }
+            }
+          ]
+        }
+      ],
+      "accent_color": 10181046
+    }
+  ]
+}
