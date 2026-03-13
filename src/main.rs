@@ -1,9 +1,3 @@
-//! # Discord Mod Mail Bot
-//!
-//! A Discord bot for handling mod mail functionality with DM-based support tickets.
-//! Uses a universal message system supporting both Standard and Components V2 formats.
-
-use std::env;
 use discord_bot;
 use serenity::{
     async_trait,
@@ -12,22 +6,14 @@ use serenity::{
     model::gateway::GatewayIntents,
 };
 
-/// Event handler for Discord bot events
-/// 
-/// Implements the `EventHandler` trait to respond to Discord events including
-/// direct messages and interactions.
 struct Handler;
 
 #[async_trait]
 impl EventHandler for Handler {
-    /*
-        When a player directly messages the bot, uses the universal message system
-        to send the mod mail interface.
-     */
+    // Handle messages in DMs to trigger the mod mail process
     async fn message(&self, ctx: Context, msg: serenity::model::channel::Message) {
-        // Only respond to direct messages
+        println!("Received message: {}", msg.content);
         if msg.guild_id.is_none() {
-            /* Load and send mod mail interface from JSON */
             if let Ok(payload) = discord_bot::message::load_message_from_file("src/messaged/embed.json") {
                 let delivery = discord_bot::message::DeliveryMethod::DirectMessage(msg.channel_id);
                 let _ = discord_bot::message::send_message(&ctx, &msg, payload, delivery).await;
@@ -35,7 +21,7 @@ impl EventHandler for Handler {
         }
     }
 
-    /// Processes slash commands and component interactions from users.
+    // Handle interactions for slash commands and component interactions
     async fn interaction_create(&self, ctx: Context, interaction: Interaction) {
         match &interaction {
             Interaction::Command(command) => {
@@ -47,9 +33,7 @@ impl EventHandler for Handler {
                 }
             }
             Interaction::Component(component) => {
-                /* Handle component interactions (buttons, dropdowns, etc.) */
                 match component.data.custom_id.as_str() {
-                    /* Dropdown for selecting message type */
                     "mod_mail_type" => {
                         if let Err(why) = component.defer(&ctx.http).await {
                             println!("Error deferring component interaction: {}", why);
@@ -84,9 +68,6 @@ impl EventHandler for Handler {
         }
     }
 
-    /// Handles the ready event when the bot connects
-    /// 
-    /// Registers global slash commands and confirms the bot is online.
     async fn ready(&self, ctx: Context, ready: Ready) {
         println!("{} is connected!", ready.user.name);
         
@@ -99,19 +80,20 @@ impl EventHandler for Handler {
     }
 }
 
-/// Main entry point for the Discord bot
-/// 
-/// Initializes the bot client with required intents and event handler,
-/// then starts listening for Discord events.
 #[tokio::main]
 async fn main() {
-    let token = env::var("DISCORD_TOKEN")
-        .expect("Expected a token in the environment");
+    let secrets_json = std::fs::read_to_string("secrets.json")
+        .expect("Expected a secrets file")
+        .parse::<serde_json::Value>()
+        .expect("Expected valid JSON");
 
-    // Gateway intents required by the bot:
-    // - DIRECT_MESSAGES: Listen to direct messages
-    // - GUILD_MESSAGES: Listen to messages in guilds  
-    // - MESSAGE_CONTENT: Receive message content in events
+    let token = secrets_json
+        .get("discord-bot")
+        .and_then(|v| v.get("token"))
+        .and_then(|v| v.as_str())
+        .expect("Expected a token in the secrets file")
+        .to_owned();
+
     let intents = GatewayIntents::DIRECT_MESSAGES
         | GatewayIntents::GUILD_MESSAGES
         | GatewayIntents::MESSAGE_CONTENT;
