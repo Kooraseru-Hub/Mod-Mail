@@ -1,1 +1,0 @@
-DISCORD_TOKEN="MTQ2ODAzODg5NDcwNzU0NDI3Nw.GpBlto.OHvFspZimQUz8g2SuYdFBccA5VkzJZqlypMlYE" ./target/debug/discord-bot
