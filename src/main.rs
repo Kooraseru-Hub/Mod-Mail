@@ -10,73 +10,109 @@ struct Handler;
 
 #[async_trait]
 impl EventHandler for Handler {
-    // Handle messages in DMs to trigger the mod mail process
     async fn message(&self, ctx: Context, msg: serenity::model::channel::Message) {
-        println!("Received message: {}", msg.content);
-        if msg.guild_id.is_none() {
-            if let Ok(payload) = discord_bot::message::load_message_from_file("src/messaged/embed.json") {
-                let delivery = discord_bot::message::DeliveryMethod::DirectMessage(msg.channel_id);
-                let _ = discord_bot::message::send_message(&ctx, &msg, payload, delivery).await;
-            }
+        if msg.guild_id.is_some() || msg.author.bot {
+            return; // Ignore guild messages and bot messages (including ourselves)
         }
+        println!("[gateway] DM from {} (channel {})", msg.author.name, msg.channel_id);
+        discord_bot::messaged::run(&ctx, &msg).await;
     }
 
-    // Handle interactions for slash commands and component interactions
     async fn interaction_create(&self, ctx: Context, interaction: Interaction) {
         match &interaction {
             Interaction::Command(command) => {
+                println!("[gateway] Command '{}' from {}", command.data.name, command.user.name);
                 match command.data.name.as_str() {
-                    "ping" => {
-                        discord_bot::ping::run(&ctx, &interaction).await;
-                    }
-                    _ => {}
+                    "ping"           => discord_bot::ping::run(&ctx, &interaction).await,
+                    "setup"          => discord_bot::setup::run(&ctx, command).await,
+                    "reset-defaults" => discord_bot::setup::run_reset(&ctx, command).await,
+                    "template-edit"  => discord_bot::builder::run(&ctx, command).await,
+                    "Report Player"  => discord_bot::report::run(&ctx, command).await,
+                    name => println!("[gateway] Unknown command: {}", name),
                 }
             }
+
             Interaction::Component(component) => {
+                println!(
+                    "[gateway] Component '{}' from {} in channel {}",
+                    component.data.custom_id, component.user.name, component.channel_id
+                );
                 match component.data.custom_id.as_str() {
-                    "mod_mail_type" => {
-                        if let Err(why) = component.defer(&ctx.http).await {
-                            println!("Error deferring component interaction: {}", why);
-                            return;
-                        }
-                        
-                        /* This would enable the Create Message button */
-                        /* TODO: Update message to enable Create Message button */
-                    },
-                    /* Cancel button */
-                    id if id.contains("cancel") => {
-                        if let Err(why) = component.defer(&ctx.http).await {
-                            println!("Error deferring cancel interaction: {}", why);
-                            return;
-                        }
-                        
-                        /* TODO: Disable all buttons on message */
-                    },
-                    /* Create Message button */
-                    id if id.contains("create") => {
-                        if let Err(why) = component.defer(&ctx.http).await {
-                            println!("Error deferring create interaction: {}", why);
-                            return;
-                        }
-                        
-                        /* TODO: Handle modal or message creation */
-                    },
-                    _ => {}
+                    // Setup wizard components
+                    discord_bot::setup::SETUP_BOT_NAME_BTN
+                    | discord_bot::setup::SETUP_AVATAR_BTN
+                    | discord_bot::setup::SETUP_CHANNEL_SELECT
+                    | discord_bot::setup::SETUP_LOG_CHANNEL
+                    | discord_bot::setup::SETUP_METHOD_SELECT
+                    | discord_bot::setup::SETUP_REPORTS_SELECT
+                    | discord_bot::setup::SETUP_SAVE_BTN
+                    | discord_bot::setup::SETUP_CANCEL_BTN
+                    | discord_bot::setup::SETUP_RESET_BTN
+                    | discord_bot::setup::SETUP_EDIT_TPL_BTN => {
+                        discord_bot::setup::handle_component(&ctx, component).await;
+                    }
+                    // Template builder components
+                    id if discord_bot::builder::is_template_editor_component(id) => {
+                        discord_bot::builder::handle_component(&ctx, component).await;
+                    }
+                    // Mod mail components
+                    discord_bot::messaged::DROPDOWN_ID => {
+                        discord_bot::messaged::handle_select(&ctx, component).await;
+                    }
+                    discord_bot::messaged::CANCEL_ID => {
+                        discord_bot::messaged::handle_cancel(&ctx, component).await;
+                    }
+                    discord_bot::messaged::CREATE_ID => {
+                        discord_bot::messaged::handle_create(&ctx, component).await;
+                    }
+                    id => println!("[gateway] Unhandled component: {}", id),
                 }
             }
+
+            Interaction::Modal(modal) => {
+                println!(
+                    "[gateway] Modal '{}' from {} in channel {}",
+                    modal.data.custom_id, modal.user.name, modal.channel_id
+                );
+                match modal.data.custom_id.as_str() {
+                    // Setup modals
+                    discord_bot::setup::MODAL_BOT_NAME
+                    | discord_bot::setup::MODAL_AVATAR => {
+                        discord_bot::setup::handle_modal(&ctx, modal).await;
+                    }
+                    // Template builder modals
+                    id if discord_bot::builder::is_template_editor_modal(id) => {
+                        discord_bot::builder::handle_modal(&ctx, modal).await;
+                    }
+                    // Mod mail modal
+                    discord_bot::messaged::MODAL_ID => {
+                        discord_bot::messaged::handle_modal(&ctx, modal).await;
+                    }
+                    // Report modal (prefixed with target user id)
+                    id if id.starts_with(discord_bot::report::REPORT_MODAL_ID) => {
+                        discord_bot::report::handle_modal(&ctx, modal).await;
+                    }
+                    id => println!("[gateway] Unhandled modal: {}", id),
+                }
+            }
+
             _ => {}
         }
     }
 
     async fn ready(&self, ctx: Context, ready: Ready) {
-        println!("{} is connected!", ready.user.name);
-        
-        // Register slash commands
+        println!("[gateway] {} connected (shard {})", ready.user.name, ctx.shard_id);
+
         let commands = vec![
             discord_bot::ping::register(),
+            discord_bot::setup::register(),
+            discord_bot::setup::register_reset(),
+            discord_bot::builder::register(),
+            discord_bot::report::register(),
         ];
-        
-        let _ = serenity::model::application::Command::set_global_commands(&ctx.http, commands).await;
+        if let Err(e) = serenity::model::application::Command::set_global_commands(&ctx.http, commands).await {
+            println!("[gateway] ERROR registering commands: {}", e);
+        }
     }
 }
 
@@ -104,6 +140,6 @@ async fn main() {
         .expect("Err creating client");
 
     if let Err(why) = client.start().await {
-        println!("Client error: {:?}", why);
+        println!("[gateway] Client error: {:?}", why);
     }
 }

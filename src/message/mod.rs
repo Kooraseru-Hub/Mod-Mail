@@ -47,17 +47,21 @@ struct StandardMessage {
 }
 
 /// Detects the message format based on the JSON payload
-/// 
-/// Analyzes component types to determine if this is a Standard message
-/// (with action rows containing buttons/selects) or Components V2 (with layout blocks)
+///
+/// Checks the `flags` field first (IS_COMPONENTS_V2 = 1 << 15 = 32768), then falls back to
+/// inspecting top-level component types (10=text, 12=media, 14=separator, 17=container).
 pub fn detect_format(payload: &Value) -> MessageFormat {
-    // Check if payload has Components V2 specific types (10, 12, 14)
+    // IS_COMPONENTS_V2 flag is the canonical indicator
+    if payload.get("flags").and_then(|f| f.as_u64()).unwrap_or(0) & 32768 != 0 {
+        return MessageFormat::ComponentsV2;
+    }
+    // Fallback: inspect top-level component types
     if let Some(components) = payload.get("components").and_then(|c| c.as_array()) {
         for component in components {
             if let Some(comp_type) = component.get("type").and_then(|t| t.as_u64()) {
-                // Types 10, 12, 14 are Components V2 only
+                // 10=text display, 12=media gallery, 14=separator, 17=container
                 match comp_type {
-                    10 | 12 | 14 => return MessageFormat::ComponentsV2,
+                    10 | 12 | 14 | 17 => return MessageFormat::ComponentsV2,
                     _ => {}
                 }
             }
@@ -94,11 +98,11 @@ pub async fn send_message(
 }
 
 /// Sends a Components V2 layout-based message
-/// 
-/// Uses raw JSON and requires webhook or interaction endpoints.
-/// Cannot be sent to persistent DM channels via standard endpoints.
+///
+/// Supports webhooks, interactions, and direct channel/DM sends.
+/// Requires the payload to include `flags: 32768` (IS_COMPONENTS_V2).
 async fn send_components_v2_message(
-    _ctx: &Context,
+    ctx: &Context,
     _msg: &Message,
     payload: &Value,
     delivery: DeliveryMethod,
@@ -113,7 +117,7 @@ async fn send_components_v2_message(
                 .send()
                 .await
                 .map_err(|e| format!("Webhook request failed: {}", e))?;
-            
+
             if response.status().is_success() {
                 Ok(())
             } else {
@@ -125,9 +129,13 @@ async fn send_components_v2_message(
             // Use send_components_v2_interaction_response instead
             Err("Use send_components_v2_interaction_response for interaction responses".to_string())
         }
-        DeliveryMethod::DirectMessage(_) | DeliveryMethod::Channel(_) => {
-            // Components V2 cannot be sent to standard DM/channel endpoints
-            Err("Components V2 can only be sent via webhooks or interactions".to_string())
+        DeliveryMethod::DirectMessage(channel_id) | DeliveryMethod::Channel(channel_id) => {
+            // Components V2 can be sent to channels/DMs when flags: 32768 is set in the payload
+            ctx.http
+                .send_message(channel_id, vec![], payload)
+                .await
+                .map(|_| ())
+                .map_err(|e| format!("Failed to send Components V2 message: {}", e))
         }
     }
 }
