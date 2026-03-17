@@ -6,7 +6,6 @@ use serenity::{
     },
     model::{
         application::{CommandInteraction, CommandType, ModalInteraction},
-        Permissions,
     },
     prelude::Context,
 };
@@ -18,7 +17,6 @@ pub const REPORT_REASON_INPUT: &str   = "report_reason_input";
 pub fn register() -> CreateCommand {
     CreateCommand::new("Report Player")
         .kind(CommandType::User)
-        .default_member_permissions(Permissions::empty())
         .dm_permission(false)
 }
 
@@ -101,7 +99,7 @@ pub async fn handle_modal(ctx: &Context, modal: &ModalInteraction) {
         })
         .unwrap_or_default();
 
-    let template = config.get_template(crate::templates::TEMPLATE_PLAYER_REPORT);
+    let template = config.get_template(crate::templates::OPTION_PLAYER_REPORT);
 
     let mut rendered_description = template.description.clone();
     rendered_description = rendered_description.replace("{reporter}", &format!("<@{}>", modal.user.id));

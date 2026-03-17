@@ -25,8 +25,9 @@ impl EventHandler for Handler {
                 match command.data.name.as_str() {
                     "ping"           => discord_bot::ping::run(&ctx, &interaction).await,
                     "setup"          => discord_bot::setup::run(&ctx, command).await,
-                    "reset-defaults" => discord_bot::setup::run_reset(&ctx, command).await,
-                    "template-edit"  => discord_bot::builder::run(&ctx, command).await,
+                    "reset"          => discord_bot::setup::run_reset(&ctx, command).await,
+                    "settings"       => discord_bot::setup::run_settings(&ctx, command).await,
+                    "message"        => discord_bot::messaged::run_message(&ctx, command).await,
                     "Report Player"  => discord_bot::report::run(&ctx, command).await,
                     name => println!("[gateway] Unknown command: {}", name),
                 }
@@ -38,9 +39,7 @@ impl EventHandler for Handler {
                     component.data.custom_id, component.user.name, component.channel_id
                 );
                 match component.data.custom_id.as_str() {
-                    // Setup wizard components
                     discord_bot::setup::SETUP_BOT_NAME_BTN
-                    | discord_bot::setup::SETUP_AVATAR_BTN
                     | discord_bot::setup::SETUP_CHANNEL_SELECT
                     | discord_bot::setup::SETUP_LOG_CHANNEL
                     | discord_bot::setup::SETUP_METHOD_SELECT
@@ -48,22 +47,17 @@ impl EventHandler for Handler {
                     | discord_bot::setup::SETUP_SAVE_BTN
                     | discord_bot::setup::SETUP_CANCEL_BTN
                     | discord_bot::setup::SETUP_RESET_BTN
-                    | discord_bot::setup::SETUP_EDIT_TPL_BTN => {
+                    | discord_bot::setup::SETUP_EDIT_TPL_BTN
+                    | discord_bot::setup::SETTINGS_SELECT
+                    | discord_bot::setup::SETTINGS_BACK_BTN => {
                         discord_bot::setup::handle_component(&ctx, component).await;
                     }
                     // Template builder components
                     id if discord_bot::builder::is_template_editor_component(id) => {
                         discord_bot::builder::handle_component(&ctx, component).await;
                     }
-                    // Mod mail components
-                    discord_bot::messaged::DROPDOWN_ID => {
-                        discord_bot::messaged::handle_select(&ctx, component).await;
-                    }
-                    discord_bot::messaged::CANCEL_ID => {
-                        discord_bot::messaged::handle_cancel(&ctx, component).await;
-                    }
-                    discord_bot::messaged::CREATE_ID => {
-                        discord_bot::messaged::handle_create(&ctx, component).await;
+                    id if discord_bot::messaged::is_modmail_component(id) => {
+                        discord_bot::messaged::handle_component(&ctx, component).await;
                     }
                     id => println!("[gateway] Unhandled component: {}", id),
                 }
@@ -76,19 +70,16 @@ impl EventHandler for Handler {
                 );
                 match modal.data.custom_id.as_str() {
                     // Setup modals
-                    discord_bot::setup::MODAL_BOT_NAME
-                    | discord_bot::setup::MODAL_AVATAR => {
+                    discord_bot::setup::MODAL_BOT_NAME => {
                         discord_bot::setup::handle_modal(&ctx, modal).await;
                     }
                     // Template builder modals
                     id if discord_bot::builder::is_template_editor_modal(id) => {
                         discord_bot::builder::handle_modal(&ctx, modal).await;
                     }
-                    // Mod mail modal
-                    discord_bot::messaged::MODAL_ID => {
+                    id if discord_bot::messaged::is_modmail_modal(id) => {
                         discord_bot::messaged::handle_modal(&ctx, modal).await;
                     }
-                    // Report modal (prefixed with target user id)
                     id if id.starts_with(discord_bot::report::REPORT_MODAL_ID) => {
                         discord_bot::report::handle_modal(&ctx, modal).await;
                     }
@@ -107,7 +98,8 @@ impl EventHandler for Handler {
             discord_bot::ping::register(),
             discord_bot::setup::register(),
             discord_bot::setup::register_reset(),
-            discord_bot::builder::register(),
+            discord_bot::setup::register_settings(),
+            discord_bot::messaged::register_message(),
             discord_bot::report::register(),
         ];
         if let Err(e) = serenity::model::application::Command::set_global_commands(&ctx.http, commands).await {
@@ -118,7 +110,7 @@ impl EventHandler for Handler {
 
 #[tokio::main]
 async fn main() {
-    let secrets_json = std::fs::read_to_string("secrets.json")
+    let secrets_json = std::fs::read_to_string(".secrets/secrets.json")
         .expect("Expected a secrets file")
         .parse::<serde_json::Value>()
         .expect("Expected valid JSON");

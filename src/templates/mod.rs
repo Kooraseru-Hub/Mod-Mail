@@ -50,14 +50,14 @@ impl EmbedTemplate {
     }
 }
 
-pub const TEMPLATE_PLAYER_REPORT: &str = "player_report";
-pub const TEMPLATE_MOD_MAIL: &str = "mod_mail";
+pub const OPTION_PLAYER_REPORT: &str = "player_report";
+pub const OPTION_GENERAL_SUPPORT: &str = "general_support";
 
 pub fn get_default(name: &str) -> EmbedTemplate {
     match name {
-        TEMPLATE_PLAYER_REPORT => default_player_report(),
-        TEMPLATE_MOD_MAIL => default_mod_mail(),
-        _ => default_mod_mail(),
+        OPTION_PLAYER_REPORT => default_player_report(),
+        OPTION_GENERAL_SUPPORT => default_general_support(),
+        _ => default_general_support(),
     }
 }
 
@@ -86,10 +86,10 @@ pub fn default_player_report() -> EmbedTemplate {
     }
 }
 
-pub fn default_mod_mail() -> EmbedTemplate {
+pub fn default_general_support() -> EmbedTemplate {
     EmbedTemplate {
-        title: "Mod Mail Ticket".to_string(),
-        description: "A new mod mail ticket has been created.".to_string(),
+        title: "General Support Ticket".to_string(),
+        description: "A new support ticket has been created.".to_string(),
         color: 10181046, // Purple
         fields: vec![
             EmbedField {
@@ -111,6 +111,24 @@ pub fn default_mod_mail() -> EmbedTemplate {
     }
 }
 
-pub fn list_template_names() -> Vec<&'static str> {
-    vec![TEMPLATE_PLAYER_REPORT, TEMPLATE_MOD_MAIL]
+pub fn list_option_names() -> Vec<&'static str> {
+    vec![OPTION_PLAYER_REPORT, OPTION_GENERAL_SUPPORT]
+}
+
+pub fn display_name(key: &str) -> String {
+    match key {
+        OPTION_PLAYER_REPORT => "Report Player".to_string(),
+        OPTION_GENERAL_SUPPORT => "General Support".to_string(),
+        other => other
+            .split('_')
+            .map(|w| {
+                let mut c = w.chars();
+                match c.next() {
+                    None => String::new(),
+                    Some(f) => f.to_uppercase().collect::<String>() + c.as_str(),
+                }
+            })
+            .collect::<Vec<_>>()
+            .join(" "),
+    }
 }
