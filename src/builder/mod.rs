@@ -37,11 +37,23 @@ pub const MODAL_TPL_FIELD_NAME: &str  = "modal_tpl_field_name";
 pub const MODAL_TPL_FIELD_VALUE: &str = "modal_tpl_field_value";
 pub const MODAL_TPL_FIELD_INLINE: &str = "modal_tpl_field_inline";
 
+pub const TPL_SET_CHANNEL: &str    = "tpl_set_channel";
+pub const TPL_SET_INSTR: &str      = "tpl_set_instr";
+pub const MODAL_TPL_CHANNEL: &str  = "modal_tpl_channel";
+pub const MODAL_TPL_CHANNEL_IN: &str = "modal_tpl_channel_in";
+pub const MODAL_TPL_INSTR: &str    = "modal_tpl_instr";
+pub const MODAL_TPL_INSTR_IN: &str = "modal_tpl_instr_in";
+
+pub const TPL_CREATE_NEW: &str     = "tpl_create_new";
+pub const TPL_DELETE_FMT: &str     = "tpl_delete_fmt";
+pub const MODAL_TPL_NEW: &str      = "modal_tpl_new";
+pub const MODAL_TPL_NEW_NAME: &str = "modal_tpl_new_name";
+
 // ── Slash command registration ───────────────────────────────────────────────
 
 pub fn register() -> CreateCommand {
     CreateCommand::new(CMD_TEMPLATE_EDIT)
-        .description("Edit embed templates used by Mod Mail and Reports")
+        .description("Edit option embeds and settings used by Mod Mail and Reports")
         .default_member_permissions(Permissions::ADMINISTRATOR)
         .dm_permission(false)
 }
@@ -92,14 +104,28 @@ pub async fn handle_component(ctx: &Context, component: &ComponentInteraction) {
 
         let resp = CreateInteractionResponse::UpdateMessage(
             CreateInteractionResponseMessage::new()
-                .embed(build_editor_embed(&selected, &template))
-                .components(build_editor_components(&selected)),
+                .embed(build_editor_embed(&selected, &template, &config))
+                .components(build_editor_components(&selected, &config)),
         );
         let _ = component.create_response(&ctx.http, resp).await;
         return;
     }
 
-    // All other buttons carry the template name as a suffix: "tpl_edit_title:player_report"
+    if id == TPL_CREATE_NEW {
+        let modal = CreateInteractionResponse::Modal(
+            CreateModal::new(MODAL_TPL_NEW, "Create New Format")
+                .components(vec![CreateActionRow::InputText(
+                    CreateInputText::new(InputTextStyle::Short, "Format Name", MODAL_TPL_NEW_NAME)
+                        .placeholder("e.g. Bug Report")
+                        .required(true)
+                        .min_length(1)
+                        .max_length(50),
+                )]),
+        );
+        let _ = component.create_response(&ctx.http, modal).await;
+        return;
+    }
+
     let (action, tpl_name) = match id.split_once(':') {
         Some(pair) => pair,
         None => return,
@@ -200,7 +226,7 @@ pub async fn handle_component(ctx: &Context, component: &ComponentInteraction) {
 
             let resp = CreateInteractionResponse::UpdateMessage(
                 CreateInteractionResponseMessage::new()
-                    .embed(build_editor_embed(tpl_name, &template))
+                    .embed(build_editor_embed(tpl_name, &template, &config))
                     .components(vec![
                         CreateActionRow::SelectMenu(
                             CreateSelectMenu::new(
@@ -242,8 +268,8 @@ pub async fn handle_component(ctx: &Context, component: &ComponentInteraction) {
 
                     let resp = CreateInteractionResponse::UpdateMessage(
                         CreateInteractionResponseMessage::new()
-                            .embed(build_editor_embed(real_tpl_name, &t))
-                            .components(build_editor_components(real_tpl_name)),
+                            .embed(build_editor_embed(real_tpl_name, &t, &cfg))
+                            .components(build_editor_components(real_tpl_name, &cfg)),
                     );
                     let _ = component.create_response(&ctx.http, resp).await;
                 }
@@ -253,8 +279,8 @@ pub async fn handle_component(ctx: &Context, component: &ComponentInteraction) {
         "tpl_rm_cancel" => {
             let resp = CreateInteractionResponse::UpdateMessage(
                 CreateInteractionResponseMessage::new()
-                    .embed(build_editor_embed(tpl_name, &template))
-                    .components(build_editor_components(tpl_name)),
+                    .embed(build_editor_embed(tpl_name, &template, &config))
+                    .components(build_editor_components(tpl_name, &config)),
             );
             let _ = component.create_response(&ctx.http, resp).await;
         }
@@ -267,22 +293,13 @@ pub async fn handle_component(ctx: &Context, component: &ComponentInteraction) {
             let default_tpl = templates::get_default(tpl_name);
             let resp = CreateInteractionResponse::UpdateMessage(
                 CreateInteractionResponseMessage::new()
-                    .embed(build_editor_embed(tpl_name, &default_tpl))
-                    .components(build_editor_components(tpl_name)),
+                    .embed(build_editor_embed(tpl_name, &default_tpl, &cfg))
+                    .components(build_editor_components(tpl_name, &cfg)),
             );
             let _ = component.create_response(&ctx.http, resp).await;
         }
 
         "tpl_preview" => {
-            let preview = template.to_components_v2();
-            let preview_str = serde_json::to_string_pretty(&preview).unwrap_or_default();
-            let truncated = if preview_str.len() > 1900 {
-                format!("{}...", &preview_str[..1900])
-            } else {
-                preview_str
-            };
-
-            // Show a preview embed alongside the editor
             let _ = component.create_response(&ctx.http,
                 CreateInteractionResponse::Message(
                     CreateInteractionResponseMessage::new()
@@ -297,21 +314,81 @@ pub async fn handle_component(ctx: &Context, component: &ComponentInteraction) {
                                     })
                                 )
                         )
-                        .content(format!("```json\n{}\n```", truncated))
                         .ephemeral(true),
                 )).await;
         }
 
+        "tpl_set_channel" => {
+            let opt_cfg = config.get_option_config(tpl_name);
+            let current = opt_cfg
+                .channel_id
+                .map(|id| id.to_string())
+                .unwrap_or_default();
+            let modal = CreateInteractionResponse::Modal(
+                CreateModal::new(
+                    format!("{}:{}", MODAL_TPL_CHANNEL, tpl_name),
+                    "Set Channel Override",
+                )
+                .components(vec![CreateActionRow::InputText(
+                    CreateInputText::new(
+                        InputTextStyle::Short,
+                        "Channel ID (leave empty to use default)",
+                        MODAL_TPL_CHANNEL_IN,
+                    )
+                    .value(current)
+                    .required(false)
+                    .max_length(20),
+                )]),
+            );
+            let _ = component.create_response(&ctx.http, modal).await;
+        }
+
+        "tpl_set_instr" => {
+            let opt_cfg = config.get_option_config(tpl_name);
+            let current = opt_cfg.instructions.unwrap_or_default();
+            let modal = CreateInteractionResponse::Modal(
+                CreateModal::new(
+                    format!("{}:{}", MODAL_TPL_INSTR, tpl_name),
+                    "Set Instructions",
+                )
+                .components(vec![CreateActionRow::InputText(
+                    CreateInputText::new(
+                        InputTextStyle::Paragraph,
+                        "Instructions shown to user in DMs",
+                        MODAL_TPL_INSTR_IN,
+                    )
+                    .value(current)
+                    .required(false)
+                    .max_length(1000),
+                )]),
+            );
+            let _ = component.create_response(&ctx.http, modal).await;
+        }
+
         "tpl_done" => {
+            let display = templates::display_name(tpl_name);
             let resp = CreateInteractionResponse::UpdateMessage(
                 CreateInteractionResponseMessage::new()
                     .embed(
                         serenity::builder::CreateEmbed::new()
-                            .title("Template Editor")
-                            .description(format!("Template **{}** saved.", tpl_name))
+                            .title("Format Editor")
+                            .description(format!("Format **{}** saved.", display))
                             .color(0x57F287),
                     )
                     .components(vec![]),
+            );
+            let _ = component.create_response(&ctx.http, resp).await;
+        }
+
+        "tpl_delete_fmt" => {
+            let mut cfg = GuildConfig::load(guild_id);
+            cfg.remove_custom_format(tpl_name);
+            let _ = cfg.save();
+
+            let resp = CreateInteractionResponse::UpdateMessage(
+                CreateInteractionResponseMessage::new()
+                    .embed(build_select_embed())
+                    .components(build_select_components(&cfg)),
             );
             let _ = component.create_response(&ctx.http, resp).await;
         }
@@ -327,6 +404,30 @@ pub async fn handle_modal(ctx: &Context, modal: &ModalInteraction) {
         Some(id) => id.get(),
         None => return,
     };
+
+    if modal.data.custom_id == MODAL_TPL_NEW {
+        let name = extract_value(&modal.data.components, MODAL_TPL_NEW_NAME).unwrap_or_default();
+        if name.is_empty() {
+            return;
+        }
+        let key = name.to_lowercase().replace(' ', "_");
+        let mut config = GuildConfig::load(guild_id);
+        config.add_custom_format(&key);
+        let default_tpl = templates::default_general_support();
+        let mut new_tpl = default_tpl;
+        new_tpl.title = name.clone();
+        new_tpl.description = format!("A new {} ticket has been created.", name);
+        config.set_template(&key, &new_tpl);
+        let _ = config.save();
+
+        let resp = CreateInteractionResponse::UpdateMessage(
+            CreateInteractionResponseMessage::new()
+                .embed(build_editor_embed(&key, &new_tpl, &config))
+                .components(build_editor_components(&key, &config)),
+        );
+        let _ = modal.create_response(&ctx.http, resp).await;
+        return;
+    }
 
     let (base_id, tpl_name) = match modal.data.custom_id.split_once(':') {
         Some(pair) => pair,
@@ -365,6 +466,44 @@ pub async fn handle_modal(ctx: &Context, modal: &ModalInteraction) {
                 template.fields.push(EmbedField { name, value, inline });
             }
         }
+        MODAL_TPL_CHANNEL => {
+            let val = extract_value(&modal.data.components, MODAL_TPL_CHANNEL_IN).unwrap_or_default();
+            let mut opt_cfg = config.get_option_config(tpl_name);
+            opt_cfg.channel_id = val.trim().parse::<u64>().ok();
+            config.set_option_config(tpl_name, &opt_cfg);
+            let _ = config.save();
+
+            let resp = CreateInteractionResponse::UpdateMessage(
+                CreateInteractionResponseMessage::new()
+                    .embed(build_editor_embed(tpl_name, &template, &config))
+                    .components(build_editor_components(tpl_name, &config)),
+            );
+            if let Err(e) = modal.create_response(&ctx.http, resp).await {
+                println!("[tpl-edit] ERROR modal response: {}", e);
+            }
+            return;
+        }
+        MODAL_TPL_INSTR => {
+            let val = extract_value(&modal.data.components, MODAL_TPL_INSTR_IN).unwrap_or_default();
+            let mut opt_cfg = config.get_option_config(tpl_name);
+            opt_cfg.instructions = if val.trim().is_empty() {
+                None
+            } else {
+                Some(val)
+            };
+            config.set_option_config(tpl_name, &opt_cfg);
+            let _ = config.save();
+
+            let resp = CreateInteractionResponse::UpdateMessage(
+                CreateInteractionResponseMessage::new()
+                    .embed(build_editor_embed(tpl_name, &template, &config))
+                    .components(build_editor_components(tpl_name, &config)),
+            );
+            if let Err(e) = modal.create_response(&ctx.http, resp).await {
+                println!("[tpl-edit] ERROR modal response: {}", e);
+            }
+            return;
+        }
         _ => return,
     }
 
@@ -373,8 +512,8 @@ pub async fn handle_modal(ctx: &Context, modal: &ModalInteraction) {
 
     let resp = CreateInteractionResponse::UpdateMessage(
         CreateInteractionResponseMessage::new()
-            .embed(build_editor_embed(tpl_name, &template))
-            .components(build_editor_components(tpl_name)),
+            .embed(build_editor_embed(tpl_name, &template, &config))
+            .components(build_editor_components(tpl_name, &config)),
     );
     if let Err(e) = modal.create_response(&ctx.http, resp).await {
         println!("[tpl-edit] ERROR modal response: {}", e);
@@ -385,8 +524,8 @@ pub async fn handle_modal(ctx: &Context, modal: &ModalInteraction) {
 
 fn build_select_embed() -> serenity::builder::CreateEmbed {
     serenity::builder::CreateEmbed::new()
-        .title("Template Editor")
-        .description("Select a template to edit. Templates define how embeds look for reports and mod mail tickets.\n\nAvailable placeholders:\n`{reporter}` `{reported_user}` `{reason}` `{author}` `{content}` `{ticket_type}`")
+        .title("Format Editor")
+        .description("Select a format to edit, or create a new one.\n\nFormats define how embeds look and where tickets are sent.\n\nAvailable placeholders:\n`{reporter}` `{reported_user}` `{reason}` `{author}` `{content}` `{ticket_type}`")
         .color(0x5865F2)
 }
 
@@ -395,34 +534,43 @@ pub fn build_select_embed_pub() -> serenity::builder::CreateEmbed {
 }
 
 fn build_select_components(config: &GuildConfig) -> Vec<CreateActionRow> {
-    let names = templates::list_template_names();
+    let names = config.all_format_names();
     let options: Vec<CreateSelectMenuOption> = names
         .iter()
         .map(|name| {
-            let is_overridden = config.templates.contains_key(*name);
+            let is_overridden = config.templates.contains_key(name.as_str());
+            let display = templates::display_name(name);
             let label = if is_overridden {
-                format!("{} (customized)", name)
+                format!("{} (customized)", display)
             } else {
-                format!("{} (default)", name)
+                format!("{} (default)", display)
             };
-            CreateSelectMenuOption::new(label, *name)
+            CreateSelectMenuOption::new(label, name.as_str())
         })
         .collect();
 
-    vec![CreateActionRow::SelectMenu(
-        CreateSelectMenu::new(
-            TPL_SELECT,
-            CreateSelectMenuKind::String { options },
-        )
-        .placeholder("Choose a template to edit"),
-    )]
+    vec![
+        CreateActionRow::SelectMenu(
+            CreateSelectMenu::new(
+                TPL_SELECT,
+                CreateSelectMenuKind::String { options },
+            )
+            .placeholder("Choose a format to edit"),
+        ),
+        CreateActionRow::Buttons(vec![
+            CreateButton::new(TPL_CREATE_NEW)
+                .label("Create New Format")
+                .style(ButtonStyle::Success),
+        ]),
+    ]
 }
 
 pub fn build_select_components_pub(config: &GuildConfig) -> Vec<CreateActionRow> {
     build_select_components(config)
 }
 
-fn build_editor_embed(tpl_name: &str, template: &EmbedTemplate) -> serenity::builder::CreateEmbed {
+fn build_editor_embed(tpl_name: &str, template: &EmbedTemplate, config: &GuildConfig) -> serenity::builder::CreateEmbed {
+    let display = templates::display_name(tpl_name);
     let fields_display = if template.fields.is_empty() {
         "*(none)*".to_string()
     } else {
@@ -447,17 +595,30 @@ fn build_editor_embed(tpl_name: &str, template: &EmbedTemplate) -> serenity::bui
             .join("\n")
     };
 
+    let opt_cfg = config.get_option_config(tpl_name);
+    let channel_display = opt_cfg
+        .channel_id
+        .map(|id| format!("<#{}>", id))
+        .unwrap_or_else(|| "*Using default*".to_string());
+    let instr_display = opt_cfg
+        .instructions
+        .as_deref()
+        .unwrap_or("*Not set*");
+
     serenity::builder::CreateEmbed::new()
-        .title(format!("Editing: {}", tpl_name))
+        .title(format!("Editing: {}", display))
         .color(template.color)
         .field("Title", &template.title, false)
         .field("Description", &template.description, false)
         .field("Color", format!("`#{:06X}`", template.color), true)
+        .field("Channel Override", &channel_display, true)
         .field("Fields", &fields_display, false)
+        .field("Instructions", instr_display, false)
 }
 
-fn build_editor_components(tpl_name: &str) -> Vec<CreateActionRow> {
-    vec![
+fn build_editor_components(tpl_name: &str, config: &GuildConfig) -> Vec<CreateActionRow> {
+    let is_custom = config.custom_formats.contains(&tpl_name.to_string());
+    let mut rows = vec![
         CreateActionRow::Buttons(vec![
             CreateButton::new(format!("tpl_edit_title:{}", tpl_name))
                 .label("Edit Title")
@@ -481,14 +642,34 @@ fn build_editor_components(tpl_name: &str) -> Vec<CreateActionRow> {
                 .style(ButtonStyle::Secondary),
         ]),
         CreateActionRow::Buttons(vec![
-            CreateButton::new(format!("tpl_reset_one:{}", tpl_name))
-                .label("Reset to Default")
-                .style(ButtonStyle::Danger),
-            CreateButton::new(format!("tpl_done:{}", tpl_name))
-                .label("Done")
-                .style(ButtonStyle::Success),
+            CreateButton::new(format!("tpl_set_channel:{}", tpl_name))
+                .label("Set Channel")
+                .style(ButtonStyle::Secondary),
+            CreateButton::new(format!("tpl_set_instr:{}", tpl_name))
+                .label("Set Instructions")
+                .style(ButtonStyle::Secondary),
         ]),
-    ]
+    ];
+
+    let mut last_row = vec![
+        CreateButton::new(format!("tpl_reset_one:{}", tpl_name))
+            .label("Reset to Default")
+            .style(ButtonStyle::Danger),
+    ];
+    if is_custom {
+        last_row.push(
+            CreateButton::new(format!("tpl_delete_fmt:{}", tpl_name))
+                .label("Delete Format")
+                .style(ButtonStyle::Danger),
+        );
+    }
+    last_row.push(
+        CreateButton::new(format!("tpl_done:{}", tpl_name))
+            .label("Done")
+            .style(ButtonStyle::Success),
+    );
+    rows.push(CreateActionRow::Buttons(last_row));
+    rows
 }
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
@@ -522,18 +703,24 @@ fn extract_value(
 /// Returns true if this custom_id belongs to the template editor
 pub fn is_template_editor_component(id: &str) -> bool {
     id == TPL_SELECT
+        || id == TPL_CREATE_NEW
         || id.starts_with("tpl_edit_")
         || id.starts_with("tpl_add_")
         || id.starts_with("tpl_rm_")
         || id.starts_with("tpl_reset_")
         || id.starts_with("tpl_preview:")
         || id.starts_with("tpl_done:")
+        || id.starts_with("tpl_set_")
+        || id.starts_with("tpl_delete_")
 }
 
 /// Returns true if this modal custom_id belongs to the template editor
 pub fn is_template_editor_modal(id: &str) -> bool {
-    id.starts_with(MODAL_TPL_TITLE)
+    id == MODAL_TPL_NEW
+        || id.starts_with(MODAL_TPL_TITLE)
         || id.starts_with(MODAL_TPL_DESC)
         || id.starts_with(MODAL_TPL_COLOR)
         || id.starts_with(MODAL_TPL_FIELD)
+        || id.starts_with(MODAL_TPL_CHANNEL)
+        || id.starts_with(MODAL_TPL_INSTR)
 }

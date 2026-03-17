@@ -43,16 +43,25 @@ impl MessageMethod {
     }
 }
 
+#[derive(Debug, Clone, Serialize, Deserialize, Default)]
+pub struct OptionConfig {
+    pub channel_id: Option<u64>,
+    pub instructions: Option<String>,
+}
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct GuildConfig {
     pub guild_id: u64,
     pub bot_name: String,
-    pub bot_avatar_url: Option<String>,
     pub message_channel_id: Option<u64>,
     pub log_channel_id: Option<u64>,
     pub message_method: MessageMethod,
     pub reports_enabled: bool,
     pub templates: HashMap<String, serde_json::Value>,
+    #[serde(default)]
+    pub option_configs: HashMap<String, OptionConfig>,
+    #[serde(default)]
+    pub custom_formats: Vec<String>,
 }
 
 impl GuildConfig {
@@ -60,12 +69,13 @@ impl GuildConfig {
         Self {
             guild_id,
             bot_name: "Mod Mail".to_string(),
-            bot_avatar_url: None,
             message_channel_id: None,
             log_channel_id: None,
             message_method: MessageMethod::default(),
             reports_enabled: false,
             templates: HashMap::new(),
+            option_configs: HashMap::new(),
+            custom_formats: Vec::new(),
         }
     }
 
@@ -120,5 +130,45 @@ impl GuildConfig {
 
     pub fn reset_all_templates(&mut self) {
         self.templates.clear();
+    }
+
+    pub fn get_option_config(&self, name: &str) -> OptionConfig {
+        self.option_configs.get(name).cloned().unwrap_or_default()
+    }
+
+    pub fn set_option_config(&mut self, name: &str, cfg: &OptionConfig) {
+        self.option_configs.insert(name.to_string(), cfg.clone());
+    }
+
+    pub fn option_channel(&self, option_name: &str) -> Option<u64> {
+        self.option_configs
+            .get(option_name)
+            .and_then(|o| o.channel_id)
+            .or(self.message_channel_id)
+    }
+
+    pub fn all_format_names(&self) -> Vec<String> {
+        let mut names: Vec<String> = crate::templates::list_option_names()
+            .iter()
+            .map(|s| s.to_string())
+            .collect();
+        for name in &self.custom_formats {
+            if !names.contains(name) {
+                names.push(name.clone());
+            }
+        }
+        names
+    }
+
+    pub fn add_custom_format(&mut self, key: &str) {
+        if !self.custom_formats.contains(&key.to_string()) {
+            self.custom_formats.push(key.to_string());
+        }
+    }
+
+    pub fn remove_custom_format(&mut self, key: &str) {
+        self.custom_formats.retain(|k| k != key);
+        self.templates.remove(key);
+        self.option_configs.remove(key);
     }
 }
