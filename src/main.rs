@@ -1,9 +1,9 @@
 use discord_bot;
 use serenity::{
     async_trait,
-    model::{gateway::Ready, application::Interaction},
-    prelude::*,
     model::gateway::GatewayIntents,
+    model::{application::Interaction, gateway::Ready},
+    prelude::*,
 };
 
 struct Handler;
@@ -14,21 +14,27 @@ impl EventHandler for Handler {
         if msg.guild_id.is_some() || msg.author.bot {
             return; // Ignore guild messages and bot messages (including ourselves)
         }
-        println!("[gateway] DM from {} (channel {})", msg.author.name, msg.channel_id);
+        println!(
+            "[gateway] DM from {} (channel {})",
+            msg.author.name, msg.channel_id
+        );
         discord_bot::messaged::run(&ctx, &msg).await;
     }
 
     async fn interaction_create(&self, ctx: Context, interaction: Interaction) {
         match &interaction {
             Interaction::Command(command) => {
-                println!("[gateway] Command '{}' from {}", command.data.name, command.user.name);
+                println!(
+                    "[gateway] Command '{}' from {}",
+                    command.data.name, command.user.name
+                );
                 match command.data.name.as_str() {
-                    "ping"           => discord_bot::ping::run(&ctx, &interaction).await,
-                    "setup"          => discord_bot::setup::run(&ctx, command).await,
-                    "reset"          => discord_bot::setup::run_reset(&ctx, command).await,
-                    "settings"       => discord_bot::setup::run_settings(&ctx, command).await,
-                    "message"        => discord_bot::messaged::run_message(&ctx, command).await,
-                    "Report Player"  => discord_bot::report::run(&ctx, command).await,
+                    "ping" => discord_bot::ping::run(&ctx, &interaction).await,
+                    "setup" => discord_bot::setup::run(&ctx, command).await,
+                    "reset" => discord_bot::setup::run_reset(&ctx, command).await,
+                    "settings" => discord_bot::setup::run_settings(&ctx, command).await,
+                    "message" => discord_bot::messaged::run_message(&ctx, command).await,
+                    "Report Player" => discord_bot::report::run(&ctx, command).await,
                     name => println!("[gateway] Unknown command: {}", name),
                 }
             }
@@ -92,7 +98,10 @@ impl EventHandler for Handler {
     }
 
     async fn ready(&self, ctx: Context, ready: Ready) {
-        println!("[gateway] {} connected (shard {})", ready.user.name, ctx.shard_id);
+        println!(
+            "[gateway] {} connected (shard {})",
+            ready.user.name, ctx.shard_id
+        );
 
         let commands = vec![
             discord_bot::ping::register(),
@@ -102,7 +111,9 @@ impl EventHandler for Handler {
             discord_bot::messaged::register_message(),
             discord_bot::report::register(),
         ];
-        if let Err(e) = serenity::model::application::Command::set_global_commands(&ctx.http, commands).await {
+        if let Err(e) =
+            serenity::model::application::Command::set_global_commands(&ctx.http, commands).await
+        {
             println!("[gateway] ERROR registering commands: {}", e);
         }
     }
