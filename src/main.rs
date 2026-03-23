@@ -121,17 +121,19 @@ impl EventHandler for Handler {
 
 #[tokio::main]
 async fn main() {
-    let secrets_json = std::fs::read_to_string(".secrets/secrets.json")
-        .expect("Expected a secrets file")
-        .parse::<serde_json::Value>()
-        .expect("Expected valid JSON");
+    let token = std::env::var("DISCORD_TOKEN").unwrap_or_else(|_| {
+        let secrets_json = std::fs::read_to_string(".secrets/secrets.json")
+            .expect("Expected either a DISCORD_TOKEN env var or a secrets file")
+            .parse::<serde_json::Value>()
+            .expect("Expected valid JSON");
 
-    let token = secrets_json
-        .get("discord-bot")
-        .and_then(|v| v.get("token"))
-        .and_then(|v| v.as_str())
-        .expect("Expected a token in the secrets file")
-        .to_owned();
+        secrets_json
+            .get("discord-bot")
+            .and_then(|v| v.get("token"))
+            .and_then(|v| v.as_str())
+            .expect("Expected a token in the secrets file")
+            .to_owned()
+    });
 
     let intents = GatewayIntents::DIRECT_MESSAGES
         | GatewayIntents::GUILD_MESSAGES
