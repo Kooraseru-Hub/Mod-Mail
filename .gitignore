@@ -1,2 +1,12 @@
 /target
 secrets.json
+
+# Local environment variables for act (never commit)
+.env.local
+.env
+
+# Local secrets directory
+.secrets/
+
+# Act cache
+.act/
