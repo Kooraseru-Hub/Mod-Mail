@@ -1,0 +1,59 @@
+name: Deploy Worker
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  IMAGE_NAME: my-worker
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Set up Rust
+      - name: Set up Rust
+        uses: actions/setup-rust@v1
+        with:
+          rust-version: 1.76
+
+      # 3. Build the Rust project
+      - name: Build project
+        run: cargo build --release
+
+      # 4. Authenticate to GCP via Workload Identity Federation
+      - name: Authenticate to GCP
+        uses: google-github-actions/auth@v1
+        with:
+          workload_identity_provider: "projects/376050965276/locations/global/workloadIdentityPools/github-actions-pool/providers/github"
+          service_account: "github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com@${{ secrets.GCP_PROJECT_ID }}.iam.gserviceaccount.com"
+
+      # 5. Configure gcloud project
+      - name: Configure gcloud
+        run: gcloud config set project ${{ secrets.GCP_PROJECT_ID }}
+
+      # 6. Build Docker image
+      - name: Build Docker image
+        run: docker build -t gcr.io/${{ secrets.GCP_PROJECT_ID }}/$IMAGE_NAME:latest .
+
+      # 7. Push Docker image to Google Container Registry
+      - name: Push Docker image
+        run: |
+          gcloud auth configure-docker
+          docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/$IMAGE_NAME:latest
+
+      # 8. Deploy to Cloud Run
+      - name: Deploy to Cloud Run
+        run: |
+          gcloud run deploy $IMAGE_NAME \
+            --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/$IMAGE_NAME:latest \
+            --region ${{ secrets.CLOUD_RUN_REGION }} \
+            --platform managed \
+            --allow-unauthenticated \
+            --update-env-vars DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }}
