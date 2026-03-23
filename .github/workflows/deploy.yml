@@ -19,9 +19,7 @@ jobs:
 
       # 2. Set up Rust
       - name: Set up Rust
-        uses: actions/setup-rust@v1
-        with:
-          rust-version: 1.76
+        uses: dtolnay/rust-toolchain@stable
 
       # 3. Build the Rust project
       - name: Build project
