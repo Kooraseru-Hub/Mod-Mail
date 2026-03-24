@@ -1,5 +1,7 @@
 /target
-secrets.json
 
 # Local directory
+.actrc
 /.local
+/.logs
+/data
