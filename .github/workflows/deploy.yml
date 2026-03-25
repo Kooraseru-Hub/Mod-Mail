@@ -28,16 +28,14 @@ jobs:
 
       # 2. Authenticate to GCP via Workload Identity Federation
       - name: Authenticate to GCP
-        id: auth
         uses: google-github-actions/auth@v2
         with:
           workload_identity_provider: ${{ env.WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ env.SERVICE_ACCOUNT_EMAIL }}
-          token_format: 'access_token'
 
       # 3. Configure Docker for Artifact Registry
       - name: Configure Docker for Artifact Registry
-        run: echo "${{ steps.auth.outputs.access_token }}" | docker login -u oauth2accesstoken --password-stdin https://$REGISTRY
+        run: gcloud auth configure-docker $REGISTRY --quiet
 
       # 4. Build Docker image
       - name: Build Docker image
