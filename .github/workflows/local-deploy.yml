@@ -1,0 +1,46 @@
+name: Local Deploy (Act)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  local-deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Rust
+        shell: bash
+        run: |
+          if ! command -v cargo &>/dev/null; then
+            curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+          fi
+          echo "$HOME/.cargo/bin" >> $GITHUB_PATH
+
+      - name: Build project
+        shell: bash
+        run: cargo build --release
+
+      - name: Write service file
+        shell: bash
+        run: |
+          mkdir -p /home/kooraseru/Mod-Mail/.local /home/kooraseru/Mod-Mail/.logs
+          printf '%s\n' \
+            '[Unit]' \
+            'Description=Mod Mail Discord Bot' \
+            'After=network.target' \
+            '' \
+            '[Service]' \
+            'ExecStart=/home/kooraseru/Mod-Mail/target/release/discord-bot' \
+            'WorkingDirectory=/home/kooraseru/Mod-Mail' \
+            'EnvironmentFile=/home/kooraseru/Mod-Mail/.local/discord-bot.env' \
+            'StandardOutput=append:/home/kooraseru/Mod-Mail/.logs/discord-bot.log' \
+            'StandardError=append:/home/kooraseru/Mod-Mail/.logs/discord-bot.log' \
+            'Restart=on-failure' \
+            'RestartSec=5' \
+            '' \
+            '[Install]' \
+            'WantedBy=default.target' \
+            > /home/kooraseru/Mod-Mail/.local/discord-bot.service
