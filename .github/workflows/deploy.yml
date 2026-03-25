@@ -18,7 +18,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: read
       id-token: write
 
     steps:
@@ -33,79 +33,24 @@ jobs:
           workload_identity_provider: ${{ env.WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ env.SERVICE_ACCOUNT_EMAIL }}
 
-      # 3. Create Dockerfile for Rust project
-      - name: Create Dockerfile
-        run: |
-          cat > Dockerfile << 'DOCKERFILE'
-          # ── Stage 1: Build ──────────────────────────────────────────────────────────
-          FROM rust:1.87-slim AS builder
-          WORKDIR /app
-
-          # Pre-cache dependencies by building a dummy binary first
-          COPY Cargo.toml Cargo.lock ./
-          RUN mkdir src && echo "fn main() {}" > src/main.rs \
-              && cargo build --release \
-              && rm -rf src
-
-          # Now copy real source and rebuild (only changed code recompiles)
-          COPY src ./src
-          RUN touch src/main.rs && cargo build --release
-
-          # ── Stage 2: Runtime ────────────────────────────────────────────────────────
-          FROM debian:bookworm-slim
-          RUN apt-get update \
-              && apt-get install -y --no-install-recommends ca-certificates \
-              && rm -rf /var/lib/apt/lists/*
-
-          WORKDIR /app
-          COPY --from=builder /app/target/release/discord-bot .
-
-          CMD ["./discord-bot"]
-          DOCKERFILE
-
-      # 4. Configure Docker for Artifact Registry
+      # 3. Configure Docker for Artifact Registry
       - name: Configure Docker for Artifact Registry
         run: gcloud auth configure-docker $REGISTRY --quiet
 
-      # 5. Build Docker image
+      # 4. Build Docker image
       - name: Build Docker image
-        run: docker build -t $REGISTRY/${{ env.GCP_PROJECT_ID }}/$REPOSITORY/$IMAGE_NAME:latest .
+        run: docker build -t $REGISTRY/${{ secrets.GCP_PROJECT_ID }}/$REPOSITORY/$IMAGE_NAME:latest .
 
-      # 6. Push Docker image to Artifact Registry
+      # 5. Push Docker image to Artifact Registry
       - name: Push Docker image
-        run: docker push $REGISTRY/${{ env.GCP_PROJECT_ID }}/$REPOSITORY/$IMAGE_NAME:latest
+        run: docker push $REGISTRY/${{ secrets.GCP_PROJECT_ID }}/$REPOSITORY/$IMAGE_NAME:latest
 
-      # 7. Deploy to Cloud Run
+      # 6. Deploy to Cloud Run
       - name: Deploy to Cloud Run
         run: |
           gcloud run deploy $IMAGE_NAME \
-            --image $REGISTRY/${{ env.GCP_PROJECT_ID }}/$REPOSITORY/$IMAGE_NAME:latest \
-            --region ${{ env.CLOUD_RUN_REGION }} \
+            --image $REGISTRY/${{ secrets.GCP_PROJECT_ID }}/$REPOSITORY/$IMAGE_NAME:latest \
+            --region ${{ secrets.CLOUD_RUN_REGION }} \
             --platform managed \
             --allow-unauthenticated \
-            --update-env-vars DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }},FIRESTORE_PROJECT_ID=${{ env.GCP_PROJECT_ID }}
-
-      # 8. Write run result to logs/latest.txt and commit
-      - name: Update latest log
-        if: always()
-        run: |
-          mkdir -p logs
-          cat > logs/latest.txt << EOF
-          Workflow Run Summary
-          ====================
-          Run Number : ${{ github.run_number }}
-          Run ID     : ${{ github.run_id }}
-          Branch     : ${{ github.ref }}
-          Commit     : ${{ github.sha }}
-          Timestamp  : $(date -u +'%Y-%m-%dT%H:%M:%SZ')
-          Status     : ${{ job.status }}
-          Author     : ${{ github.actor }}
-          Event      : ${{ github.event_name }}
-          Repository : ${{ github.repository }}
-          EOF
-
-          git config user.name  "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add logs/latest.txt
-          git diff --cached --quiet || git commit -m "ci: update latest run log [skip ci]"
-          git push
+            --update-env-vars DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }},FIRESTORE_PROJECT_ID=${{ secrets.GCP_PROJECT_ID }}

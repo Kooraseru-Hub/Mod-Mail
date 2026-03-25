@@ -1,0 +1,10 @@
+target/
+.git/
+.github/
+.gitignore
+README.md
+secrets.json
+.secrets/
+data/
+resources/
+*.md
