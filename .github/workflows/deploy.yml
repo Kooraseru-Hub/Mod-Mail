@@ -54,4 +54,5 @@ jobs:
             --platform managed \
             --allow-unauthenticated \
             --service-account cloud-run-service@${{ env.GCP_PROJECT_ID }}.iam.gserviceaccount.com \
+            --min-instances 1 \
             --update-env-vars DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }},FIRESTORE_PROJECT_ID=${{ env.GCP_PROJECT_ID }}
