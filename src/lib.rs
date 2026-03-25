@@ -5,5 +5,6 @@ pub mod messaged;
 pub mod ping;
 pub mod report;
 pub mod setup;
+pub mod storage;
 pub mod templates;
 pub mod webhooks;

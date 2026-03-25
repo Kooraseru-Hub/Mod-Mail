@@ -66,7 +66,8 @@ pub async fn run(ctx: &Context, command: &CommandInteraction) {
         }
     };
 
-    let config = GuildConfig::load(guild_id);
+    let storage = crate::storage::get(ctx).await;
+    let config = GuildConfig::load(&*storage, guild_id).await;
     let embed = build_setup_embed(&config);
 
     let resp = CreateInteractionResponse::Message(
@@ -92,7 +93,8 @@ pub async fn run_reset(ctx: &Context, command: &CommandInteraction) {
         }
     };
 
-    let mut config = GuildConfig::load(guild_id);
+    let storage = crate::storage::get(ctx).await;
+    let mut config = GuildConfig::load(&*storage, guild_id).await;
     config.reset_all_templates();
     config.bot_name = "Mod Mail".to_string();
     config.message_channel_id = None;
@@ -100,7 +102,7 @@ pub async fn run_reset(ctx: &Context, command: &CommandInteraction) {
     config.message_method = MessageMethod::default();
     config.reports_enabled = false;
 
-    match config.save() {
+    match config.save(&*storage).await {
         Ok(()) => {
             respond_ephemeral(ctx, command, "All settings and templates have been reset to defaults.").await;
         }
@@ -119,7 +121,8 @@ pub async fn run_settings(ctx: &Context, command: &CommandInteraction) {
         }
     };
 
-    let _config = GuildConfig::load(guild_id);
+    let storage = crate::storage::get(ctx).await;
+    let _config = GuildConfig::load(&*storage, guild_id).await;
 
     let resp = CreateInteractionResponse::Message(
         CreateInteractionResponseMessage::new()
@@ -140,6 +143,8 @@ pub async fn handle_component(ctx: &Context, component: &ComponentInteraction) {
         None => return,
     };
 
+    let storage = crate::storage::get(ctx).await;
+
     match component.data.custom_id.as_str() {
         SETTINGS_SELECT => {
             let selected = match &component.data.kind {
@@ -149,7 +154,7 @@ pub async fn handle_component(ctx: &Context, component: &ComponentInteraction) {
                 _ => return,
             };
 
-            let config = GuildConfig::load(guild_id);
+            let config = GuildConfig::load(&*storage, guild_id).await;
 
             match selected {
                 "formats" => {
@@ -190,7 +195,7 @@ pub async fn handle_component(ctx: &Context, component: &ComponentInteraction) {
         }
 
         SETUP_BOT_NAME_BTN => {
-            let config = GuildConfig::load(guild_id);
+            let config = GuildConfig::load(&*storage, guild_id).await;
             let modal = CreateInteractionResponse::Modal(
                 CreateModal::new(MODAL_BOT_NAME, "Set Bot Name")
                     .components(vec![CreateActionRow::InputText(
@@ -213,9 +218,9 @@ pub async fn handle_component(ctx: &Context, component: &ComponentInteraction) {
                 _ => vec![],
             };
 
-            let mut config = GuildConfig::load(guild_id);
+            let mut config = GuildConfig::load(&*storage, guild_id).await;
             config.message_channel_id = channels.first().map(|c| c.get());
-            let _ = config.save();
+            let _ = config.save(&*storage).await;
 
             update_setup_message(ctx, component, &config).await;
         }
@@ -228,17 +233,17 @@ pub async fn handle_component(ctx: &Context, component: &ComponentInteraction) {
                 _ => "both",
             };
 
-            let mut config = GuildConfig::load(guild_id);
+            let mut config = GuildConfig::load(&*storage, guild_id).await;
             config.message_method = MessageMethod::from_value(selected);
-            let _ = config.save();
+            let _ = config.save(&*storage).await;
 
             update_setup_message(ctx, component, &config).await;
         }
 
         SETUP_REPORTS_SELECT => {
-            let mut config = GuildConfig::load(guild_id);
+            let mut config = GuildConfig::load(&*storage, guild_id).await;
             config.reports_enabled = !config.reports_enabled;
-            let _ = config.save();
+            let _ = config.save(&*storage).await;
 
             update_setup_message(ctx, component, &config).await;
         }
@@ -249,15 +254,15 @@ pub async fn handle_component(ctx: &Context, component: &ComponentInteraction) {
                 _ => vec![],
             };
 
-            let mut config = GuildConfig::load(guild_id);
+            let mut config = GuildConfig::load(&*storage, guild_id).await;
             config.log_channel_id = channels.first().map(|c| c.get());
-            let _ = config.save();
+            let _ = config.save(&*storage).await;
 
             update_setup_message(ctx, component, &config).await;
         }
 
         SETUP_EDIT_TPL_BTN => {
-            let config = GuildConfig::load(guild_id);
+            let config = GuildConfig::load(&*storage, guild_id).await;
             let resp = CreateInteractionResponse::Message(
                 CreateInteractionResponseMessage::new()
                     .embed(crate::builder::build_select_embed_pub())
@@ -268,8 +273,8 @@ pub async fn handle_component(ctx: &Context, component: &ComponentInteraction) {
         }
 
         SETUP_SAVE_BTN => {
-            let config = GuildConfig::load(guild_id);
-            match config.save() {
+            let config = GuildConfig::load(&*storage, guild_id).await;
+            match config.save(&*storage).await {
                 Ok(()) => {
                     let resp = CreateInteractionResponse::UpdateMessage(
                         CreateInteractionResponseMessage::new()
@@ -313,9 +318,9 @@ pub async fn handle_component(ctx: &Context, component: &ComponentInteraction) {
         }
 
         SETUP_RESET_BTN => {
-            let mut config = GuildConfig::load(guild_id);
+            let mut config = GuildConfig::load(&*storage, guild_id).await;
             config.reset_all_templates();
-            let _ = config.save();
+            let _ = config.save(&*storage).await;
 
             update_setup_message(ctx, component, &config).await;
         }
@@ -332,16 +337,18 @@ pub async fn handle_modal(ctx: &Context, modal: &ModalInteraction) {
         None => return,
     };
 
+    let storage = crate::storage::get(ctx).await;
+
     match modal.data.custom_id.as_str() {
         MODAL_BOT_NAME => {
             let name = extract_modal_value(&modal.data.components, MODAL_BOT_NAME_INPUT)
                 .unwrap_or_default();
 
-            let mut config = GuildConfig::load(guild_id);
+            let mut config = GuildConfig::load(&*storage, guild_id).await;
             if !name.is_empty() {
                 config.bot_name = name;
             }
-            let _ = config.save();
+            let _ = config.save(&*storage).await;
 
             let resp = CreateInteractionResponse::UpdateMessage(
                 CreateInteractionResponseMessage::new()
@@ -392,12 +399,6 @@ fn build_setup_embed(config: &GuildConfig) -> serenity::builder::CreateEmbed {
 }
 
 fn build_setup_components(config: &GuildConfig) -> Vec<CreateActionRow> {
-    // Discord allows max 5 action rows. We use:
-    // Row 1: Bot Name + Avatar + Reports toggle buttons
-    // Row 2: Message channel select
-    // Row 3: Log / output channel select
-    // Row 4: Message method + reports select combined as string menu
-    // Row 5: Save / Cancel / Reset / Edit Templates
     vec![
         CreateActionRow::Buttons(vec![
             CreateButton::new(SETUP_BOT_NAME_BTN)
@@ -407,7 +408,6 @@ fn build_setup_components(config: &GuildConfig) -> Vec<CreateActionRow> {
                 .label(if config.reports_enabled { "Reports: ON" } else { "Reports: OFF" })
                 .style(if config.reports_enabled { ButtonStyle::Success } else { ButtonStyle::Secondary }),
         ]),
-        // Row 2: Message channel select
         CreateActionRow::SelectMenu(
             CreateSelectMenu::new(
                 SETUP_CHANNEL_SELECT,
@@ -420,7 +420,6 @@ fn build_setup_components(config: &GuildConfig) -> Vec<CreateActionRow> {
             )
             .placeholder("Select message input channel"),
         ),
-        // Row 3: Log / output channel select
         CreateActionRow::SelectMenu(
             CreateSelectMenu::new(
                 SETUP_LOG_CHANNEL,
@@ -433,7 +432,6 @@ fn build_setup_components(config: &GuildConfig) -> Vec<CreateActionRow> {
             )
             .placeholder("Select log / output channel (reports & tickets go here)"),
         ),
-        // Row 4: Message method select
         CreateActionRow::SelectMenu(
             CreateSelectMenu::new(
                 SETUP_METHOD_SELECT,
@@ -452,7 +450,6 @@ fn build_setup_components(config: &GuildConfig) -> Vec<CreateActionRow> {
             )
             .placeholder("Message method"),
         ),
-        // Row 5: Save / Cancel / Reset / Edit Templates
         CreateActionRow::Buttons(vec![
             CreateButton::new(SETUP_SAVE_BTN)
                 .label("Save")

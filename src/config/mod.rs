@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
-use std::path::PathBuf;
+use crate::storage::StorageBackend;
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum MessageMethod {
@@ -79,34 +79,20 @@ impl GuildConfig {
         }
     }
 
-    fn config_path(guild_id: u64) -> PathBuf {
-        PathBuf::from(format!("data/guilds/{}.json", guild_id))
+    pub async fn load(storage: &StorageBackend, guild_id: u64) -> Self {
+        match storage.load_guild(guild_id).await {
+            Some(value) => serde_json::from_value(value).unwrap_or_else(|e| {
+                println!("[config] Parse error for guild {}: {}", guild_id, e);
+                Self::new(guild_id)
+            }),
+            None => Self::new(guild_id),
+        }
     }
 
-    pub fn load(guild_id: u64) -> Self {
-        let path = Self::config_path(guild_id);
-        if path.exists() {
-            match std::fs::read_to_string(&path) {
-                Ok(data) => match serde_json::from_str(&data) {
-                    Ok(config) => return config,
-                    Err(e) => println!("[config] Parse error {}: {}", path.display(), e),
-                },
-                Err(e) => println!("[config] Read error {}: {}", path.display(), e),
-            }
-        }
-        Self::new(guild_id)
-    }
-
-    pub fn save(&self) -> Result<(), String> {
-        let path = Self::config_path(self.guild_id);
-        if let Some(parent) = path.parent() {
-            std::fs::create_dir_all(parent)
-                .map_err(|e| format!("Failed to create config dir: {}", e))?;
-        }
-        let data = serde_json::to_string_pretty(self)
+    pub async fn save(&self, storage: &StorageBackend) -> Result<(), String> {
+        let value = serde_json::to_value(self)
             .map_err(|e| format!("Failed to serialize config: {}", e))?;
-        std::fs::write(&path, data)
-            .map_err(|e| format!("Failed to write config: {}", e))
+        storage.save_guild(self.guild_id, &value).await
     }
 
     pub fn get_template(&self, name: &str) -> crate::templates::EmbedTemplate {

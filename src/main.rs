@@ -1,10 +1,12 @@
 use discord_bot;
+use discord_bot::storage::{StorageBackend, StorageKey};
 use serenity::{
     async_trait,
     model::gateway::GatewayIntents,
     model::{application::Interaction, gateway::Ready},
     prelude::*,
 };
+use std::sync::Arc;
 
 struct Handler;
 
@@ -135,6 +137,8 @@ async fn main() {
             .to_owned()
     });
 
+    let storage = Arc::new(StorageBackend::from_env());
+
     let intents = GatewayIntents::DIRECT_MESSAGES
         | GatewayIntents::GUILD_MESSAGES
         | GatewayIntents::MESSAGE_CONTENT;
@@ -143,6 +147,11 @@ async fn main() {
         .event_handler(Handler)
         .await
         .expect("Err creating client");
+
+    {
+        let mut data = client.data.write().await;
+        data.insert::<StorageKey>(storage);
+    }
 
     if let Err(why) = client.start().await {
         println!("[gateway] Client error: {:?}", why);
