@@ -9,6 +9,10 @@ env:
   IMAGE_NAME: my-worker
   REGISTRY: europe-west1-docker.pkg.dev
   REPOSITORY: mod-mail
+  GCP_PROJECT_ID: mod-mail-490516
+  CLOUD_RUN_REGION: europe-west1
+  SERVICE_ACCOUNT_EMAIL: github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com
+  WORKLOAD_IDENTITY_PROVIDER: projects/376050965276/locations/global/workloadIdentityPools/github-actions-pool/providers/github
 
 jobs:
   deploy:
@@ -26,8 +30,8 @@ jobs:
       - name: Authenticate to GCP
         uses: google-github-actions/auth@v2
         with:
-          workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: ${{ secrets.SERVICE_ACCOUNT_EMAIL }}
+          workload_identity_provider: ${{ env.WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ env.SERVICE_ACCOUNT_EMAIL }}
 
       # 3. Configure Docker for Artifact Registry
       - name: Configure Docker for Artifact Registry
@@ -35,18 +39,49 @@ jobs:
 
       # 4. Build Docker image
       - name: Build Docker image
-        run: docker build -t $REGISTRY/${{ secrets.GCP_PROJECT_ID }}/$REPOSITORY/$IMAGE_NAME:latest .
+        run: docker build -t $REGISTRY/${{ env.GCP_PROJECT_ID }}/$REPOSITORY/$IMAGE_NAME:latest .
 
       # 5. Push Docker image to Artifact Registry
       - name: Push Docker image
-        run: docker push $REGISTRY/${{ secrets.GCP_PROJECT_ID }}/$REPOSITORY/$IMAGE_NAME:latest
+        run: docker push $REGISTRY/${{ env.GCP_PROJECT_ID }}/$REPOSITORY/$IMAGE_NAME:latest
 
       # 6. Deploy to Cloud Run
       - name: Deploy to Cloud Run
         run: |
           gcloud run deploy $IMAGE_NAME \
-            --image $REGISTRY/${{ secrets.GCP_PROJECT_ID }}/$REPOSITORY/$IMAGE_NAME:latest \
-            --region ${{ secrets.CLOUD_RUN_REGION }} \
+            --image $REGISTRY/${{ env.GCP_PROJECT_ID }}/$REPOSITORY/$IMAGE_NAME:latest \
+            --region ${{ env.CLOUD_RUN_REGION }} \
             --platform managed \
             --allow-unauthenticated \
-            --update-env-vars DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }},FIRESTORE_PROJECT_ID=${{ secrets.GCP_PROJECT_ID }}
+            --update-env-vars DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }},FIRESTORE_PROJECT_ID=${{ env.GCP_PROJECT_ID }}
+
+      # 7. Save workflow run logs
+      - name: Save workflow run logs
+        if: always()
+        run: |
+          mkdir -p .run-logs
+          cat > .run-logs/run-${{ github.run_number }}.log << EOF
+          Workflow Run Summary
+          ====================
+          Run Number: ${{ github.run_number }}
+          Run ID: ${{ github.run_id }}
+          Branch: ${{ github.ref }}
+          Commit: ${{ github.sha }}
+          Timestamp: $(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          Status: ${{ job.status }}
+          Author: ${{ github.actor }}
+
+          Event: ${{ github.event_name }}
+          Repository: ${{ github.repository }}
+          EOF
+          echo "Workflow log saved to .run-logs/run-${{ github.run_number }}.log"
+          cat .run-logs/run-${{ github.run_number }}.log
+
+      # 8. Upload workflow logs as artifact
+      - name: Upload workflow logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: workflow-logs-${{ github.run_number }}
+          path: .run-logs/
+          retention-days: 30
