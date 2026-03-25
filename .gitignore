@@ -3,6 +3,6 @@
 # Local directory
 .actrc
 /.local
-/logs
+/.logs
 /.run-logs
 /data

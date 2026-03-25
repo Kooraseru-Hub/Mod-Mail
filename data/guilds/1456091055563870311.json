@@ -1,0 +1,11 @@
+{
+  "guild_id": 1456091055563870311,
+  "bot_name": "Mod Mail",
+  "bot_avatar_url": "https://github.com/Kooraseru/Kooraseru/blob/main/public/images/portfolio/proj-001.png?raw=true",
+  "message_channel_id": 1468838174506745930,
+  "log_channel_id": 1468838174506745930,
+  "message_method": "both",
+  "reports_enabled": true,
+  "templates": {},
+  "option_configs": {}
+}
