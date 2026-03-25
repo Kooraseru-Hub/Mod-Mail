@@ -7,6 +7,8 @@ use serenity::{
     prelude::*,
 };
 use std::sync::Arc;
+use tokio::io::AsyncWriteExt;
+use tokio::net::TcpListener;
 
 struct Handler;
 
@@ -135,6 +137,23 @@ async fn main() {
             .and_then(|v| v.as_str())
             .expect("Expected a token in the secrets file")
             .to_owned()
+    });
+
+    let port = std::env::var("PORT").unwrap_or_else(|_| "8080".to_string());
+    tokio::spawn(async move {
+        let listener = TcpListener::bind(format!("0.0.0.0:{}", port))
+            .await
+            .expect("Failed to bind health check port");
+        println!("[health] Listening on port {}", port);
+        loop {
+            if let Ok((mut socket, _)) = listener.accept().await {
+                tokio::spawn(async move {
+                    let _ = socket
+                        .write_all(b"HTTP/1.1 200 OK\r\nContent-Length: 2\r\n\r\nOK")
+                        .await;
+                });
+            }
+        }
     });
 
     let storage = Arc::new(StorageBackend::from_env());
