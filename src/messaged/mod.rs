@@ -1,7 +1,11 @@
+use crate::config::{GuildConfig, MessageMethod};
+use crate::message;
 use serenity::{
-    all::{ComponentInteractionDataKind, ActionRowComponent, InputTextStyle, CommandInteraction},
-    builder::{CreateInputText, CreateModal, CreateActionRow, CreateInteractionResponse,
-              CreateInteractionResponseMessage, CreateCommand},
+    all::{ActionRowComponent, CommandInteraction, ComponentInteractionDataKind, InputTextStyle},
+    builder::{
+        CreateActionRow, CreateCommand, CreateInputText, CreateInteractionResponse,
+        CreateInteractionResponseMessage, CreateModal,
+    },
     model::{
         application::{ComponentInteraction, ModalInteraction},
         channel::Message,
@@ -9,8 +13,6 @@ use serenity::{
     },
     prelude::Context,
 };
-use crate::config::{GuildConfig, MessageMethod};
-use crate::message;
 
 pub const GUILD_SELECT_ID: &str = "mm_guild_select";
 pub const CANCEL_ID: &str = "mm_cancel";
@@ -32,8 +34,7 @@ pub fn is_modmail_component(id: &str) -> bool {
 }
 
 pub fn is_modmail_modal(id: &str) -> bool {
-    id.starts_with(MODAL_GENERAL_PREFIX)
-        || id.starts_with(MODAL_REPORT_PREFIX)
+    id.starts_with(MODAL_GENERAL_PREFIX) || id.starts_with(MODAL_REPORT_PREFIX)
 }
 
 struct GuildInfo {
@@ -43,31 +44,17 @@ struct GuildInfo {
 }
 
 async fn find_user_guilds(ctx: &Context, user_id: UserId) -> Vec<GuildInfo> {
+    let storage = crate::storage::get(ctx).await;
+    let guild_ids = storage.list_guild_ids().await;
     let mut guilds = Vec::new();
-    let guild_dir = std::path::Path::new("data/guilds");
-    let entries = match std::fs::read_dir(guild_dir) {
-        Ok(e) => e,
-        Err(_) => return guilds,
-    };
 
-    for entry in entries.flatten() {
-        let path = entry.path();
-        if path.extension().and_then(|e| e.to_str()) != Some("json") {
-            continue;
-        }
+    for guild_id in guild_ids {
+        let config = GuildConfig::load(&*storage, guild_id).await;
 
-        let guild_id: u64 = match path
-            .file_stem()
-            .and_then(|s| s.to_str())
-            .and_then(|s| s.parse().ok())
-        {
-            Some(id) => id,
-            None => continue,
-        };
-
-        let config = GuildConfig::load(guild_id);
-
-        if matches!(config.message_method, MessageMethod::None | MessageMethod::Interaction) {
+        if matches!(
+            config.message_method,
+            MessageMethod::None | MessageMethod::Interaction
+        ) {
             continue;
         }
 
@@ -94,7 +81,10 @@ async fn find_user_guilds(ctx: &Context, user_id: UserId) -> Vec<GuildInfo> {
 }
 
 pub async fn run(ctx: &Context, msg: &Message) {
-    println!("[modmail] DM from {} (channel {})", msg.author.name, msg.channel_id);
+    println!(
+        "[modmail] DM from {} (channel {})",
+        msg.author.name, msg.channel_id
+    );
 
     let guilds = find_user_guilds(ctx, msg.author.id).await;
 
@@ -139,9 +129,13 @@ pub async fn run_message(ctx: &Context, command: &CommandInteraction) {
         }
     };
 
-    let config = GuildConfig::load(guild_id);
+    let storage = crate::storage::get(ctx).await;
+    let config = GuildConfig::load(&*storage, guild_id).await;
 
-    if matches!(config.message_method, crate::config::MessageMethod::DMs | crate::config::MessageMethod::None) {
+    if matches!(
+        config.message_method,
+        crate::config::MessageMethod::DMs | crate::config::MessageMethod::None
+    ) {
         let resp = CreateInteractionResponse::Message(
             CreateInteractionResponseMessage::new()
                 .content("Slash command messaging is not enabled in this server.")
@@ -219,7 +213,8 @@ async fn handle_guild_select(ctx: &Context, component: &ComponentInteraction) {
         return;
     }
 
-    let config = GuildConfig::load(guild_id);
+    let storage = crate::storage::get(ctx).await;
+    let config = GuildConfig::load(&*storage, guild_id).await;
     let guild_name = ctx
         .http
         .get_guild(GuildId::new(guild_id))
@@ -259,7 +254,8 @@ async fn handle_option_select(ctx: &Context, component: &ComponentInteraction, g
         return;
     }
 
-    let config = GuildConfig::load(guild_id);
+    let storage = crate::storage::get(ctx).await;
+    let config = GuildConfig::load(&*storage, guild_id).await;
     let guild_name = ctx
         .http
         .get_guild(GuildId::new(guild_id))
@@ -328,7 +324,8 @@ async fn handle_create(ctx: &Context, component: &ComponentInteraction, rest: &s
             ]),
         ),
         _ => {
-            let config = GuildConfig::load(guild_id);
+            let storage = crate::storage::get(ctx).await;
+            let config = GuildConfig::load(&*storage, guild_id).await;
             let template = config.get_template(option);
             let label = crate::templates::display_name(option);
             let modal_title = if label.len() > 45 {
@@ -436,7 +433,8 @@ async fn handle_general_modal(ctx: &Context, modal: &ModalInteraction, rest: &st
         return;
     }
 
-    let config = GuildConfig::load(guild_id);
+    let storage = crate::storage::get(ctx).await;
+    let config = GuildConfig::load(&*storage, guild_id).await;
     let template = config.get_template(option_key);
     let display = crate::templates::display_name(option_key);
     let author_mention = format!("<@{}>", modal.user.id);
@@ -467,8 +465,7 @@ async fn handle_general_modal(ctx: &Context, modal: &ModalInteraction, rest: &st
 
     let user_inputs: Vec<String> = (0..user_input_count)
         .map(|i| {
-            extract_input(&modal.data.components, &format!("mm_field_{}", i))
-                .unwrap_or_default()
+            extract_input(&modal.data.components, &format!("mm_field_{}", i)).unwrap_or_default()
         })
         .collect();
 
@@ -539,7 +536,8 @@ async fn handle_report_modal(ctx: &Context, modal: &ModalInteraction, guild_id_s
         return;
     }
 
-    let config = GuildConfig::load(guild_id);
+    let storage = crate::storage::get(ctx).await;
+    let config = GuildConfig::load(&*storage, guild_id).await;
     let template = config.get_template(crate::templates::OPTION_PLAYER_REPORT);
 
     let channel_id = match config.option_channel("player_report") {
@@ -861,8 +859,13 @@ async fn send_followup_v2(
         }]
     });
 
-    message::send_components_v2_interaction_response(ctx, application_id, interaction_token, &payload)
-        .await
+    message::send_components_v2_interaction_response(
+        ctx,
+        application_id,
+        interaction_token,
+        &payload,
+    )
+    .await
 }
 
 fn is_auto_fill_only(value: &str) -> bool {

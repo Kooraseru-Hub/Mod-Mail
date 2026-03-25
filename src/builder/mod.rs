@@ -69,7 +69,8 @@ pub async fn run(ctx: &Context, command: &CommandInteraction) {
         }
     };
 
-    let config = GuildConfig::load(guild_id);
+    let storage = crate::storage::get(ctx).await;
+    let config = GuildConfig::load(&*storage, guild_id).await;
     let resp = CreateInteractionResponse::Message(
         CreateInteractionResponseMessage::new()
             .embed(build_select_embed())
@@ -89,6 +90,7 @@ pub async fn handle_component(ctx: &Context, component: &ComponentInteraction) {
         None => return,
     };
 
+    let storage = crate::storage::get(ctx).await;
     let id = component.data.custom_id.as_str();
 
     if id == TPL_SELECT {
@@ -99,7 +101,7 @@ pub async fn handle_component(ctx: &Context, component: &ComponentInteraction) {
             _ => return,
         };
 
-        let config = GuildConfig::load(guild_id);
+        let config = GuildConfig::load(&*storage, guild_id).await;
         let template = config.get_template(&selected);
 
         let resp = CreateInteractionResponse::UpdateMessage(
@@ -131,7 +133,7 @@ pub async fn handle_component(ctx: &Context, component: &ComponentInteraction) {
         None => return,
     };
 
-    let config = GuildConfig::load(guild_id);
+    let config = GuildConfig::load(&*storage, guild_id).await;
     let template = config.get_template(tpl_name);
 
     match action {
@@ -258,12 +260,12 @@ pub async fn handle_component(ctx: &Context, component: &ComponentInteraction) {
             if parts.len() == 3 {
                 let real_tpl_name = parts[1];
                 if let Ok(index) = parts[2].parse::<usize>() {
-                    let mut cfg = GuildConfig::load(guild_id);
+                    let mut cfg = GuildConfig::load(&*storage, guild_id).await;
                     let mut t = cfg.get_template(real_tpl_name);
                     if index < t.fields.len() {
                         t.fields.remove(index);
                         cfg.set_template(real_tpl_name, &t);
-                        let _ = cfg.save();
+                        let _ = cfg.save(&*storage).await;
                     }
 
                     let resp = CreateInteractionResponse::UpdateMessage(
@@ -286,9 +288,9 @@ pub async fn handle_component(ctx: &Context, component: &ComponentInteraction) {
         }
 
         "tpl_reset_one" => {
-            let mut cfg = GuildConfig::load(guild_id);
+            let mut cfg = GuildConfig::load(&*storage, guild_id).await;
             cfg.reset_template(tpl_name);
-            let _ = cfg.save();
+            let _ = cfg.save(&*storage).await;
 
             let default_tpl = templates::get_default(tpl_name);
             let resp = CreateInteractionResponse::UpdateMessage(
@@ -381,9 +383,9 @@ pub async fn handle_component(ctx: &Context, component: &ComponentInteraction) {
         }
 
         "tpl_delete_fmt" => {
-            let mut cfg = GuildConfig::load(guild_id);
+            let mut cfg = GuildConfig::load(&*storage, guild_id).await;
             cfg.remove_custom_format(tpl_name);
-            let _ = cfg.save();
+            let _ = cfg.save(&*storage).await;
 
             let resp = CreateInteractionResponse::UpdateMessage(
                 CreateInteractionResponseMessage::new()
@@ -405,20 +407,22 @@ pub async fn handle_modal(ctx: &Context, modal: &ModalInteraction) {
         None => return,
     };
 
+    let storage = crate::storage::get(ctx).await;
+
     if modal.data.custom_id == MODAL_TPL_NEW {
         let name = extract_value(&modal.data.components, MODAL_TPL_NEW_NAME).unwrap_or_default();
         if name.is_empty() {
             return;
         }
         let key = name.to_lowercase().replace(' ', "_");
-        let mut config = GuildConfig::load(guild_id);
+        let mut config = GuildConfig::load(&*storage, guild_id).await;
         config.add_custom_format(&key);
         let default_tpl = templates::default_general_support();
         let mut new_tpl = default_tpl;
         new_tpl.title = name.clone();
         new_tpl.description = format!("A new {} ticket has been created.", name);
         config.set_template(&key, &new_tpl);
-        let _ = config.save();
+        let _ = config.save(&*storage).await;
 
         let resp = CreateInteractionResponse::UpdateMessage(
             CreateInteractionResponseMessage::new()
@@ -434,7 +438,7 @@ pub async fn handle_modal(ctx: &Context, modal: &ModalInteraction) {
         None => return,
     };
 
-    let mut config = GuildConfig::load(guild_id);
+    let mut config = GuildConfig::load(&*storage, guild_id).await;
     let mut template = config.get_template(tpl_name);
 
     match base_id {
@@ -471,7 +475,7 @@ pub async fn handle_modal(ctx: &Context, modal: &ModalInteraction) {
             let mut opt_cfg = config.get_option_config(tpl_name);
             opt_cfg.channel_id = val.trim().parse::<u64>().ok();
             config.set_option_config(tpl_name, &opt_cfg);
-            let _ = config.save();
+            let _ = config.save(&*storage).await;
 
             let resp = CreateInteractionResponse::UpdateMessage(
                 CreateInteractionResponseMessage::new()
@@ -492,7 +496,7 @@ pub async fn handle_modal(ctx: &Context, modal: &ModalInteraction) {
                 Some(val)
             };
             config.set_option_config(tpl_name, &opt_cfg);
-            let _ = config.save();
+            let _ = config.save(&*storage).await;
 
             let resp = CreateInteractionResponse::UpdateMessage(
                 CreateInteractionResponseMessage::new()
@@ -508,7 +512,7 @@ pub async fn handle_modal(ctx: &Context, modal: &ModalInteraction) {
     }
 
     config.set_template(tpl_name, &template);
-    let _ = config.save();
+    let _ = config.save(&*storage).await;
 
     let resp = CreateInteractionResponse::UpdateMessage(
         CreateInteractionResponseMessage::new()

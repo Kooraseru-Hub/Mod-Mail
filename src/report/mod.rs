@@ -34,7 +34,8 @@ pub async fn run(ctx: &Context, command: &CommandInteraction) {
         }
     };
 
-    let config = GuildConfig::load(guild_id);
+    let storage = crate::storage::get(ctx).await;
+    let config = GuildConfig::load(&*storage, guild_id).await;
     if !config.reports_enabled {
         let resp = CreateInteractionResponse::Message(
             CreateInteractionResponseMessage::new()
@@ -76,7 +77,8 @@ pub async fn handle_modal(ctx: &Context, modal: &ModalInteraction) {
         None => return,
     };
 
-    let config = GuildConfig::load(guild_id);
+    let storage = crate::storage::get(ctx).await;
+    let config = GuildConfig::load(&*storage, guild_id).await;
 
     let target_user_id = modal
         .data
