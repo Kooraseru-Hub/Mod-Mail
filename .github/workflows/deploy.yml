@@ -48,7 +48,9 @@ jobs:
       # 6. Deploy to Cloud Run
       - name: Deploy to Cloud Run
         run: |
-          gcloud run deploy $IMAGE_NAME \
+          SHORT_SHA=$(echo $GITHUB_SHA | cut -c1-7)
+          SERVICE_NAME=discord-bot-id-$SHORT_SHA
+          gcloud run deploy $SERVICE_NAME \
             --image $REGISTRY/${{ env.GCP_PROJECT_ID }}/$REPOSITORY/$IMAGE_NAME:latest \
             --region ${{ env.CLOUD_RUN_REGION }} \
             --platform managed \
@@ -56,3 +58,28 @@ jobs:
             --service-account cloud-run-service@${{ env.GCP_PROJECT_ID }}.iam.gserviceaccount.com \
             --min-instances 1 \
             --update-env-vars DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }},FIRESTORE_PROJECT_ID=${{ env.GCP_PROJECT_ID }}
+
+      # 7. Disable old Cloud Run workers (logs remain in Cloud Logging after deletion)
+      - name: Disable old Cloud Run workers
+        run: |
+          SHORT_SHA=$(echo $GITHUB_SHA | cut -c1-7)
+          CURRENT_SERVICE=discord-bot-id-$SHORT_SHA
+          OLD_SERVICES=$(gcloud run services list \
+            --region ${{ env.CLOUD_RUN_REGION }} \
+            --platform managed \
+            --format="value(metadata.name)" \
+            --filter="metadata.name:discord-bot-id" \
+            | grep -v "^${CURRENT_SERVICE}$" || true)
+          if [ -n "$OLD_SERVICES" ]; then
+            echo "Disabling old workers:"
+            echo "$OLD_SERVICES"
+            while IFS= read -r service; do
+              echo "Deleting $service (logs retained in Cloud Logging)"
+              gcloud run services delete "$service" \
+                --region ${{ env.CLOUD_RUN_REGION }} \
+                --platform managed \
+                --quiet || echo "Warning: could not delete $service"
+            done <<< "$OLD_SERVICES"
+          else
+            echo "No old workers found."
+          fi

@@ -1,0 +1,3237 @@
+[
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "status": {
+        "code": 7,
+        "message": "Permission 'iam.serviceaccounts.actAs' denied on service account 376050965276-compute@developer.gserviceaccount.com (or it may not exist)."
+      },
+      "authenticationInfo": {
+        "principalEmail": "github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com",
+        "serviceAccountDelegationInfo": [
+          {
+            "principalSubject": "principal://iam.googleapis.com/projects/376050965276/locations/global/workloadIdentityPools/github-actions-pool/subject/repo:Kooraseru-Hub/Mod-Mail:ref:refs/heads/main"
+          }
+        ],
+        "principalSubject": "serviceAccount:github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com",
+        "oauthInfo": {
+          "oauthClientId": "105087176958049653528"
+        }
+      },
+      "requestMetadata": {
+        "callerIp": "20.161.30.241",
+        "callerSuppliedUserAgent": "google-cloud-sdk gcloud/561.0.0 command/gcloud.run.deploy invocation-id/3a7dc5970d9f447287104d2c726e2b3e environment/None environment-version/None client-os/LINUX client-os-ver/6.17.0 client-pltf-arch/x86_64 interactive/False from-script/False python/3.13.10 term/  (Linux 6.17.0-1008-azure),gzip(gfe)",
+        "requestAttributes": {
+          "time": "2026-03-25T18:46:49.512824Z",
+          "auth": {}
+        },
+        "destinationAttributes": {}
+      },
+      "serviceName": "run.googleapis.com",
+      "methodName": "google.cloud.run.v1.Services.CreateService",
+      "authorizationInfo": [
+        {
+          "resource": "namespaces/mod-mail-490516/services/my-worker",
+          "permission": "run.services.create",
+          "granted": true,
+          "resourceAttributes": {},
+          "permissionType": "ADMIN_WRITE"
+        }
+      ],
+      "resourceName": "namespaces/mod-mail-490516/services/my-worker",
+      "request": {
+        "@type": "type.googleapis.com/google.cloud.run.v1.CreateServiceRequest",
+        "parent": "namespaces/mod-mail-490516",
+        "service": {
+          "spec": {
+            "template": {
+              "metadata": {
+                "labels": {
+                  "client.knative.dev/nonce": "qdiawjezsj"
+                },
+                "annotations": {
+                  "run.googleapis.com/startup-cpu-boost": "True",
+                  "run.googleapis.com/client-version": "561.0.0",
+                  "run.googleapis.com/client-name": "gcloud"
+                }
+              },
+              "spec": {
+                "containers": [
+                  {
+                    "name": "",
+                    "image": "europe-west1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker:latest"
+                  }
+                ]
+              }
+            }
+          },
+          "status": {},
+          "apiVersion": "serving.knative.dev/v1",
+          "metadata": {
+            "name": "my-worker",
+            "namespace": "mod-mail-490516",
+            "annotations": {
+              "run.googleapis.com/client-version": "561.0.0",
+              "run.googleapis.com/client-name": "gcloud"
+            }
+          },
+          "kind": "Service"
+        }
+      },
+      "resourceLocation": {
+        "currentLocations": [
+          "europe-west1"
+        ]
+      }
+    },
+    "insertId": "1i44amfdnl1y",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "service_name": "my-worker",
+        "project_id": "mod-mail-490516",
+        "revision_name": "",
+        "location": "europe-west1",
+        "configuration_name": ""
+      }
+    },
+    "timestamp": "2026-03-25T18:46:45.628158Z",
+    "severity": "ERROR",
+    "logName": "projects/mod-mail-490516/logs/cloudaudit.googleapis.com%2Factivity",
+    "receiveTimestamp": "2026-03-25T18:46:50.133705612Z"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "status": {},
+      "authenticationInfo": {
+        "principalEmail": "github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com",
+        "serviceAccountDelegationInfo": [
+          {
+            "principalSubject": "principal://iam.googleapis.com/projects/376050965276/locations/global/workloadIdentityPools/github-actions-pool/subject/repo:Kooraseru-Hub/Mod-Mail:ref:refs/heads/main"
+          }
+        ],
+        "principalSubject": "serviceAccount:github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com",
+        "oauthInfo": {
+          "oauthClientId": "105087176958049653528"
+        }
+      },
+      "requestMetadata": {
+        "callerIp": "172.214.44.212",
+        "callerSuppliedUserAgent": "google-cloud-sdk gcloud/559.0.0 command/gcloud.run.deploy invocation-id/3411c172a115423bad8c02a09be39798 environment/None environment-version/None client-os/LINUX client-os-ver/6.14.0 client-pltf-arch/x86_64 interactive/False from-script/False python/3.13.10 term/  (Linux 6.14.0-1017-azure),gzip(gfe)",
+        "requestAttributes": {
+          "time": "2026-03-25T19:03:33.689116Z",
+          "auth": {}
+        },
+        "destinationAttributes": {}
+      },
+      "serviceName": "run.googleapis.com",
+      "methodName": "google.cloud.run.v1.Services.CreateService",
+      "authorizationInfo": [
+        {
+          "resource": "namespaces/mod-mail-490516/services/my-worker",
+          "permission": "run.services.create",
+          "granted": true,
+          "resourceAttributes": {},
+          "permissionType": "ADMIN_WRITE"
+        },
+        {
+          "resource": "namespaces/mod-mail-490516/services/my-worker",
+          "permission": "run.services.create",
+          "granted": true,
+          "resourceAttributes": {
+            "service": "run.googleapis.com/",
+            "name": "namespaces/mod-mail-490516/services/my-worker",
+            "type": "run.googleapis.com/Service"
+          },
+          "permissionType": "ADMIN_WRITE"
+        }
+      ],
+      "resourceName": "namespaces/mod-mail-490516/services/my-worker",
+      "request": {
+        "service": {
+          "apiVersion": "serving.knative.dev/v1",
+          "kind": "Service",
+          "metadata": {
+            "namespace": "mod-mail-490516",
+            "name": "my-worker",
+            "annotations": {
+              "run.googleapis.com/client-name": "gcloud",
+              "run.googleapis.com/client-version": "559.0.0"
+            }
+          },
+          "status": {},
+          "spec": {
+            "template": {
+              "metadata": {
+                "annotations": {
+                  "run.googleapis.com/startup-cpu-boost": "True",
+                  "run.googleapis.com/client-version": "559.0.0",
+                  "run.googleapis.com/client-name": "gcloud"
+                },
+                "labels": {
+                  "client.knative.dev/nonce": "lzrysmuxpq"
+                }
+              },
+              "spec": {
+                "serviceAccountName": "cloud-run-service@mod-mail-490516.iam.gserviceaccount.com",
+                "containers": [
+                  {
+                    "name": "",
+                    "image": "europe-west1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker:latest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "@type": "type.googleapis.com/google.cloud.run.v1.CreateServiceRequest",
+        "parent": "namespaces/mod-mail-490516"
+      },
+      "resourceLocation": {
+        "currentLocations": [
+          "europe-west1"
+        ]
+      }
+    },
+    "insertId": "1wawcdwd7uto",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "configuration_name": "",
+        "location": "europe-west1",
+        "service_name": "my-worker",
+        "project_id": "mod-mail-490516",
+        "revision_name": ""
+      }
+    },
+    "timestamp": "2026-03-25T19:03:33.336307Z",
+    "severity": "NOTICE",
+    "logName": "projects/mod-mail-490516/logs/cloudaudit.googleapis.com%2Factivity",
+    "receiveTimestamp": "2026-03-25T19:03:34.604713291Z"
+  },
+  {
+    "textPayload": "Starting new instance. Reason: DEPLOYMENT_ROLLOUT - Instance started due to traffic shifting between revisions due to deployment, traffic split adjustment, or deployment health check.",
+    "insertId": "69c4318c0008d98536dc64af",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "configuration_name": "my-worker",
+        "location": "europe-west1",
+        "revision_name": "my-worker-00001-nh2",
+        "project_id": "mod-mail-490516",
+        "service_name": "my-worker"
+      }
+    },
+    "timestamp": "2026-03-25T19:03:40.579973Z",
+    "severity": "INFO",
+    "labels": {
+      "instanceId": "00da6cd2c4f0c3aa0b81318b23041b9645f606d220cabdd78164b2fcd5f39390c15878e4bf15f1dafa958e6ac8a0aa61a4bcc5cd579633764410fb159667146c1131a179cec0a838aabbdc57b9e34b",
+      "scaling_reason": "DEPLOYMENT_ROLLOUT"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fvarlog%2Fsystem",
+    "receiveTimestamp": "2026-03-25T19:03:40.584217246Z"
+  },
+  {
+    "textPayload": "[storage] Using Firestore backend (project: mod-mail-490516)",
+    "insertId": "69c4318c000b9f555c10be43",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "revision_name": "my-worker-00001-nh2",
+        "project_id": "mod-mail-490516",
+        "service_name": "my-worker",
+        "location": "europe-west1",
+        "configuration_name": "my-worker"
+      }
+    },
+    "timestamp": "2026-03-25T19:03:40.761685Z",
+    "labels": {
+      "instanceId": "00da6cd2c4f0c3aa0b81318b23041b9645f606d220cabdd78164b2fcd5f39390c15878e4bf15f1dafa958e6ac8a0aa61a4bcc5cd579633764410fb159667146c1131a179cec0a838aabbdc57b9e34b"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-25T19:03:40.766655180Z"
+  },
+  {
+    "textPayload": "[gateway] Mod Mail connected (shard 0)",
+    "insertId": "69c4318d000671743647775c",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "service_name": "my-worker",
+        "project_id": "mod-mail-490516",
+        "revision_name": "my-worker-00001-nh2",
+        "location": "europe-west1",
+        "configuration_name": "my-worker"
+      }
+    },
+    "timestamp": "2026-03-25T19:03:41.422260Z",
+    "labels": {
+      "instanceId": "00da6cd2c4f0c3aa0b81318b23041b9645f606d220cabdd78164b2fcd5f39390c15878e4bf15f1dafa958e6ac8a0aa61a4bcc5cd579633764410fb159667146c1131a179cec0a838aabbdc57b9e34b"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-25T19:03:41.432384019Z"
+  },
+  {
+    "textPayload": "[gateway] Command 'setup' from kooraseru",
+    "insertId": "69c431c3000ed7fc92cd54c5",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "configuration_name": "my-worker",
+        "location": "europe-west1",
+        "project_id": "mod-mail-490516",
+        "service_name": "my-worker",
+        "revision_name": "my-worker-00001-nh2"
+      }
+    },
+    "timestamp": "2026-03-25T19:04:35.972796Z",
+    "labels": {
+      "instanceId": "00da6cd2c4f0c3aa0b81318b23041b9645f606d220cabdd78164b2fcd5f39390c15878e4bf15f1dafa958e6ac8a0aa61a4bcc5cd579633764410fb159667146c1131a179cec0a838aabbdc57b9e34b"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-25T19:04:35.977370117Z"
+  },
+  {
+    "textPayload": "[gateway] Component 'setup_channel' from kooraseru in channel 1271662143275798570",
+    "insertId": "69c431db0006a6bd930180e1",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "location": "europe-west1",
+        "configuration_name": "my-worker",
+        "service_name": "my-worker",
+        "project_id": "mod-mail-490516",
+        "revision_name": "my-worker-00001-nh2"
+      }
+    },
+    "timestamp": "2026-03-25T19:04:59.435901Z",
+    "labels": {
+      "instanceId": "00da6cd2c4f0c3aa0b81318b23041b9645f606d220cabdd78164b2fcd5f39390c15878e4bf15f1dafa958e6ac8a0aa61a4bcc5cd579633764410fb159667146c1131a179cec0a838aabbdc57b9e34b"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-25T19:04:59.443281081Z"
+  },
+  {
+    "textPayload": "[gateway] Component 'setup_log_channel' from kooraseru in channel 1271662143275798570",
+    "insertId": "69c431ec000a584690b9645d",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "service_name": "my-worker",
+        "project_id": "mod-mail-490516",
+        "revision_name": "my-worker-00001-nh2",
+        "configuration_name": "my-worker",
+        "location": "europe-west1"
+      }
+    },
+    "timestamp": "2026-03-25T19:05:16.677958Z",
+    "labels": {
+      "instanceId": "00da6cd2c4f0c3aa0b81318b23041b9645f606d220cabdd78164b2fcd5f39390c15878e4bf15f1dafa958e6ac8a0aa61a4bcc5cd579633764410fb159667146c1131a179cec0a838aabbdc57b9e34b"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-25T19:05:16.682388630Z"
+  },
+  {
+    "textPayload": "[gateway] Component 'setup_save' from kooraseru in channel 1271662143275798570",
+    "insertId": "69c431f300060b2e569f2cf9",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "location": "europe-west1",
+        "configuration_name": "my-worker",
+        "revision_name": "my-worker-00001-nh2",
+        "project_id": "mod-mail-490516",
+        "service_name": "my-worker"
+      }
+    },
+    "timestamp": "2026-03-25T19:05:23.396078Z",
+    "labels": {
+      "instanceId": "00da6cd2c4f0c3aa0b81318b23041b9645f606d220cabdd78164b2fcd5f39390c15878e4bf15f1dafa958e6ac8a0aa61a4bcc5cd579633764410fb159667146c1131a179cec0a838aabbdc57b9e34b"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-25T19:05:23.675831751Z"
+  },
+  {
+    "textPayload": "[gateway] DM from kooraseru (channel 1468065234894721137)",
+    "insertId": "69c4321c000b3e6bff3c773c",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "revision_name": "my-worker-00001-nh2",
+        "service_name": "my-worker",
+        "project_id": "mod-mail-490516",
+        "configuration_name": "my-worker",
+        "location": "europe-west1"
+      }
+    },
+    "timestamp": "2026-03-25T19:06:04.736875Z",
+    "labels": {
+      "instanceId": "00da6cd2c4f0c3aa0b81318b23041b9645f606d220cabdd78164b2fcd5f39390c15878e4bf15f1dafa958e6ac8a0aa61a4bcc5cd579633764410fb159667146c1131a179cec0a838aabbdc57b9e34b"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-25T19:06:04.739984056Z"
+  },
+  {
+    "textPayload": "[modmail] DM from kooraseru (channel 1468065234894721137)",
+    "insertId": "69c4321c000b3e79d22bb4e3",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "configuration_name": "my-worker",
+        "location": "europe-west1",
+        "service_name": "my-worker",
+        "project_id": "mod-mail-490516",
+        "revision_name": "my-worker-00001-nh2"
+      }
+    },
+    "timestamp": "2026-03-25T19:06:04.736889Z",
+    "labels": {
+      "instanceId": "00da6cd2c4f0c3aa0b81318b23041b9645f606d220cabdd78164b2fcd5f39390c15878e4bf15f1dafa958e6ac8a0aa61a4bcc5cd579633764410fb159667146c1131a179cec0a838aabbdc57b9e34b"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-25T19:06:04.739984056Z"
+  },
+  {
+    "textPayload": "Default STARTUP TCP probe failed 1 time consecutively for container \"my-worker-1\" on port 8080. The instance was not started.\nConnection failed with status DEADLINE_EXCEEDED.",
+    "insertId": "69c4327c000ab4b500c76784",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "revision_name": "my-worker-00001-nh2",
+        "project_id": "mod-mail-490516",
+        "service_name": "my-worker",
+        "configuration_name": "my-worker",
+        "location": "europe-west1"
+      }
+    },
+    "timestamp": "2026-03-25T19:07:40.701621Z",
+    "severity": "ERROR",
+    "labels": {
+      "instanceId": "00da6cd2c4f0c3aa0b81318b23041b9645f606d220cabdd78164b2fcd5f39390c15878e4bf15f1dafa958e6ac8a0aa61a4bcc5cd579633764410fb159667146c1131a179cec0a838aabbdc57b9e34b"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fvarlog%2Fsystem",
+    "receiveTimestamp": "2026-03-25T19:07:40.710825322Z"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "status": {
+        "code": 9,
+        "message": "Ready condition status changed to False for Revision my-worker-00001-nh2 with message: The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.\n\nLogs URL: https://console.cloud.google.com/logs/viewer?project=mod-mail-490516&resource=cloud_run_revision/service_name/my-worker/revision_name/my-worker-00001-nh2&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22my-worker%22%0Aresource.labels.revision_name%3D%22my-worker-00001-nh2%22 \nFor more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start"
+      },
+      "serviceName": "run.googleapis.com",
+      "methodName": "/Services.CreateService",
+      "resourceName": "namespaces/mod-mail-490516/revisions/my-worker-00001-nh2",
+      "response": {
+        "metadata": {
+          "name": "my-worker-00001-nh2",
+          "namespace": "376050965276",
+          "selfLink": "/apis/serving.knative.dev/v1/namespaces/376050965276/revisions/my-worker-00001-nh2",
+          "uid": "3fad0a70-2287-4567-9d07-629862447aac",
+          "resourceVersion": "AAZN3fthP2k",
+          "generation": 1,
+          "creationTimestamp": "2026-03-25T19:03:33.765274Z",
+          "labels": {
+            "client.knative.dev/nonce": "lzrysmuxpq",
+            "serving.knative.dev/configuration": "my-worker",
+            "serving.knative.dev/configurationGeneration": "1",
+            "serving.knative.dev/service": "my-worker",
+            "serving.knative.dev/serviceUid": "a5a08423-55d0-4ba5-b39e-f0297cf1e009",
+            "serving.knative.dev/route": "my-worker",
+            "cloud.googleapis.com/location": "europe-west1",
+            "run.googleapis.com/startupProbeType": "Default"
+          },
+          "annotations": {
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "559.0.0",
+            "serving.knative.dev/creator": "github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com",
+            "run.googleapis.com/operation-id": "0cef1526-de71-4a30-b2b4-af8093770ad8",
+            "run.googleapis.com/startup-cpu-boost": "true"
+          },
+          "ownerReferences": [
+            {
+              "kind": "Configuration",
+              "name": "my-worker",
+              "uid": "e455abb3-c8a6-46e8-8884-afc61d09af3e",
+              "apiVersion": "serving.knative.dev/v1",
+              "controller": true,
+              "blockOwnerDeletion": true
+            }
+          ]
+        },
+        "apiVersion": "serving.knative.dev/v1",
+        "kind": "Revision",
+        "spec": {
+          "containerConcurrency": 80,
+          "timeoutSeconds": 300,
+          "serviceAccountName": "cloud-run-service@mod-mail-490516.iam.gserviceaccount.com",
+          "containers": [
+            {
+              "name": "my-worker-1",
+              "image": "europe-west1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker@sha256:5a92cfe686ad8df708d1c03e5fe78d2a95b944ea93450c650348aa4879826503",
+              "ports": [
+                {
+                  "name": "http1",
+                  "containerPort": 8080
+                }
+              ],
+              "env": [
+                {
+                  "name": "DISCORD_TOKEN",
+                  "value": "***"
+                },
+                {
+                  "name": "FIRESTORE_PROJECT_ID",
+                  "value": "mod-mail-490516"
+                }
+              ],
+              "resources": {
+                "limits": {
+                  "memory": "512Mi",
+                  "cpu": "1000m"
+                }
+              },
+              "startupProbe": {
+                "timeoutSeconds": 240,
+                "periodSeconds": 240,
+                "failureThreshold": 1,
+                "tcpSocket": {
+                  "port": 8080
+                }
+              }
+            }
+          ]
+        },
+        "status": {
+          "observedGeneration": 1,
+          "conditions": [
+            {
+              "type": "Ready",
+              "status": "False",
+              "reason": "HealthCheckContainerError",
+              "message": "The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.\n\nLogs URL: https://console.cloud.google.com/logs/viewer?project=mod-mail-490516&resource=cloud_run_revision/service_name/my-worker/revision_name/my-worker-00001-nh2&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22my-worker%22%0Aresource.labels.revision_name%3D%22my-worker-00001-nh2%22 \nFor more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start",
+              "lastTransitionTime": "2026-03-25T19:07:40.829545Z"
+            },
+            {
+              "type": "ContainerHealthy",
+              "status": "False",
+              "reason": "HealthCheckContainerError",
+              "message": "The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.\n\nLogs URL: https://console.cloud.google.com/logs/viewer?project=mod-mail-490516&resource=cloud_run_revision/service_name/my-worker/revision_name/my-worker-00001-nh2&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22my-worker%22%0Aresource.labels.revision_name%3D%22my-worker-00001-nh2%22 \nFor more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start",
+              "lastTransitionTime": "2026-03-25T19:07:40.829545Z"
+            },
+            {
+              "type": "ContainerReady",
+              "status": "True",
+              "message": "Container image import completed in 1.31s.",
+              "lastTransitionTime": "2026-03-25T19:03:35.665012Z"
+            },
+            {
+              "type": "ResourcesAvailable",
+              "status": "True",
+              "message": "Provisioning imported containers completed in 4.82s. Checking container health. This will wait for up to 4m for the configured startup probe, including an initial delay of 0s.",
+              "lastTransitionTime": "2026-03-25T19:03:40.483259Z"
+            },
+            {
+              "type": "Retry",
+              "status": "True",
+              "reason": "ImmediateRetry",
+              "message": "System will retry after 00:00 from lastTransitionTime for attempt 0.",
+              "lastTransitionTime": "2026-03-25T19:03:40.483259Z",
+              "severity": "Info"
+            }
+          ],
+          "logUrl": "https://console.cloud.google.com/logs/viewer?project=mod-mail-490516&resource=cloud_run_revision/service_name/my-worker/revision_name/my-worker-00001-nh2&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22my-worker%22%0Aresource.labels.revision_name%3D%22my-worker-00001-nh2%22",
+          "imageDigest": "europe-west1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker@sha256:5a92cfe686ad8df708d1c03e5fe78d2a95b944ea93450c650348aa4879826503",
+          "containerStatuses": [
+            {
+              "name": "my-worker-1",
+              "imageDigest": "europe-west1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker@sha256:5a92cfe686ad8df708d1c03e5fe78d2a95b944ea93450c650348aa4879826503"
+            }
+          ]
+        },
+        "@type": "type.googleapis.com/google.cloud.run.v1.Revision"
+      }
+    },
+    "insertId": "-4zpbedd8krk",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "configuration_name": "my-worker",
+        "location": "europe-west1",
+        "service_name": "my-worker",
+        "project_id": "mod-mail-490516",
+        "revision_name": "my-worker-00001-nh2"
+      }
+    },
+    "timestamp": "2026-03-25T19:07:40.840066Z",
+    "severity": "ERROR",
+    "logName": "projects/mod-mail-490516/logs/cloudaudit.googleapis.com%2Fsystem_event",
+    "receiveTimestamp": "2026-03-25T19:07:41.624811258Z"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "status": {
+        "code": 9,
+        "message": "Ready condition status changed to False for Service my-worker with message: The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.\n\nLogs URL: https://console.cloud.google.com/logs/viewer?project=mod-mail-490516&resource=cloud_run_revision/service_name/my-worker/revision_name/my-worker-00001-nh2&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22my-worker%22%0Aresource.labels.revision_name%3D%22my-worker-00001-nh2%22 \nFor more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start"
+      },
+      "serviceName": "run.googleapis.com",
+      "methodName": "/Services.CreateService",
+      "resourceName": "namespaces/mod-mail-490516/services/my-worker",
+      "response": {
+        "metadata": {
+          "name": "my-worker",
+          "namespace": "376050965276",
+          "selfLink": "/apis/serving.knative.dev/v1/namespaces/376050965276/services/my-worker",
+          "uid": "a5a08423-55d0-4ba5-b39e-f0297cf1e009",
+          "resourceVersion": "AAZN3ftiUh4",
+          "generation": 1,
+          "creationTimestamp": "2026-03-25T19:03:33.539895Z",
+          "labels": {
+            "cloud.googleapis.com/location": "europe-west1"
+          },
+          "annotations": {
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "559.0.0",
+            "serving.knative.dev/creator": "github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com",
+            "serving.knative.dev/lastModifier": "github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com",
+            "run.googleapis.com/operation-id": "0cef1526-de71-4a30-b2b4-af8093770ad8",
+            "run.googleapis.com/ingress": "all",
+            "run.googleapis.com/ingress-status": "all",
+            "run.googleapis.com/maxScale": "20",
+            "run.googleapis.com/urls": "[\"https://my-worker-376050965276.europe-west1.run.app\"]"
+          }
+        },
+        "apiVersion": "serving.knative.dev/v1",
+        "kind": "Service",
+        "spec": {
+          "template": {
+            "metadata": {
+              "labels": {
+                "client.knative.dev/nonce": "lzrysmuxpq",
+                "run.googleapis.com/startupProbeType": "Default"
+              },
+              "annotations": {
+                "run.googleapis.com/client-name": "gcloud",
+                "run.googleapis.com/client-version": "559.0.0",
+                "run.googleapis.com/startup-cpu-boost": "true"
+              }
+            },
+            "spec": {
+              "containerConcurrency": 80,
+              "timeoutSeconds": 300,
+              "serviceAccountName": "cloud-run-service@mod-mail-490516.iam.gserviceaccount.com",
+              "containers": [
+                {
+                  "image": "europe-west1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker:latest",
+                  "ports": [
+                    {
+                      "name": "http1",
+                      "containerPort": 8080
+                    }
+                  ],
+                  "env": [
+                    {
+                      "name": "DISCORD_TOKEN",
+                      "value": "***"
+                    },
+                    {
+                      "name": "FIRESTORE_PROJECT_ID",
+                      "value": "mod-mail-490516"
+                    }
+                  ],
+                  "resources": {
+                    "limits": {
+                      "memory": "512Mi",
+                      "cpu": "1000m"
+                    }
+                  },
+                  "startupProbe": {
+                    "timeoutSeconds": 240,
+                    "periodSeconds": 240,
+                    "failureThreshold": 1,
+                    "tcpSocket": {
+                      "port": 8080
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "traffic": [
+            {
+              "percent": 100,
+              "latestRevision": true
+            }
+          ]
+        },
+        "status": {
+          "observedGeneration": 1,
+          "conditions": [
+            {
+              "type": "Ready",
+              "status": "False",
+              "reason": "HealthCheckContainerError",
+              "message": "The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.\n\nLogs URL: https://console.cloud.google.com/logs/viewer?project=mod-mail-490516&resource=cloud_run_revision/service_name/my-worker/revision_name/my-worker-00001-nh2&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22my-worker%22%0Aresource.labels.revision_name%3D%22my-worker-00001-nh2%22 \nFor more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start",
+              "lastTransitionTime": "2026-03-25T19:07:40.865102Z"
+            },
+            {
+              "type": "ConfigurationsReady",
+              "status": "False",
+              "reason": "HealthCheckContainerError",
+              "message": "The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.\n\nLogs URL: https://console.cloud.google.com/logs/viewer?project=mod-mail-490516&resource=cloud_run_revision/service_name/my-worker/revision_name/my-worker-00001-nh2&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22my-worker%22%0Aresource.labels.revision_name%3D%22my-worker-00001-nh2%22 \nFor more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start",
+              "lastTransitionTime": "2026-03-25T19:07:40.865102Z"
+            },
+            {
+              "type": "RoutesReady",
+              "status": "Unknown",
+              "message": "Provisioning revision instances to receive traffic.",
+              "lastTransitionTime": "2026-03-25T19:03:35.768303Z"
+            }
+          ],
+          "latestCreatedRevisionName": "my-worker-00001-nh2"
+        },
+        "@type": "type.googleapis.com/google.cloud.run.v1.Service"
+      }
+    },
+    "insertId": "nb6rhwda3wy",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "revision_name": "",
+        "service_name": "my-worker",
+        "project_id": "mod-mail-490516",
+        "configuration_name": "",
+        "location": "europe-west1"
+      }
+    },
+    "timestamp": "2026-03-25T19:07:40.914508Z",
+    "severity": "ERROR",
+    "logName": "projects/mod-mail-490516/logs/cloudaudit.googleapis.com%2Fsystem_event",
+    "receiveTimestamp": "2026-03-25T19:07:41.551450151Z"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "status": {},
+      "authenticationInfo": {
+        "principalEmail": "redactedusername10@gmail.com",
+        "principalSubject": "user:redactedusername10@gmail.com",
+        "oauthInfo": {
+          "oauthClientId": "32555940559.apps.googleusercontent.com"
+        }
+      },
+      "requestMetadata": {
+        "callerIp": "212.15.82.65",
+        "callerSuppliedUserAgent": "google-cloud-sdk gcloud/562.0.0 command/gcloud.run.services.delete invocation-id/1a59ec0077ce495294508f85395f9176 environment/None environment-version/None client-os/LINUX client-os-ver/6.6.87 client-pltf-arch/arm interactive/True from-script/False python/3.12.3 term/xterm-256color  (Linux 6.6.87.2-microsoft-standard-WSL2),gzip(gfe)",
+        "requestAttributes": {
+          "time": "2026-03-25T19:12:17.403201Z",
+          "auth": {}
+        },
+        "destinationAttributes": {}
+      },
+      "serviceName": "run.googleapis.com",
+      "methodName": "google.cloud.run.v1.Services.DeleteService",
+      "authorizationInfo": [
+        {
+          "resource": "namespaces/mod-mail-490516/services/my-worker",
+          "permission": "run.services.delete",
+          "granted": true,
+          "resourceAttributes": {},
+          "permissionType": "ADMIN_WRITE"
+        }
+      ],
+      "resourceName": "namespaces/mod-mail-490516/services/my-worker",
+      "request": {
+        "name": "namespaces/mod-mail-490516/services/my-worker",
+        "@type": "type.googleapis.com/google.cloud.run.v1.DeleteServiceRequest"
+      },
+      "resourceLocation": {
+        "currentLocations": [
+          "europe-west1"
+        ]
+      }
+    },
+    "insertId": "dd7pd9d9kdv",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "location": "europe-west1",
+        "configuration_name": "",
+        "revision_name": "",
+        "service_name": "my-worker",
+        "project_id": "mod-mail-490516"
+      }
+    },
+    "timestamp": "2026-03-25T19:12:17.352806Z",
+    "severity": "NOTICE",
+    "logName": "projects/mod-mail-490516/logs/cloudaudit.googleapis.com%2Factivity",
+    "receiveTimestamp": "2026-03-25T19:12:17.957030437Z"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "status": {
+        "message": "Ready condition status changed to True for Revision my-worker-00001-nh2 with message: The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.\n\nLogs URL: https://console.cloud.google.com/logs/viewer?project=mod-mail-490516&resource=cloud_run_revision/service_name/my-worker/revision_name/my-worker-00001-nh2&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22my-worker%22%0Aresource.labels.revision_name%3D%22my-worker-00001-nh2%22 \nFor more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start"
+      },
+      "serviceName": "run.googleapis.com",
+      "methodName": "/Services.DeleteService",
+      "resourceName": "namespaces/mod-mail-490516/revisions/my-worker-00001-nh2",
+      "response": {
+        "metadata": {
+          "name": "my-worker-00001-nh2",
+          "namespace": "376050965276",
+          "selfLink": "/apis/serving.knative.dev/v1/namespaces/376050965276/revisions/my-worker-00001-nh2",
+          "uid": "3fad0a70-2287-4567-9d07-629862447aac",
+          "resourceVersion": "AAZN3gvkOMI",
+          "generation": 2,
+          "creationTimestamp": "2026-03-25T19:03:33.765274Z",
+          "labels": {
+            "client.knative.dev/nonce": "lzrysmuxpq",
+            "serving.knative.dev/configuration": "my-worker",
+            "serving.knative.dev/configurationGeneration": "1",
+            "serving.knative.dev/service": "my-worker",
+            "serving.knative.dev/serviceUid": "a5a08423-55d0-4ba5-b39e-f0297cf1e009",
+            "serving.knative.dev/route": "my-worker",
+            "run.googleapis.com/cascadeDelete": "true",
+            "cloud.googleapis.com/location": "europe-west1",
+            "run.googleapis.com/startupProbeType": "Default"
+          },
+          "annotations": {
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "559.0.0",
+            "serving.knative.dev/creator": "github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com",
+            "run.googleapis.com/operation-id": "22aacb41-ea2f-40d4-88fb-be4b4641bfaa",
+            "run.googleapis.com/startup-cpu-boost": "true"
+          },
+          "ownerReferences": [
+            {
+              "kind": "Configuration",
+              "name": "my-worker",
+              "uid": "e455abb3-c8a6-46e8-8884-afc61d09af3e",
+              "apiVersion": "serving.knative.dev/v1",
+              "controller": true,
+              "blockOwnerDeletion": true
+            }
+          ],
+          "deletionTimestamp": "2026-03-25T19:12:17.817668Z"
+        },
+        "apiVersion": "serving.knative.dev/v1",
+        "kind": "Revision",
+        "spec": {
+          "containerConcurrency": 80,
+          "timeoutSeconds": 300,
+          "serviceAccountName": "cloud-run-service@mod-mail-490516.iam.gserviceaccount.com",
+          "containers": [
+            {
+              "name": "my-worker-1",
+              "image": "europe-west1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker@sha256:5a92cfe686ad8df708d1c03e5fe78d2a95b944ea93450c650348aa4879826503",
+              "ports": [
+                {
+                  "name": "http1",
+                  "containerPort": 8080
+                }
+              ],
+              "env": [
+                {
+                  "name": "DISCORD_TOKEN",
+                  "value": "***"
+                },
+                {
+                  "name": "FIRESTORE_PROJECT_ID",
+                  "value": "mod-mail-490516"
+                }
+              ],
+              "resources": {
+                "limits": {
+                  "memory": "512Mi",
+                  "cpu": "1000m"
+                }
+              },
+              "startupProbe": {
+                "timeoutSeconds": 240,
+                "periodSeconds": 240,
+                "failureThreshold": 1,
+                "tcpSocket": {
+                  "port": 8080
+                }
+              }
+            }
+          ]
+        },
+        "status": {
+          "observedGeneration": 2,
+          "conditions": [
+            {
+              "type": "Ready",
+              "status": "True",
+              "reason": "Retired",
+              "message": "The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.\n\nLogs URL: https://console.cloud.google.com/logs/viewer?project=mod-mail-490516&resource=cloud_run_revision/service_name/my-worker/revision_name/my-worker-00001-nh2&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22my-worker%22%0Aresource.labels.revision_name%3D%22my-worker-00001-nh2%22 \nFor more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start",
+              "lastTransitionTime": "2026-03-25T19:12:17.848514Z"
+            },
+            {
+              "type": "Active",
+              "status": "False",
+              "reason": "Retired",
+              "message": "Revision retired.",
+              "lastTransitionTime": "2026-03-25T19:12:17.848514Z",
+              "severity": "Info"
+            },
+            {
+              "type": "ContainerHealthy",
+              "status": "False",
+              "reason": "HealthCheckContainerError",
+              "message": "The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.\n\nLogs URL: https://console.cloud.google.com/logs/viewer?project=mod-mail-490516&resource=cloud_run_revision/service_name/my-worker/revision_name/my-worker-00001-nh2&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22my-worker%22%0Aresource.labels.revision_name%3D%22my-worker-00001-nh2%22 \nFor more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start",
+              "lastTransitionTime": "2026-03-25T19:07:40.829545Z"
+            },
+            {
+              "type": "ContainerReady",
+              "status": "True",
+              "message": "Container image import completed in 1.31s.",
+              "lastTransitionTime": "2026-03-25T19:03:35.665012Z"
+            },
+            {
+              "type": "ResourcesAvailable",
+              "status": "Unknown",
+              "reason": "Retired",
+              "message": "Revision retired.",
+              "lastTransitionTime": "2026-03-25T19:12:17.848514Z"
+            }
+          ],
+          "logUrl": "https://console.cloud.google.com/logs/viewer?project=mod-mail-490516&resource=cloud_run_revision/service_name/my-worker/revision_name/my-worker-00001-nh2&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22my-worker%22%0Aresource.labels.revision_name%3D%22my-worker-00001-nh2%22",
+          "imageDigest": "europe-west1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker@sha256:5a92cfe686ad8df708d1c03e5fe78d2a95b944ea93450c650348aa4879826503",
+          "containerStatuses": [
+            {
+              "name": "my-worker-1",
+              "imageDigest": "europe-west1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker@sha256:5a92cfe686ad8df708d1c03e5fe78d2a95b944ea93450c650348aa4879826503"
+            }
+          ]
+        },
+        "@type": "type.googleapis.com/google.cloud.run.v1.Revision"
+      }
+    },
+    "insertId": "15mlrsd7oy2",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "configuration_name": "my-worker",
+        "location": "europe-west1",
+        "service_name": "my-worker",
+        "project_id": "mod-mail-490516",
+        "revision_name": "my-worker-00001-nh2"
+      }
+    },
+    "timestamp": "2026-03-25T19:12:17.864592Z",
+    "severity": "INFO",
+    "logName": "projects/mod-mail-490516/logs/cloudaudit.googleapis.com%2Fsystem_event",
+    "receiveTimestamp": "2026-03-25T19:12:18.786582984Z"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "status": {
+        "message": "Ready condition status changed to True for Service my-worker."
+      },
+      "serviceName": "run.googleapis.com",
+      "methodName": "/Services.DeleteService",
+      "resourceName": "namespaces/mod-mail-490516/services/my-worker",
+      "response": {
+        "metadata": {
+          "name": "my-worker",
+          "namespace": "376050965276",
+          "selfLink": "/apis/serving.knative.dev/v1/namespaces/376050965276/services/my-worker",
+          "uid": "a5a08423-55d0-4ba5-b39e-f0297cf1e009",
+          "resourceVersion": "AAZN3gvuUpM",
+          "generation": 2,
+          "creationTimestamp": "2026-03-25T19:03:33.539895Z",
+          "labels": {
+            "cloud.googleapis.com/location": "europe-west1"
+          },
+          "annotations": {
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "559.0.0",
+            "serving.knative.dev/creator": "github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com",
+            "serving.knative.dev/lastModifier": "redactedusername10@gmail.com",
+            "run.googleapis.com/operation-id": "22aacb41-ea2f-40d4-88fb-be4b4641bfaa",
+            "run.googleapis.com/ingress": "all",
+            "run.googleapis.com/ingress-status": "all",
+            "run.googleapis.com/maxScale": "20",
+            "run.googleapis.com/urls": "[\"https://my-worker-376050965276.europe-west1.run.app\"]"
+          },
+          "deletionTimestamp": "2026-03-25T19:12:17.387331Z"
+        },
+        "apiVersion": "serving.knative.dev/v1",
+        "kind": "Service",
+        "spec": {
+          "template": {
+            "metadata": {
+              "labels": {
+                "client.knative.dev/nonce": "lzrysmuxpq",
+                "run.googleapis.com/startupProbeType": "Default"
+              },
+              "annotations": {
+                "run.googleapis.com/client-name": "gcloud",
+                "run.googleapis.com/client-version": "559.0.0",
+                "run.googleapis.com/startup-cpu-boost": "true"
+              }
+            },
+            "spec": {
+              "containerConcurrency": 80,
+              "timeoutSeconds": 300,
+              "serviceAccountName": "cloud-run-service@mod-mail-490516.iam.gserviceaccount.com",
+              "containers": [
+                {
+                  "image": "europe-west1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker:latest",
+                  "ports": [
+                    {
+                      "name": "http1",
+                      "containerPort": 8080
+                    }
+                  ],
+                  "env": [
+                    {
+                      "name": "DISCORD_TOKEN",
+                      "value": "***"
+                    },
+                    {
+                      "name": "FIRESTORE_PROJECT_ID",
+                      "value": "mod-mail-490516"
+                    }
+                  ],
+                  "resources": {
+                    "limits": {
+                      "memory": "512Mi",
+                      "cpu": "1000m"
+                    }
+                  },
+                  "startupProbe": {
+                    "timeoutSeconds": 240,
+                    "periodSeconds": 240,
+                    "failureThreshold": 1,
+                    "tcpSocket": {
+                      "port": 8080
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "traffic": [
+            {
+              "percent": 100,
+              "latestRevision": true
+            }
+          ]
+        },
+        "status": {
+          "observedGeneration": 2,
+          "conditions": [
+            {
+              "type": "Ready",
+              "status": "True",
+              "lastTransitionTime": "2026-03-25T19:12:18.510483Z"
+            },
+            {
+              "type": "ConfigurationsReady",
+              "status": "Unknown",
+              "lastTransitionTime": "2026-03-25T19:12:17.415277Z"
+            },
+            {
+              "type": "RoutesReady",
+              "status": "Unknown",
+              "message": "Deletion in progress.",
+              "lastTransitionTime": "2026-03-25T19:12:17.415277Z"
+            }
+          ],
+          "latestCreatedRevisionName": "my-worker-00001-nh2"
+        },
+        "@type": "type.googleapis.com/google.cloud.run.v1.Service"
+      }
+    },
+    "insertId": "eqqnb5dg502",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "location": "europe-west1",
+        "configuration_name": "",
+        "revision_name": "",
+        "project_id": "mod-mail-490516",
+        "service_name": "my-worker"
+      }
+    },
+    "timestamp": "2026-03-25T19:12:18.526101Z",
+    "severity": "INFO",
+    "logName": "projects/mod-mail-490516/logs/cloudaudit.googleapis.com%2Fsystem_event",
+    "receiveTimestamp": "2026-03-25T19:12:18.964434658Z"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "status": {},
+      "authenticationInfo": {
+        "principalEmail": "github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com",
+        "serviceAccountDelegationInfo": [
+          {
+            "principalSubject": "principal://iam.googleapis.com/projects/376050965276/locations/global/workloadIdentityPools/github-actions-pool/subject/repo:Kooraseru-Hub/Mod-Mail:ref:refs/heads/main"
+          }
+        ],
+        "principalSubject": "serviceAccount:github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com",
+        "oauthInfo": {
+          "oauthClientId": "105087176958049653528"
+        }
+      },
+      "requestMetadata": {
+        "callerIp": "40.116.92.118",
+        "callerSuppliedUserAgent": "google-cloud-sdk gcloud/559.0.0 command/gcloud.run.deploy invocation-id/6e4f334025d74c56bce8d00e582bec00 environment/None environment-version/None client-os/LINUX client-os-ver/6.14.0 client-pltf-arch/x86_64 interactive/False from-script/False python/3.13.10 term/  (Linux 6.14.0-1017-azure),gzip(gfe)",
+        "requestAttributes": {
+          "time": "2026-03-25T19:17:32.835508Z",
+          "auth": {}
+        },
+        "destinationAttributes": {}
+      },
+      "serviceName": "run.googleapis.com",
+      "methodName": "google.cloud.run.v1.Services.CreateService",
+      "authorizationInfo": [
+        {
+          "resource": "namespaces/mod-mail-490516/services/my-worker",
+          "permission": "run.services.create",
+          "granted": true,
+          "resourceAttributes": {},
+          "permissionType": "ADMIN_WRITE"
+        },
+        {
+          "resource": "namespaces/mod-mail-490516/services/my-worker",
+          "permission": "run.services.create",
+          "granted": true,
+          "resourceAttributes": {
+            "service": "run.googleapis.com/",
+            "name": "namespaces/mod-mail-490516/services/my-worker",
+            "type": "run.googleapis.com/Service"
+          },
+          "permissionType": "ADMIN_WRITE"
+        }
+      ],
+      "resourceName": "namespaces/mod-mail-490516/services/my-worker",
+      "request": {
+        "service": {
+          "metadata": {
+            "annotations": {
+              "run.googleapis.com/client-version": "559.0.0",
+              "run.googleapis.com/client-name": "gcloud"
+            },
+            "name": "my-worker",
+            "namespace": "mod-mail-490516"
+          },
+          "kind": "Service",
+          "spec": {
+            "template": {
+              "metadata": {
+                "labels": {
+                  "client.knative.dev/nonce": "yrnowwiies"
+                },
+                "annotations": {
+                  "run.googleapis.com/startup-cpu-boost": "True",
+                  "run.googleapis.com/client-version": "559.0.0",
+                  "run.googleapis.com/client-name": "gcloud",
+                  "autoscaling.knative.dev/minScale": "1"
+                }
+              },
+              "spec": {
+                "serviceAccountName": "cloud-run-service@mod-mail-490516.iam.gserviceaccount.com",
+                "containers": [
+                  {
+                    "image": "europe-west1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker:latest",
+                    "name": ""
+                  }
+                ]
+              }
+            }
+          },
+          "status": {},
+          "apiVersion": "serving.knative.dev/v1"
+        },
+        "@type": "type.googleapis.com/google.cloud.run.v1.CreateServiceRequest",
+        "parent": "namespaces/mod-mail-490516"
+      },
+      "resourceLocation": {
+        "currentLocations": [
+          "europe-west1"
+        ]
+      }
+    },
+    "insertId": "1o7pc1wd87tt",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "location": "europe-west1",
+        "configuration_name": "",
+        "revision_name": "",
+        "service_name": "my-worker",
+        "project_id": "mod-mail-490516"
+      }
+    },
+    "timestamp": "2026-03-25T19:17:32.550392Z",
+    "severity": "NOTICE",
+    "logName": "projects/mod-mail-490516/logs/cloudaudit.googleapis.com%2Factivity",
+    "receiveTimestamp": "2026-03-25T19:17:33.207491939Z"
+  },
+  {
+    "textPayload": "Starting new instance. Reason: DEPLOYMENT_ROLLOUT - Instance started due to traffic shifting between revisions due to deployment, traffic split adjustment, or deployment health check.",
+    "insertId": "69c434cf000840697217ba21",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "project_id": "mod-mail-490516",
+        "service_name": "my-worker",
+        "revision_name": "my-worker-00001-jf8",
+        "location": "europe-west1",
+        "configuration_name": "my-worker"
+      }
+    },
+    "timestamp": "2026-03-25T19:17:35.540777Z",
+    "severity": "INFO",
+    "labels": {
+      "instanceId": "00da6cd2c4f74bf38f04654793289903bb01210429139e1727f156e2537506f7d7060c4d6cd6c02a0553892a3af83b36cbb55ead37af56d4174b5668d219506d08cc5d1d51a58f92deda280e93c2",
+      "scaling_reason": "DEPLOYMENT_ROLLOUT"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fvarlog%2Fsystem",
+    "receiveTimestamp": "2026-03-25T19:17:35.545056396Z"
+  },
+  {
+    "textPayload": "[storage] Using Firestore backend (project: mod-mail-490516)",
+    "insertId": "69c434cf000bbdfc32c0867e",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "revision_name": "my-worker-00001-jf8",
+        "service_name": "my-worker",
+        "project_id": "mod-mail-490516",
+        "location": "europe-west1",
+        "configuration_name": "my-worker"
+      }
+    },
+    "timestamp": "2026-03-25T19:17:35.769532Z",
+    "labels": {
+      "instanceId": "00da6cd2c4f74bf38f04654793289903bb01210429139e1727f156e2537506f7d7060c4d6cd6c02a0553892a3af83b36cbb55ead37af56d4174b5668d219506d08cc5d1d51a58f92deda280e93c2"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-25T19:17:35.777983770Z"
+  },
+  {
+    "textPayload": "Default STARTUP TCP probe failed 1 time consecutively for container \"my-worker-1\" on port 8080. The instance was not started.\nConnection failed with status DEADLINE_EXCEEDED.",
+    "insertId": "69c435bf000a34fb48432510",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "revision_name": "my-worker-00001-jf8",
+        "project_id": "mod-mail-490516",
+        "service_name": "my-worker",
+        "location": "europe-west1",
+        "configuration_name": "my-worker"
+      }
+    },
+    "timestamp": "2026-03-25T19:21:35.668923Z",
+    "severity": "ERROR",
+    "labels": {
+      "instanceId": "00da6cd2c4f74bf38f04654793289903bb01210429139e1727f156e2537506f7d7060c4d6cd6c02a0553892a3af83b36cbb55ead37af56d4174b5668d219506d08cc5d1d51a58f92deda280e93c2"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fvarlog%2Fsystem",
+    "receiveTimestamp": "2026-03-25T19:21:35.673057823Z"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "status": {
+        "code": 9,
+        "message": "Ready condition status changed to False for Revision my-worker-00001-jf8 with message: The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.\n\nLogs URL: https://console.cloud.google.com/logs/viewer?project=mod-mail-490516&resource=cloud_run_revision/service_name/my-worker/revision_name/my-worker-00001-jf8&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22my-worker%22%0Aresource.labels.revision_name%3D%22my-worker-00001-jf8%22 \nFor more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start"
+      },
+      "serviceName": "run.googleapis.com",
+      "methodName": "/Services.CreateService",
+      "resourceName": "namespaces/mod-mail-490516/revisions/my-worker-00001-jf8",
+      "response": {
+        "metadata": {
+          "name": "my-worker-00001-jf8",
+          "namespace": "376050965276",
+          "selfLink": "/apis/serving.knative.dev/v1/namespaces/376050965276/revisions/my-worker-00001-jf8",
+          "uid": "30dc9180-b90e-4eab-8312-5777ea7475f5",
+          "resourceVersion": "AAZN3i0liMc",
+          "generation": 1,
+          "creationTimestamp": "2026-03-25T19:17:32.970295Z",
+          "labels": {
+            "client.knative.dev/nonce": "yrnowwiies",
+            "serving.knative.dev/configuration": "my-worker",
+            "serving.knative.dev/configurationGeneration": "1",
+            "serving.knative.dev/service": "my-worker",
+            "serving.knative.dev/serviceUid": "61881a0a-5d38-4e16-8837-ef26e5451434",
+            "serving.knative.dev/route": "my-worker",
+            "cloud.googleapis.com/location": "europe-west1",
+            "run.googleapis.com/startupProbeType": "Default"
+          },
+          "annotations": {
+            "autoscaling.knative.dev/minScale": "1",
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "559.0.0",
+            "serving.knative.dev/creator": "github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com",
+            "run.googleapis.com/operation-id": "23abc2ee-502e-4bba-9924-e2341e54e807",
+            "run.googleapis.com/startup-cpu-boost": "true"
+          },
+          "ownerReferences": [
+            {
+              "kind": "Configuration",
+              "name": "my-worker",
+              "uid": "b7542418-fbed-47cc-a35b-37b68b5a56c0",
+              "apiVersion": "serving.knative.dev/v1",
+              "controller": true,
+              "blockOwnerDeletion": true
+            }
+          ]
+        },
+        "apiVersion": "serving.knative.dev/v1",
+        "kind": "Revision",
+        "spec": {
+          "containerConcurrency": 80,
+          "timeoutSeconds": 300,
+          "serviceAccountName": "cloud-run-service@mod-mail-490516.iam.gserviceaccount.com",
+          "containers": [
+            {
+              "name": "my-worker-1",
+              "image": "europe-west1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker@sha256:4cbacb6ead02406437f69fd8741a970f8ae1f6cf8797ae140a14208822129414",
+              "ports": [
+                {
+                  "name": "http1",
+                  "containerPort": 8080
+                }
+              ],
+              "env": [
+                {
+                  "name": "DISCORD_TOKEN",
+                  "value": "***"
+                },
+                {
+                  "name": "FIRESTORE_PROJECT_ID",
+                  "value": "mod-mail-490516"
+                }
+              ],
+              "resources": {
+                "limits": {
+                  "memory": "512Mi",
+                  "cpu": "1000m"
+                }
+              },
+              "startupProbe": {
+                "timeoutSeconds": 240,
+                "periodSeconds": 240,
+                "failureThreshold": 1,
+                "tcpSocket": {
+                  "port": 8080
+                }
+              }
+            }
+          ]
+        },
+        "status": {
+          "observedGeneration": 1,
+          "conditions": [
+            {
+              "type": "Ready",
+              "status": "False",
+              "reason": "HealthCheckContainerError",
+              "message": "The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.\n\nLogs URL: https://console.cloud.google.com/logs/viewer?project=mod-mail-490516&resource=cloud_run_revision/service_name/my-worker/revision_name/my-worker-00001-jf8&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22my-worker%22%0Aresource.labels.revision_name%3D%22my-worker-00001-jf8%22 \nFor more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start",
+              "lastTransitionTime": "2026-03-25T19:21:35.776967Z"
+            },
+            {
+              "type": "ContainerHealthy",
+              "status": "False",
+              "reason": "HealthCheckContainerError",
+              "message": "The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.\n\nLogs URL: https://console.cloud.google.com/logs/viewer?project=mod-mail-490516&resource=cloud_run_revision/service_name/my-worker/revision_name/my-worker-00001-jf8&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22my-worker%22%0Aresource.labels.revision_name%3D%22my-worker-00001-jf8%22 \nFor more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start",
+              "lastTransitionTime": "2026-03-25T19:21:35.776967Z"
+            },
+            {
+              "type": "ContainerReady",
+              "status": "True",
+              "message": "Container image import completed.",
+              "lastTransitionTime": "2026-03-25T19:17:34.159156Z"
+            },
+            {
+              "type": "MinInstancesProvisioned",
+              "status": "Unknown",
+              "reason": "MinInstancesWarming",
+              "lastTransitionTime": "2026-03-25T19:17:35.476767Z"
+            },
+            {
+              "type": "ResourcesAvailable",
+              "status": "True",
+              "message": "Provisioning imported containers completed in 1.31s. Checking container health. This will wait for up to 4m for the configured startup probe, including an initial delay of 0s.",
+              "lastTransitionTime": "2026-03-25T19:17:35.476767Z"
+            },
+            {
+              "type": "Retry",
+              "status": "True",
+              "reason": "ImmediateRetry",
+              "message": "System will retry after 00:00 from lastTransitionTime for attempt 0.",
+              "lastTransitionTime": "2026-03-25T19:17:35.476767Z",
+              "severity": "Info"
+            }
+          ],
+          "logUrl": "https://console.cloud.google.com/logs/viewer?project=mod-mail-490516&resource=cloud_run_revision/service_name/my-worker/revision_name/my-worker-00001-jf8&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22my-worker%22%0Aresource.labels.revision_name%3D%22my-worker-00001-jf8%22",
+          "imageDigest": "europe-west1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker@sha256:4cbacb6ead02406437f69fd8741a970f8ae1f6cf8797ae140a14208822129414",
+          "containerStatuses": [
+            {
+              "name": "my-worker-1",
+              "imageDigest": "europe-west1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker@sha256:4cbacb6ead02406437f69fd8741a970f8ae1f6cf8797ae140a14208822129414"
+            }
+          ],
+          "desiredReplicas": 1
+        },
+        "@type": "type.googleapis.com/google.cloud.run.v1.Revision"
+      }
+    },
+    "insertId": "fju850dtgmq",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "configuration_name": "my-worker",
+        "location": "europe-west1",
+        "revision_name": "my-worker-00001-jf8",
+        "project_id": "mod-mail-490516",
+        "service_name": "my-worker"
+      }
+    },
+    "timestamp": "2026-03-25T19:21:35.785856Z",
+    "severity": "ERROR",
+    "logName": "projects/mod-mail-490516/logs/cloudaudit.googleapis.com%2Fsystem_event",
+    "receiveTimestamp": "2026-03-25T19:21:36.667656239Z"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "status": {
+        "code": 9,
+        "message": "Ready condition status changed to False for Service my-worker with message: The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.\n\nLogs URL: https://console.cloud.google.com/logs/viewer?project=mod-mail-490516&resource=cloud_run_revision/service_name/my-worker/revision_name/my-worker-00001-jf8&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22my-worker%22%0Aresource.labels.revision_name%3D%22my-worker-00001-jf8%22 \nFor more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start"
+      },
+      "serviceName": "run.googleapis.com",
+      "methodName": "/Services.CreateService",
+      "resourceName": "namespaces/mod-mail-490516/services/my-worker",
+      "response": {
+        "metadata": {
+          "name": "my-worker",
+          "namespace": "376050965276",
+          "selfLink": "/apis/serving.knative.dev/v1/namespaces/376050965276/services/my-worker",
+          "uid": "61881a0a-5d38-4e16-8837-ef26e5451434",
+          "resourceVersion": "AAZN3i0mmxY",
+          "generation": 1,
+          "creationTimestamp": "2026-03-25T19:17:32.727190Z",
+          "labels": {
+            "cloud.googleapis.com/location": "europe-west1"
+          },
+          "annotations": {
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "559.0.0",
+            "serving.knative.dev/creator": "github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com",
+            "serving.knative.dev/lastModifier": "github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com",
+            "run.googleapis.com/operation-id": "23abc2ee-502e-4bba-9924-e2341e54e807",
+            "run.googleapis.com/ingress": "all",
+            "run.googleapis.com/ingress-status": "all",
+            "run.googleapis.com/maxScale": "20",
+            "run.googleapis.com/urls": "[\"https://my-worker-376050965276.europe-west1.run.app\"]"
+          }
+        },
+        "apiVersion": "serving.knative.dev/v1",
+        "kind": "Service",
+        "spec": {
+          "template": {
+            "metadata": {
+              "labels": {
+                "client.knative.dev/nonce": "yrnowwiies",
+                "run.googleapis.com/startupProbeType": "Default"
+              },
+              "annotations": {
+                "autoscaling.knative.dev/minScale": "1",
+                "run.googleapis.com/client-name": "gcloud",
+                "run.googleapis.com/client-version": "559.0.0",
+                "run.googleapis.com/startup-cpu-boost": "true"
+              }
+            },
+            "spec": {
+              "containerConcurrency": 80,
+              "timeoutSeconds": 300,
+              "serviceAccountName": "cloud-run-service@mod-mail-490516.iam.gserviceaccount.com",
+              "containers": [
+                {
+                  "image": "europe-west1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker:latest",
+                  "ports": [
+                    {
+                      "name": "http1",
+                      "containerPort": 8080
+                    }
+                  ],
+                  "env": [
+                    {
+                      "name": "DISCORD_TOKEN",
+                      "value": "***"
+                    },
+                    {
+                      "name": "FIRESTORE_PROJECT_ID",
+                      "value": "mod-mail-490516"
+                    }
+                  ],
+                  "resources": {
+                    "limits": {
+                      "memory": "512Mi",
+                      "cpu": "1000m"
+                    }
+                  },
+                  "startupProbe": {
+                    "timeoutSeconds": 240,
+                    "periodSeconds": 240,
+                    "failureThreshold": 1,
+                    "tcpSocket": {
+                      "port": 8080
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "traffic": [
+            {
+              "percent": 100,
+              "latestRevision": true
+            }
+          ]
+        },
+        "status": {
+          "observedGeneration": 1,
+          "conditions": [
+            {
+              "type": "Ready",
+              "status": "False",
+              "reason": "HealthCheckContainerError",
+              "message": "The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.\n\nLogs URL: https://console.cloud.google.com/logs/viewer?project=mod-mail-490516&resource=cloud_run_revision/service_name/my-worker/revision_name/my-worker-00001-jf8&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22my-worker%22%0Aresource.labels.revision_name%3D%22my-worker-00001-jf8%22 \nFor more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start",
+              "lastTransitionTime": "2026-03-25T19:21:35.810512Z"
+            },
+            {
+              "type": "ConfigurationsReady",
+              "status": "False",
+              "reason": "HealthCheckContainerError",
+              "message": "The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.\n\nLogs URL: https://console.cloud.google.com/logs/viewer?project=mod-mail-490516&resource=cloud_run_revision/service_name/my-worker/revision_name/my-worker-00001-jf8&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22my-worker%22%0Aresource.labels.revision_name%3D%22my-worker-00001-jf8%22 \nFor more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start",
+              "lastTransitionTime": "2026-03-25T19:21:35.810512Z"
+            },
+            {
+              "type": "RoutesReady",
+              "status": "Unknown",
+              "message": "Provisioning revision instances to receive traffic.",
+              "lastTransitionTime": "2026-03-25T19:17:34.220903Z"
+            }
+          ],
+          "latestCreatedRevisionName": "my-worker-00001-jf8"
+        },
+        "@type": "type.googleapis.com/google.cloud.run.v1.Service"
+      }
+    },
+    "insertId": "nb6rhwda618",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "project_id": "mod-mail-490516",
+        "service_name": "my-worker",
+        "revision_name": "",
+        "configuration_name": "",
+        "location": "europe-west1"
+      }
+    },
+    "timestamp": "2026-03-25T19:21:35.862205Z",
+    "severity": "ERROR",
+    "logName": "projects/mod-mail-490516/logs/cloudaudit.googleapis.com%2Fsystem_event",
+    "receiveTimestamp": "2026-03-25T19:21:36.417583205Z"
+  },
+  {
+    "textPayload": "Starting new instance. Reason: MANUAL_OR_CUSTOMER_MIN_INSTANCE - Instance started because of customer-configured min-instances or manual scaling.",
+    "insertId": "69c435c000018b36105d3da6",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "configuration_name": "my-worker",
+        "location": "europe-west1",
+        "project_id": "mod-mail-490516",
+        "service_name": "my-worker",
+        "revision_name": "my-worker-00001-jf8"
+      }
+    },
+    "timestamp": "2026-03-25T19:21:36.101174Z",
+    "severity": "INFO",
+    "labels": {
+      "instanceId": "00da6cd2c44f39ba65f6d38d9e61454f28703d5b66e6d470ff0977757508d9ca52da07a82553ceedadadecf0682d1ef253313c40166fc547c683e17a5c8c2ff1f2788f87290077556d3e77d0b122",
+      "scaling_reason": "MANUAL_OR_CUSTOMER_MIN_INSTANCE"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fvarlog%2Fsystem",
+    "receiveTimestamp": "2026-03-25T19:21:36.339803478Z"
+  },
+  {
+    "textPayload": "[storage] Using Firestore backend (project: mod-mail-490516)",
+    "insertId": "69c435c00004082b60da3e4c",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "configuration_name": "my-worker",
+        "location": "europe-west1",
+        "revision_name": "my-worker-00001-jf8",
+        "service_name": "my-worker",
+        "project_id": "mod-mail-490516"
+      }
+    },
+    "timestamp": "2026-03-25T19:21:36.264235Z",
+    "labels": {
+      "instanceId": "00da6cd2c44f39ba65f6d38d9e61454f28703d5b66e6d470ff0977757508d9ca52da07a82553ceedadadecf0682d1ef253313c40166fc547c683e17a5c8c2ff1f2788f87290077556d3e77d0b122"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-25T19:21:36.268789133Z"
+  },
+  {
+    "textPayload": "Default STARTUP TCP probe failed 1 time consecutively for container \"my-worker-1\" on port 8080. The instance was not started.\nConnection failed with status DEADLINE_EXCEEDED.",
+    "insertId": "69c436b00003a2fa9816defc",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "project_id": "mod-mail-490516",
+        "service_name": "my-worker",
+        "revision_name": "my-worker-00001-jf8",
+        "location": "europe-west1",
+        "configuration_name": "my-worker"
+      }
+    },
+    "timestamp": "2026-03-25T19:25:36.238330Z",
+    "severity": "ERROR",
+    "labels": {
+      "instanceId": "00da6cd2c44f39ba65f6d38d9e61454f28703d5b66e6d470ff0977757508d9ca52da07a82553ceedadadecf0682d1ef253313c40166fc547c683e17a5c8c2ff1f2788f87290077556d3e77d0b122"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fvarlog%2Fsystem",
+    "receiveTimestamp": "2026-03-25T19:25:36.244484808Z"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "status": {},
+      "authenticationInfo": {
+        "principalEmail": "github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com",
+        "serviceAccountDelegationInfo": [
+          {
+            "principalSubject": "principal://iam.googleapis.com/projects/376050965276/locations/global/workloadIdentityPools/github-actions-pool/subject/repo:Kooraseru-Hub/Mod-Mail:ref:refs/heads/main"
+          }
+        ],
+        "principalSubject": "serviceAccount:github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com",
+        "oauthInfo": {
+          "oauthClientId": "105087176958049653528"
+        }
+      },
+      "requestMetadata": {
+        "callerIp": "172.183.94.136",
+        "callerSuppliedUserAgent": "google-cloud-sdk gcloud/559.0.0 command/gcloud.run.deploy invocation-id/002d7b4ab5d9402dab4e9a58aad5a8eb environment/None environment-version/None client-os/LINUX client-os-ver/6.14.0 client-pltf-arch/x86_64 interactive/False from-script/False python/3.13.10 term/  (Linux 6.14.0-1017-azure),gzip(gfe)",
+        "requestAttributes": {
+          "time": "2026-03-25T19:37:54.356320Z",
+          "auth": {}
+        },
+        "destinationAttributes": {}
+      },
+      "serviceName": "run.googleapis.com",
+      "methodName": "google.cloud.run.v1.Services.ReplaceService",
+      "authorizationInfo": [
+        {
+          "resource": "namespaces/mod-mail-490516/services/my-worker",
+          "permission": "run.services.update",
+          "granted": true,
+          "resourceAttributes": {},
+          "permissionType": "ADMIN_WRITE"
+        },
+        {
+          "resource": "namespaces/mod-mail-490516/services/my-worker",
+          "permission": "run.services.update",
+          "granted": true,
+          "resourceAttributes": {
+            "service": "run.googleapis.com/",
+            "name": "namespaces/mod-mail-490516/services/my-worker",
+            "type": "run.googleapis.com/Service"
+          },
+          "permissionType": "ADMIN_WRITE"
+        }
+      ],
+      "resourceName": "namespaces/mod-mail-490516/services/my-worker",
+      "request": {
+        "@type": "type.googleapis.com/google.cloud.run.v1.ReplaceServiceRequest",
+        "name": "namespaces/mod-mail-490516/services/my-worker",
+        "service": {
+          "status": {
+            "latestCreatedRevisionName": "my-worker-00001-jf8",
+            "observedGeneration": 1,
+            "conditions": [
+              {
+                "status": "False",
+                "lastTransitionTime": "2026-03-25T19:21:35.868861Z",
+                "reason": "HealthCheckContainerError",
+                "type": "Ready"
+              },
+              {
+                "status": "False",
+                "lastTransitionTime": "2026-03-25T19:21:35.810512Z",
+                "reason": "HealthCheckContainerError",
+                "type": "ConfigurationsReady"
+              },
+              {
+                "type": "RoutesReady",
+                "reason": "HealthCheckContainerError",
+                "status": "False",
+                "lastTransitionTime": "2026-03-25T19:21:35.868861Z"
+              }
+            ]
+          },
+          "spec": {
+            "traffic": [
+              {
+                "percent": 100,
+                "latestRevision": true
+              }
+            ],
+            "template": {
+              "spec": {
+                "containerConcurrency": 80,
+                "timeoutSeconds": 300,
+                "serviceAccountName": "cloud-run-service@mod-mail-490516.iam.gserviceaccount.com",
+                "containers": [
+                  {
+                    "resources": {
+                      "limits": {
+                        "memory": "512Mi",
+                        "cpu": "1000m"
+                      }
+                    },
+                    "image": "europe-west1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker:latest"
+                  }
+                ]
+              },
+              "metadata": {
+                "labels": {
+                  "run.googleapis.com/startupProbeType": "Default",
+                  "client.knative.dev/nonce": "byxbtxanmz"
+                },
+                "annotations": {
+                  "autoscaling.knative.dev/minScale": "1",
+                  "run.googleapis.com/startup-cpu-boost": "true",
+                  "run.googleapis.com/client-version": "559.0.0",
+                  "run.googleapis.com/client-name": "gcloud"
+                }
+              }
+            }
+          },
+          "metadata": {
+            "uid": "61881a0a-5d38-4e16-8837-ef26e5451434",
+            "selfLink": "/apis/serving.knative.dev/v1/namespaces/376050965276/services/my-worker",
+            "name": "my-worker",
+            "creationTimestamp": "2026-03-25T19:17:32.727190Z",
+            "annotations": {
+              "serving.knative.dev/lastModifier": "github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com",
+              "run.googleapis.com/urls": "[\"https://my-worker-376050965276.europe-west1.run.app\"]",
+              "run.googleapis.com/maxScale": "20",
+              "serving.knative.dev/creator": "github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com",
+              "run.googleapis.com/operation-id": "23abc2ee-502e-4bba-9924-e2341e54e807",
+              "run.googleapis.com/ingress-status": "all",
+              "run.googleapis.com/client-version": "559.0.0",
+              "run.googleapis.com/ingress": "all",
+              "run.googleapis.com/client-name": "gcloud"
+            },
+            "resourceVersion": "AAZN3i0ncUo",
+            "namespace": "376050965276",
+            "labels": {
+              "cloud.googleapis.com/location": "europe-west1"
+            },
+            "generation": 1
+          },
+          "apiVersion": "serving.knative.dev/v1",
+          "kind": "Service"
+        }
+      },
+      "resourceLocation": {
+        "currentLocations": [
+          "europe-west1"
+        ]
+      }
+    },
+    "insertId": "5kabd0d9wc2",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "service_name": "my-worker",
+        "project_id": "mod-mail-490516",
+        "revision_name": "",
+        "location": "europe-west1",
+        "configuration_name": ""
+      }
+    },
+    "timestamp": "2026-03-25T19:37:53.693046Z",
+    "severity": "NOTICE",
+    "logName": "projects/mod-mail-490516/logs/cloudaudit.googleapis.com%2Factivity",
+    "receiveTimestamp": "2026-03-25T19:37:54.446067902Z"
+  },
+  {
+    "textPayload": "Starting new instance. Reason: DEPLOYMENT_ROLLOUT - Instance started due to traffic shifting between revisions due to deployment, traffic split adjustment, or deployment health check.",
+    "insertId": "69c43995000b6b603bb57b57",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "configuration_name": "my-worker",
+        "location": "europe-west1",
+        "service_name": "my-worker",
+        "project_id": "mod-mail-490516",
+        "revision_name": "my-worker-00002-82n"
+      }
+    },
+    "timestamp": "2026-03-25T19:37:57.748384Z",
+    "severity": "INFO",
+    "labels": {
+      "instanceId": "008c15ff089f7d7be02f7828e04cca9d126f53b09f04eec4bcb1debf433d2e4892686d31de1cc26197b422b39390cbfbfc5c32bfc5b0bb8fbec9eccf235ec63ba05cb9b8274c3f422d2e446f370c",
+      "scaling_reason": "DEPLOYMENT_ROLLOUT"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fvarlog%2Fsystem",
+    "receiveTimestamp": "2026-03-25T19:37:57.752860871Z"
+  },
+  {
+    "textPayload": "[storage] Using Firestore backend (project: mod-mail-490516)",
+    "insertId": "69c43995000e64a557855e1f",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "configuration_name": "my-worker",
+        "location": "europe-west1",
+        "revision_name": "my-worker-00002-82n",
+        "project_id": "mod-mail-490516",
+        "service_name": "my-worker"
+      }
+    },
+    "timestamp": "2026-03-25T19:37:57.943269Z",
+    "labels": {
+      "instanceId": "008c15ff089f7d7be02f7828e04cca9d126f53b09f04eec4bcb1debf433d2e4892686d31de1cc26197b422b39390cbfbfc5c32bfc5b0bb8fbec9eccf235ec63ba05cb9b8274c3f422d2e446f370c"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-25T19:37:57.962301322Z"
+  },
+  {
+    "textPayload": "[health] Listening on port 8080",
+    "insertId": "69c43995000eb522e72b8963",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "service_name": "my-worker",
+        "project_id": "mod-mail-490516",
+        "revision_name": "my-worker-00002-82n",
+        "configuration_name": "my-worker",
+        "location": "europe-west1"
+      }
+    },
+    "timestamp": "2026-03-25T19:37:57.963874Z",
+    "labels": {
+      "instanceId": "008c15ff089f7d7be02f7828e04cca9d126f53b09f04eec4bcb1debf433d2e4892686d31de1cc26197b422b39390cbfbfc5c32bfc5b0bb8fbec9eccf235ec63ba05cb9b8274c3f422d2e446f370c"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-25T19:37:58.280967839Z"
+  },
+  {
+    "textPayload": "Default STARTUP TCP probe succeeded after 1 attempt for container \"my-worker-1\" on port 8080.",
+    "insertId": "69c43995000efbbccde11b78",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "service_name": "my-worker",
+        "project_id": "mod-mail-490516",
+        "revision_name": "my-worker-00002-82n",
+        "configuration_name": "my-worker",
+        "location": "europe-west1"
+      }
+    },
+    "timestamp": "2026-03-25T19:37:57.981948Z",
+    "severity": "INFO",
+    "labels": {
+      "instanceId": "008c15ff089f7d7be02f7828e04cca9d126f53b09f04eec4bcb1debf433d2e4892686d31de1cc26197b422b39390cbfbfc5c32bfc5b0bb8fbec9eccf235ec63ba05cb9b8274c3f422d2e446f370c"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fvarlog%2Fsystem",
+    "receiveTimestamp": "2026-03-25T19:37:58.084700699Z"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "status": {
+        "message": "Ready condition status changed to True for Revision my-worker-00002-82n with message: Deploying revision succeeded in 3.62s."
+      },
+      "serviceName": "run.googleapis.com",
+      "methodName": "/Services.ReplaceService",
+      "resourceName": "namespaces/mod-mail-490516/revisions/my-worker-00002-82n",
+      "response": {
+        "metadata": {
+          "name": "my-worker-00002-82n",
+          "namespace": "376050965276",
+          "selfLink": "/apis/serving.knative.dev/v1/namespaces/376050965276/revisions/my-worker-00002-82n",
+          "uid": "71f5fa6f-a19b-4b49-badf-bbc635ea3627",
+          "resourceVersion": "AAZN3mexrtg",
+          "generation": 1,
+          "creationTimestamp": "2026-03-25T19:37:54.417922Z",
+          "labels": {
+            "client.knative.dev/nonce": "byxbtxanmz",
+            "serving.knative.dev/configuration": "my-worker",
+            "serving.knative.dev/configurationGeneration": "2",
+            "serving.knative.dev/service": "my-worker",
+            "serving.knative.dev/serviceUid": "61881a0a-5d38-4e16-8837-ef26e5451434",
+            "serving.knative.dev/route": "my-worker",
+            "cloud.googleapis.com/location": "europe-west1",
+            "run.googleapis.com/startupProbeType": "Default"
+          },
+          "annotations": {
+            "autoscaling.knative.dev/minScale": "1",
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "559.0.0",
+            "autoscaling.knative.dev/maxScale": "20",
+            "serving.knative.dev/creator": "github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com",
+            "run.googleapis.com/operation-id": "b75f1b8b-1dc6-472c-b062-234bb40c954e",
+            "run.googleapis.com/startup-cpu-boost": "true"
+          },
+          "ownerReferences": [
+            {
+              "kind": "Configuration",
+              "name": "my-worker",
+              "uid": "b7542418-fbed-47cc-a35b-37b68b5a56c0",
+              "apiVersion": "serving.knative.dev/v1",
+              "controller": true,
+              "blockOwnerDeletion": true
+            }
+          ]
+        },
+        "apiVersion": "serving.knative.dev/v1",
+        "kind": "Revision",
+        "spec": {
+          "containerConcurrency": 80,
+          "timeoutSeconds": 300,
+          "serviceAccountName": "cloud-run-service@mod-mail-490516.iam.gserviceaccount.com",
+          "containers": [
+            {
+              "name": "my-worker-1",
+              "image": "europe-west1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker@sha256:c8406ff2f7ea18a5da19792a76ef52c78c1399679f68152228e216f76e303269",
+              "ports": [
+                {
+                  "name": "http1",
+                  "containerPort": 8080
+                }
+              ],
+              "env": [
+                {
+                  "name": "DISCORD_TOKEN",
+                  "value": "***"
+                },
+                {
+                  "name": "FIRESTORE_PROJECT_ID",
+                  "value": "mod-mail-490516"
+                }
+              ],
+              "resources": {
+                "limits": {
+                  "cpu": "1000m",
+                  "memory": "512Mi"
+                }
+              },
+              "startupProbe": {
+                "timeoutSeconds": 240,
+                "periodSeconds": 240,
+                "failureThreshold": 1,
+                "tcpSocket": {
+                  "port": 8080
+                }
+              }
+            }
+          ]
+        },
+        "status": {
+          "observedGeneration": 1,
+          "conditions": [
+            {
+              "type": "Ready",
+              "status": "True",
+              "message": "Deploying revision succeeded in 3.62s.",
+              "lastTransitionTime": "2026-03-25T19:37:58.040280Z"
+            },
+            {
+              "type": "ContainerHealthy",
+              "status": "True",
+              "message": "Containers became healthy.",
+              "lastTransitionTime": "2026-03-25T19:37:57.990821Z"
+            },
+            {
+              "type": "ContainerReady",
+              "status": "True",
+              "message": "Container image import completed in 1.35s.",
+              "lastTransitionTime": "2026-03-25T19:37:56.253213Z"
+            },
+            {
+              "type": "ResourcesAvailable",
+              "status": "True",
+              "message": "Provisioning imported containers completed in 1.41s. Checking container health. This will wait for up to 4m for the configured startup probe, including an initial delay of 0s.",
+              "lastTransitionTime": "2026-03-25T19:37:57.662981Z"
+            }
+          ],
+          "logUrl": "https://console.cloud.google.com/logs/viewer?project=mod-mail-490516&resource=cloud_run_revision/service_name/my-worker/revision_name/my-worker-00002-82n&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22my-worker%22%0Aresource.labels.revision_name%3D%22my-worker-00002-82n%22",
+          "imageDigest": "europe-west1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker@sha256:c8406ff2f7ea18a5da19792a76ef52c78c1399679f68152228e216f76e303269",
+          "containerStatuses": [
+            {
+              "name": "my-worker-1",
+              "imageDigest": "europe-west1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker@sha256:c8406ff2f7ea18a5da19792a76ef52c78c1399679f68152228e216f76e303269"
+            }
+          ],
+          "desiredReplicas": 1
+        },
+        "@type": "type.googleapis.com/google.cloud.run.v1.Revision"
+      }
+    },
+    "insertId": "eqqnb5dgabw",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "project_id": "mod-mail-490516",
+        "service_name": "my-worker",
+        "revision_name": "my-worker-00002-82n",
+        "configuration_name": "my-worker",
+        "location": "europe-west1"
+      }
+    },
+    "timestamp": "2026-03-25T19:37:58.050361Z",
+    "severity": "INFO",
+    "logName": "projects/mod-mail-490516/logs/cloudaudit.googleapis.com%2Fsystem_event",
+    "receiveTimestamp": "2026-03-25T19:37:59.281017282Z"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "status": {
+        "message": "Ready condition status changed to True for Revision my-worker-00002-82n with message: Updating revision scaling succeeded in 2.28s."
+      },
+      "serviceName": "run.googleapis.com",
+      "methodName": "/Services.ReplaceService",
+      "resourceName": "namespaces/mod-mail-490516/revisions/my-worker-00002-82n",
+      "response": {
+        "metadata": {
+          "name": "my-worker-00002-82n",
+          "namespace": "376050965276",
+          "selfLink": "/apis/serving.knative.dev/v1/namespaces/376050965276/revisions/my-worker-00002-82n",
+          "uid": "71f5fa6f-a19b-4b49-badf-bbc635ea3627",
+          "resourceVersion": "AAZN3me7QDY",
+          "generation": 1,
+          "creationTimestamp": "2026-03-25T19:37:54.417922Z",
+          "labels": {
+            "client.knative.dev/nonce": "byxbtxanmz",
+            "serving.knative.dev/configuration": "my-worker",
+            "serving.knative.dev/configurationGeneration": "2",
+            "serving.knative.dev/service": "my-worker",
+            "serving.knative.dev/serviceUid": "61881a0a-5d38-4e16-8837-ef26e5451434",
+            "serving.knative.dev/route": "my-worker",
+            "cloud.googleapis.com/location": "europe-west1",
+            "run.googleapis.com/startupProbeType": "Default"
+          },
+          "annotations": {
+            "autoscaling.knative.dev/minScale": "1",
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "559.0.0",
+            "autoscaling.knative.dev/maxScale": "20",
+            "serving.knative.dev/creator": "github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com",
+            "run.googleapis.com/operation-id": "b75f1b8b-1dc6-472c-b062-234bb40c954e",
+            "run.googleapis.com/startup-cpu-boost": "true"
+          },
+          "ownerReferences": [
+            {
+              "kind": "Configuration",
+              "name": "my-worker",
+              "uid": "b7542418-fbed-47cc-a35b-37b68b5a56c0",
+              "apiVersion": "serving.knative.dev/v1",
+              "controller": true,
+              "blockOwnerDeletion": true
+            }
+          ]
+        },
+        "apiVersion": "serving.knative.dev/v1",
+        "kind": "Revision",
+        "spec": {
+          "containerConcurrency": 80,
+          "timeoutSeconds": 300,
+          "serviceAccountName": "cloud-run-service@mod-mail-490516.iam.gserviceaccount.com",
+          "containers": [
+            {
+              "name": "my-worker-1",
+              "image": "europe-west1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker@sha256:c8406ff2f7ea18a5da19792a76ef52c78c1399679f68152228e216f76e303269",
+              "ports": [
+                {
+                  "name": "http1",
+                  "containerPort": 8080
+                }
+              ],
+              "env": [
+                {
+                  "name": "DISCORD_TOKEN",
+                  "value": "***"
+                },
+                {
+                  "name": "FIRESTORE_PROJECT_ID",
+                  "value": "mod-mail-490516"
+                }
+              ],
+              "resources": {
+                "limits": {
+                  "cpu": "1000m",
+                  "memory": "512Mi"
+                }
+              },
+              "startupProbe": {
+                "timeoutSeconds": 240,
+                "periodSeconds": 240,
+                "failureThreshold": 1,
+                "tcpSocket": {
+                  "port": 8080
+                }
+              }
+            }
+          ]
+        },
+        "status": {
+          "observedGeneration": 1,
+          "conditions": [
+            {
+              "type": "Ready",
+              "status": "True",
+              "message": "Updating revision scaling succeeded in 2.28s.",
+              "lastTransitionTime": "2026-03-25T19:37:58.667318Z"
+            },
+            {
+              "type": "Active",
+              "status": "True",
+              "lastTransitionTime": "2026-03-25T19:37:58.108212Z",
+              "severity": "Info"
+            },
+            {
+              "type": "ContainerHealthy",
+              "status": "True",
+              "message": "Containers became healthy.",
+              "lastTransitionTime": "2026-03-25T19:37:57.990821Z"
+            },
+            {
+              "type": "ContainerReady",
+              "status": "True",
+              "message": "Container image import completed in 1.35s.",
+              "lastTransitionTime": "2026-03-25T19:37:56.253213Z"
+            },
+            {
+              "type": "MinInstancesProvisioned",
+              "status": "True",
+              "message": "Min instances provisioned successfully  in 2.24s.",
+              "lastTransitionTime": "2026-03-25T19:37:58.628154Z"
+            },
+            {
+              "type": "ResourcesAvailable",
+              "status": "True",
+              "message": "Provisioning imported containers completed in 1.41s. Checking container health. This will wait for up to 4m for the configured startup probe, including an initial delay of 0s.",
+              "lastTransitionTime": "2026-03-25T19:37:57.662981Z"
+            }
+          ],
+          "logUrl": "https://console.cloud.google.com/logs/viewer?project=mod-mail-490516&resource=cloud_run_revision/service_name/my-worker/revision_name/my-worker-00002-82n&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22my-worker%22%0Aresource.labels.revision_name%3D%22my-worker-00002-82n%22",
+          "imageDigest": "europe-west1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker@sha256:c8406ff2f7ea18a5da19792a76ef52c78c1399679f68152228e216f76e303269",
+          "containerStatuses": [
+            {
+              "name": "my-worker-1",
+              "imageDigest": "europe-west1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker@sha256:c8406ff2f7ea18a5da19792a76ef52c78c1399679f68152228e216f76e303269"
+            }
+          ],
+          "desiredReplicas": 1
+        },
+        "@type": "type.googleapis.com/google.cloud.run.v1.Revision"
+      }
+    },
+    "insertId": "-ft0cxodno86",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "project_id": "mod-mail-490516",
+        "service_name": "my-worker",
+        "revision_name": "my-worker-00002-82n",
+        "location": "europe-west1",
+        "configuration_name": "my-worker"
+      }
+    },
+    "timestamp": "2026-03-25T19:37:58.673526Z",
+    "severity": "INFO",
+    "logName": "projects/mod-mail-490516/logs/cloudaudit.googleapis.com%2Fsystem_event",
+    "receiveTimestamp": "2026-03-25T19:37:59.078691200Z"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "status": {
+        "message": "Ready condition status changed to True for Service my-worker."
+      },
+      "serviceName": "run.googleapis.com",
+      "methodName": "/Services.ReplaceService",
+      "resourceName": "namespaces/mod-mail-490516/services/my-worker",
+      "response": {
+        "metadata": {
+          "name": "my-worker",
+          "namespace": "376050965276",
+          "selfLink": "/apis/serving.knative.dev/v1/namespaces/376050965276/services/my-worker",
+          "uid": "61881a0a-5d38-4e16-8837-ef26e5451434",
+          "resourceVersion": "AAZN3mfnut8",
+          "generation": 2,
+          "creationTimestamp": "2026-03-25T19:17:32.727190Z",
+          "labels": {
+            "cloud.googleapis.com/location": "europe-west1"
+          },
+          "annotations": {
+            "serving.knative.dev/creator": "github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com",
+            "serving.knative.dev/lastModifier": "github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com",
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "559.0.0",
+            "run.googleapis.com/operation-id": "b75f1b8b-1dc6-472c-b062-234bb40c954e",
+            "run.googleapis.com/ingress": "all",
+            "run.googleapis.com/ingress-status": "all",
+            "run.googleapis.com/maxScale": "20",
+            "run.googleapis.com/urls": "[\"https://my-worker-376050965276.europe-west1.run.app\",\"https://my-worker-hoxuzmwl7q-ew.a.run.app\"]"
+          }
+        },
+        "apiVersion": "serving.knative.dev/v1",
+        "kind": "Service",
+        "spec": {
+          "template": {
+            "metadata": {
+              "labels": {
+                "client.knative.dev/nonce": "byxbtxanmz",
+                "run.googleapis.com/startupProbeType": "Default"
+              },
+              "annotations": {
+                "autoscaling.knative.dev/minScale": "1",
+                "run.googleapis.com/client-name": "gcloud",
+                "run.googleapis.com/client-version": "559.0.0",
+                "autoscaling.knative.dev/maxScale": "20",
+                "run.googleapis.com/startup-cpu-boost": "true"
+              }
+            },
+            "spec": {
+              "containerConcurrency": 80,
+              "timeoutSeconds": 300,
+              "serviceAccountName": "cloud-run-service@mod-mail-490516.iam.gserviceaccount.com",
+              "containers": [
+                {
+                  "image": "europe-west1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker:latest",
+                  "ports": [
+                    {
+                      "name": "http1",
+                      "containerPort": 8080
+                    }
+                  ],
+                  "env": [
+                    {
+                      "name": "DISCORD_TOKEN",
+                      "value": "***"
+                    },
+                    {
+                      "name": "FIRESTORE_PROJECT_ID",
+                      "value": "mod-mail-490516"
+                    }
+                  ],
+                  "resources": {
+                    "limits": {
+                      "cpu": "1000m",
+                      "memory": "512Mi"
+                    }
+                  },
+                  "startupProbe": {
+                    "timeoutSeconds": 240,
+                    "periodSeconds": 240,
+                    "failureThreshold": 1,
+                    "tcpSocket": {
+                      "port": 8080
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "traffic": [
+            {
+              "percent": 100,
+              "latestRevision": true
+            }
+          ]
+        },
+        "status": {
+          "observedGeneration": 2,
+          "conditions": [
+            {
+              "type": "Ready",
+              "status": "True",
+              "lastTransitionTime": "2026-03-25T19:38:01.582303Z"
+            },
+            {
+              "type": "ConfigurationsReady",
+              "status": "True",
+              "lastTransitionTime": "2026-03-25T19:37:56.349478Z"
+            },
+            {
+              "type": "RoutesReady",
+              "status": "True",
+              "lastTransitionTime": "2026-03-25T19:38:01.550842Z"
+            }
+          ],
+          "latestReadyRevisionName": "my-worker-00002-82n",
+          "latestCreatedRevisionName": "my-worker-00002-82n",
+          "traffic": [
+            {
+              "revisionName": "my-worker-00002-82n",
+              "percent": 100,
+              "latestRevision": true
+            }
+          ],
+          "url": "https://my-worker-hoxuzmwl7q-ew.a.run.app",
+          "address": {
+            "url": "https://my-worker-hoxuzmwl7q-ew.a.run.app"
+          }
+        },
+        "@type": "type.googleapis.com/google.cloud.run.v1.Service"
+      }
+    },
+    "insertId": "-8vhk85dak7q",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "revision_name": "",
+        "service_name": "my-worker",
+        "project_id": "mod-mail-490516",
+        "configuration_name": "",
+        "location": "europe-west1"
+      }
+    },
+    "timestamp": "2026-03-25T19:38:01.597466Z",
+    "severity": "INFO",
+    "logName": "projects/mod-mail-490516/logs/cloudaudit.googleapis.com%2Fsystem_event",
+    "receiveTimestamp": "2026-03-25T19:38:02.423606508Z"
+  },
+  {
+    "textPayload": "[gateway] Mod Mail connected (shard 0)",
+    "insertId": "69c4399a0005d2b7ba6cec05",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "project_id": "mod-mail-490516",
+        "service_name": "my-worker",
+        "revision_name": "my-worker-00002-82n",
+        "location": "europe-west1",
+        "configuration_name": "my-worker"
+      }
+    },
+    "timestamp": "2026-03-25T19:38:02.381623Z",
+    "labels": {
+      "instanceId": "008c15ff089f7d7be02f7828e04cca9d126f53b09f04eec4bcb1debf433d2e4892686d31de1cc26197b422b39390cbfbfc5c32bfc5b0bb8fbec9eccf235ec63ba05cb9b8274c3f422d2e446f370c"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-25T19:38:02.609878069Z"
+  },
+  {
+    "textPayload": "[gateway] Command 'setup' from kooraseru",
+    "insertId": "69c439a3000d7447f3dc61f3",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "configuration_name": "my-worker",
+        "location": "europe-west1",
+        "project_id": "mod-mail-490516",
+        "service_name": "my-worker",
+        "revision_name": "my-worker-00002-82n"
+      }
+    },
+    "timestamp": "2026-03-25T19:38:11.881735Z",
+    "labels": {
+      "instanceId": "008c15ff089f7d7be02f7828e04cca9d126f53b09f04eec4bcb1debf433d2e4892686d31de1cc26197b422b39390cbfbfc5c32bfc5b0bb8fbec9eccf235ec63ba05cb9b8274c3f422d2e446f370c"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-25T19:38:11.937359358Z"
+  },
+  {
+    "textPayload": "[gateway] Component 'setup_channel' from kooraseru in channel 1468838174506745930",
+    "insertId": "69c439a9000b4adc4d1e4db8",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "service_name": "my-worker",
+        "project_id": "mod-mail-490516",
+        "revision_name": "my-worker-00002-82n",
+        "configuration_name": "my-worker",
+        "location": "europe-west1"
+      }
+    },
+    "timestamp": "2026-03-25T19:38:17.740060Z",
+    "labels": {
+      "instanceId": "008c15ff089f7d7be02f7828e04cca9d126f53b09f04eec4bcb1debf433d2e4892686d31de1cc26197b422b39390cbfbfc5c32bfc5b0bb8fbec9eccf235ec63ba05cb9b8274c3f422d2e446f370c"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-25T19:38:17.929176114Z"
+  },
+  {
+    "textPayload": "[gateway] Component 'setup_log_channel' from kooraseru in channel 1468838174506745930",
+    "insertId": "69c439ae0008edac02217ef3",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "revision_name": "my-worker-00002-82n",
+        "service_name": "my-worker",
+        "project_id": "mod-mail-490516",
+        "configuration_name": "my-worker",
+        "location": "europe-west1"
+      }
+    },
+    "timestamp": "2026-03-25T19:38:22.585132Z",
+    "labels": {
+      "instanceId": "008c15ff089f7d7be02f7828e04cca9d126f53b09f04eec4bcb1debf433d2e4892686d31de1cc26197b422b39390cbfbfc5c32bfc5b0bb8fbec9eccf235ec63ba05cb9b8274c3f422d2e446f370c"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-25T19:38:22.589259140Z"
+  },
+  {
+    "textPayload": "[gateway] Component 'setup_save' from kooraseru in channel 1468838174506745930",
+    "insertId": "69c439b00007b1fb86daaf23",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "project_id": "mod-mail-490516",
+        "service_name": "my-worker",
+        "revision_name": "my-worker-00002-82n",
+        "configuration_name": "my-worker",
+        "location": "europe-west1"
+      }
+    },
+    "timestamp": "2026-03-25T19:38:24.504315Z",
+    "labels": {
+      "instanceId": "008c15ff089f7d7be02f7828e04cca9d126f53b09f04eec4bcb1debf433d2e4892686d31de1cc26197b422b39390cbfbfc5c32bfc5b0bb8fbec9eccf235ec63ba05cb9b8274c3f422d2e446f370c"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-25T19:38:24.589438939Z"
+  },
+  {
+    "textPayload": "[gateway] DM from kooraseru (channel 1468065234894721137)",
+    "insertId": "69c439cf0009bef8b0d73707",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "revision_name": "my-worker-00002-82n",
+        "project_id": "mod-mail-490516",
+        "service_name": "my-worker",
+        "configuration_name": "my-worker",
+        "location": "europe-west1"
+      }
+    },
+    "timestamp": "2026-03-25T19:38:55.638712Z",
+    "labels": {
+      "instanceId": "008c15ff089f7d7be02f7828e04cca9d126f53b09f04eec4bcb1debf433d2e4892686d31de1cc26197b422b39390cbfbfc5c32bfc5b0bb8fbec9eccf235ec63ba05cb9b8274c3f422d2e446f370c"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-25T19:38:55.641871656Z"
+  },
+  {
+    "textPayload": "[modmail] DM from kooraseru (channel 1468065234894721137)",
+    "insertId": "69c439cf0009bf04d1449a39",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "configuration_name": "my-worker",
+        "location": "europe-west1",
+        "service_name": "my-worker",
+        "project_id": "mod-mail-490516",
+        "revision_name": "my-worker-00002-82n"
+      }
+    },
+    "timestamp": "2026-03-25T19:38:55.638724Z",
+    "labels": {
+      "instanceId": "008c15ff089f7d7be02f7828e04cca9d126f53b09f04eec4bcb1debf433d2e4892686d31de1cc26197b422b39390cbfbfc5c32bfc5b0bb8fbec9eccf235ec63ba05cb9b8274c3f422d2e446f370c"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-25T19:38:55.641871656Z"
+  },
+  {
+    "textPayload": "[modmail] Menu sent OK",
+    "insertId": "69c439d100044530525ebc34",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "revision_name": "my-worker-00002-82n",
+        "service_name": "my-worker",
+        "project_id": "mod-mail-490516",
+        "location": "europe-west1",
+        "configuration_name": "my-worker"
+      }
+    },
+    "timestamp": "2026-03-25T19:38:57.279856Z",
+    "labels": {
+      "instanceId": "008c15ff089f7d7be02f7828e04cca9d126f53b09f04eec4bcb1debf433d2e4892686d31de1cc26197b422b39390cbfbfc5c32bfc5b0bb8fbec9eccf235ec63ba05cb9b8274c3f422d2e446f370c"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-25T19:38:57.308262041Z"
+  },
+  {
+    "textPayload": "[gateway] Component 'mm_cancel' from kooraseru in channel 1468065234894721137",
+    "insertId": "69c439d70004be25f0552477",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "service_name": "my-worker",
+        "project_id": "mod-mail-490516",
+        "revision_name": "my-worker-00002-82n",
+        "location": "europe-west1",
+        "configuration_name": "my-worker"
+      }
+    },
+    "timestamp": "2026-03-25T19:39:03.310821Z",
+    "labels": {
+      "instanceId": "008c15ff089f7d7be02f7828e04cca9d126f53b09f04eec4bcb1debf433d2e4892686d31de1cc26197b422b39390cbfbfc5c32bfc5b0bb8fbec9eccf235ec63ba05cb9b8274c3f422d2e446f370c"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-25T19:39:03.635925633Z"
+  },
+  {
+    "textPayload": "[gateway] Component 'mm_cancel' from kooraseru in channel 1468065234894721137",
+    "insertId": "69c439ec000a654b4735861d",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "revision_name": "my-worker-00002-82n",
+        "service_name": "my-worker",
+        "project_id": "mod-mail-490516",
+        "configuration_name": "my-worker",
+        "location": "europe-west1"
+      }
+    },
+    "timestamp": "2026-03-25T19:39:24.681291Z",
+    "labels": {
+      "instanceId": "008c15ff089f7d7be02f7828e04cca9d126f53b09f04eec4bcb1debf433d2e4892686d31de1cc26197b422b39390cbfbfc5c32bfc5b0bb8fbec9eccf235ec63ba05cb9b8274c3f422d2e446f370c"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-25T19:39:24.689002364Z"
+  },
+  {
+    "textPayload": "[modmail:cancel] ERROR acknowledge: Unknown interaction",
+    "insertId": "69c439ed0002c766d8935114",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "service_name": "my-worker",
+        "project_id": "mod-mail-490516",
+        "revision_name": "my-worker-00002-82n",
+        "location": "europe-west1",
+        "configuration_name": "my-worker"
+      }
+    },
+    "timestamp": "2026-03-25T19:39:25.182118Z",
+    "labels": {
+      "instanceId": "008c15ff089f7d7be02f7828e04cca9d126f53b09f04eec4bcb1debf433d2e4892686d31de1cc26197b422b39390cbfbfc5c32bfc5b0bb8fbec9eccf235ec63ba05cb9b8274c3f422d2e446f370c"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-25T19:39:25.353361530Z"
+  },
+  {
+    "textPayload": "[gateway] Command 'ping' from kooraseru",
+    "insertId": "69c43a170001f5ef1e7cda5d",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "location": "europe-west1",
+        "configuration_name": "my-worker",
+        "service_name": "my-worker",
+        "project_id": "mod-mail-490516",
+        "revision_name": "my-worker-00002-82n"
+      }
+    },
+    "timestamp": "2026-03-25T19:40:07.128495Z",
+    "labels": {
+      "instanceId": "008c15ff089f7d7be02f7828e04cca9d126f53b09f04eec4bcb1debf433d2e4892686d31de1cc26197b422b39390cbfbfc5c32bfc5b0bb8fbec9eccf235ec63ba05cb9b8274c3f422d2e446f370c"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-25T19:40:07.131963574Z"
+  },
+  {
+    "textPayload": "Failed to load ping embed.json",
+    "insertId": "69c43a4300058fbeb78ca355",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "location": "europe-west1",
+        "configuration_name": "my-worker",
+        "service_name": "my-worker",
+        "project_id": "mod-mail-490516",
+        "revision_name": "my-worker-00002-82n"
+      }
+    },
+    "timestamp": "2026-03-25T19:40:51.364478Z",
+    "labels": {
+      "instanceId": "008c15ff089f7d7be02f7828e04cca9d126f53b09f04eec4bcb1debf433d2e4892686d31de1cc26197b422b39390cbfbfc5c32bfc5b0bb8fbec9eccf235ec63ba05cb9b8274c3f422d2e446f370c"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-25T19:40:51.367597199Z"
+  },
+  {
+    "textPayload": "[gateway] Command 'message' from kooraseru",
+    "insertId": "69c43a48000ce6034d7e0f76",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "configuration_name": "my-worker",
+        "location": "europe-west1",
+        "revision_name": "my-worker-00002-82n",
+        "service_name": "my-worker",
+        "project_id": "mod-mail-490516"
+      }
+    },
+    "timestamp": "2026-03-25T19:40:56.845315Z",
+    "labels": {
+      "instanceId": "008c15ff089f7d7be02f7828e04cca9d126f53b09f04eec4bcb1debf433d2e4892686d31de1cc26197b422b39390cbfbfc5c32bfc5b0bb8fbec9eccf235ec63ba05cb9b8274c3f422d2e446f370c"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-25T19:40:57.033362374Z"
+  },
+  {
+    "textPayload": "[gateway] Component 'mm_cancel' from kooraseru in channel 1468838174506745930",
+    "insertId": "69c43aae0002c52a6bd231cc",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "service_name": "my-worker",
+        "project_id": "mod-mail-490516",
+        "revision_name": "my-worker-00002-82n",
+        "configuration_name": "my-worker",
+        "location": "europe-west1"
+      }
+    },
+    "timestamp": "2026-03-25T19:42:38.181546Z",
+    "labels": {
+      "instanceId": "008c15ff089f7d7be02f7828e04cca9d126f53b09f04eec4bcb1debf433d2e4892686d31de1cc26197b422b39390cbfbfc5c32bfc5b0bb8fbec9eccf235ec63ba05cb9b8274c3f422d2e446f370c"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-25T19:42:38.188415780Z"
+  },
+  {
+    "textPayload": "[gateway] Command 'ping' from kooraseru",
+    "insertId": "69c43abf0008e1062fcfb403",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "revision_name": "my-worker-00002-82n",
+        "service_name": "my-worker",
+        "project_id": "mod-mail-490516",
+        "configuration_name": "my-worker",
+        "location": "europe-west1"
+      }
+    },
+    "timestamp": "2026-03-25T19:42:55.581894Z",
+    "labels": {
+      "instanceId": "008c15ff089f7d7be02f7828e04cca9d126f53b09f04eec4bcb1debf433d2e4892686d31de1cc26197b422b39390cbfbfc5c32bfc5b0bb8fbec9eccf235ec63ba05cb9b8274c3f422d2e446f370c"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-25T19:42:55.589564929Z"
+  },
+  {
+    "textPayload": "Error deferring response: Unknown interaction",
+    "insertId": "69c43abf000c1b1f46cd3cee",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "service_name": "my-worker",
+        "project_id": "mod-mail-490516",
+        "revision_name": "my-worker-00002-82n",
+        "location": "europe-west1",
+        "configuration_name": "my-worker"
+      }
+    },
+    "timestamp": "2026-03-25T19:42:55.793375Z",
+    "labels": {
+      "instanceId": "008c15ff089f7d7be02f7828e04cca9d126f53b09f04eec4bcb1debf433d2e4892686d31de1cc26197b422b39390cbfbfc5c32bfc5b0bb8fbec9eccf235ec63ba05cb9b8274c3f422d2e446f370c"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-25T19:42:55.921818069Z"
+  },
+  {
+    "textPayload": "[gateway] Command 'ping' from kooraseru",
+    "insertId": "69c43b54000698e6a6a8a3da",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "configuration_name": "my-worker",
+        "location": "europe-west1",
+        "project_id": "mod-mail-490516",
+        "service_name": "my-worker",
+        "revision_name": "my-worker-00002-82n"
+      }
+    },
+    "timestamp": "2026-03-25T19:45:24.432358Z",
+    "labels": {
+      "instanceId": "008c15ff089f7d7be02f7828e04cca9d126f53b09f04eec4bcb1debf433d2e4892686d31de1cc26197b422b39390cbfbfc5c32bfc5b0bb8fbec9eccf235ec63ba05cb9b8274c3f422d2e446f370c"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-25T19:45:24.439380980Z"
+  },
+  {
+    "textPayload": "Failed to load ping embed.json",
+    "insertId": "69c43b820008b863c6a88b4b",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "location": "europe-west1",
+        "configuration_name": "my-worker",
+        "revision_name": "my-worker-00002-82n",
+        "project_id": "mod-mail-490516",
+        "service_name": "my-worker"
+      }
+    },
+    "timestamp": "2026-03-25T19:46:10.571491Z",
+    "labels": {
+      "instanceId": "008c15ff089f7d7be02f7828e04cca9d126f53b09f04eec4bcb1debf433d2e4892686d31de1cc26197b422b39390cbfbfc5c32bfc5b0bb8fbec9eccf235ec63ba05cb9b8274c3f422d2e446f370c"
+    },
+    "logName": "projects/mod-mail-490516/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-03-25T19:46:10.577938958Z"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "status": {},
+      "authenticationInfo": {
+        "principalEmail": "redactedusername10@gmail.com",
+        "principalSubject": "user:redactedusername10@gmail.com",
+        "oauthInfo": {
+          "oauthClientId": "32555940559.apps.googleusercontent.com"
+        }
+      },
+      "requestMetadata": {
+        "callerIp": "212.15.82.65",
+        "callerSuppliedUserAgent": "google-cloud-sdk gcloud/562.0.0 command/gcloud.run.services.delete invocation-id/59ba52b5af714593b7197aa3d54bb6db environment/None environment-version/None client-os/LINUX client-os-ver/6.6.87 client-pltf-arch/arm interactive/True from-script/False python/3.12.3 term/xterm-256color  (Linux 6.6.87.2-microsoft-standard-WSL2),gzip(gfe)",
+        "requestAttributes": {
+          "time": "2026-03-25T19:49:30.191600Z",
+          "auth": {}
+        },
+        "destinationAttributes": {}
+      },
+      "serviceName": "run.googleapis.com",
+      "methodName": "google.cloud.run.v1.Services.DeleteService",
+      "authorizationInfo": [
+        {
+          "resource": "namespaces/mod-mail-490516/services/my-worker",
+          "permission": "run.services.delete",
+          "granted": true,
+          "resourceAttributes": {},
+          "permissionType": "ADMIN_WRITE"
+        }
+      ],
+      "resourceName": "namespaces/mod-mail-490516/services/my-worker",
+      "request": {
+        "@type": "type.googleapis.com/google.cloud.run.v1.DeleteServiceRequest",
+        "name": "namespaces/mod-mail-490516/services/my-worker"
+      },
+      "resourceLocation": {
+        "currentLocations": [
+          "europe-west1"
+        ]
+      }
+    },
+    "insertId": "dd7pd9d9p76",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "configuration_name": "",
+        "location": "europe-west1",
+        "revision_name": "",
+        "project_id": "mod-mail-490516",
+        "service_name": "my-worker"
+      }
+    },
+    "timestamp": "2026-03-25T19:49:30.139992Z",
+    "severity": "NOTICE",
+    "logName": "projects/mod-mail-490516/logs/cloudaudit.googleapis.com%2Factivity",
+    "receiveTimestamp": "2026-03-25T19:49:31.156933469Z"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "status": {
+        "message": "Ready condition status changed to True for Revision my-worker-00002-82n with message: Updating revision scaling succeeded in 2.28s."
+      },
+      "serviceName": "run.googleapis.com",
+      "methodName": "/Services.DeleteService",
+      "resourceName": "namespaces/mod-mail-490516/revisions/my-worker-00002-82n",
+      "response": {
+        "metadata": {
+          "name": "my-worker-00002-82n",
+          "namespace": "376050965276",
+          "selfLink": "/apis/serving.knative.dev/v1/namespaces/376050965276/revisions/my-worker-00002-82n",
+          "uid": "71f5fa6f-a19b-4b49-badf-bbc635ea3627",
+          "resourceVersion": "AAZN3pD4rdY",
+          "generation": 2,
+          "creationTimestamp": "2026-03-25T19:37:54.417922Z",
+          "labels": {
+            "client.knative.dev/nonce": "byxbtxanmz",
+            "serving.knative.dev/configuration": "my-worker",
+            "serving.knative.dev/configurationGeneration": "2",
+            "serving.knative.dev/service": "my-worker",
+            "serving.knative.dev/serviceUid": "61881a0a-5d38-4e16-8837-ef26e5451434",
+            "serving.knative.dev/route": "my-worker",
+            "run.googleapis.com/cascadeDelete": "true",
+            "cloud.googleapis.com/location": "europe-west1",
+            "run.googleapis.com/startupProbeType": "Default"
+          },
+          "annotations": {
+            "autoscaling.knative.dev/minScale": "1",
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "559.0.0",
+            "autoscaling.knative.dev/maxScale": "20",
+            "serving.knative.dev/creator": "github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com",
+            "run.googleapis.com/operation-id": "997cd043-d88d-4c46-a96a-9a9a4f00dee8",
+            "run.googleapis.com/startup-cpu-boost": "true"
+          },
+          "ownerReferences": [
+            {
+              "kind": "Configuration",
+              "name": "my-worker",
+              "uid": "b7542418-fbed-47cc-a35b-37b68b5a56c0",
+              "apiVersion": "serving.knative.dev/v1",
+              "controller": true,
+              "blockOwnerDeletion": true
+            }
+          ],
+          "deletionTimestamp": "2026-03-25T19:49:30.534630Z"
+        },
+        "apiVersion": "serving.knative.dev/v1",
+        "kind": "Revision",
+        "spec": {
+          "containerConcurrency": 80,
+          "timeoutSeconds": 300,
+          "serviceAccountName": "cloud-run-service@mod-mail-490516.iam.gserviceaccount.com",
+          "containers": [
+            {
+              "name": "my-worker-1",
+              "image": "europe-west1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker@sha256:c8406ff2f7ea18a5da19792a76ef52c78c1399679f68152228e216f76e303269",
+              "ports": [
+                {
+                  "name": "http1",
+                  "containerPort": 8080
+                }
+              ],
+              "env": [
+                {
+                  "name": "DISCORD_TOKEN",
+                  "value": "***"
+                },
+                {
+                  "name": "FIRESTORE_PROJECT_ID",
+                  "value": "mod-mail-490516"
+                }
+              ],
+              "resources": {
+                "limits": {
+                  "cpu": "1000m",
+                  "memory": "512Mi"
+                }
+              },
+              "startupProbe": {
+                "timeoutSeconds": 240,
+                "periodSeconds": 240,
+                "failureThreshold": 1,
+                "tcpSocket": {
+                  "port": 8080
+                }
+              }
+            }
+          ]
+        },
+        "status": {
+          "observedGeneration": 2,
+          "conditions": [
+            {
+              "type": "Ready",
+              "status": "True",
+              "reason": "Retired",
+              "message": "Updating revision scaling succeeded in 2.28s.",
+              "lastTransitionTime": "2026-03-25T19:49:30.558934Z"
+            },
+            {
+              "type": "Active",
+              "status": "False",
+              "reason": "Retired",
+              "message": "Revision retired.",
+              "lastTransitionTime": "2026-03-25T19:49:30.558934Z",
+              "severity": "Info"
+            },
+            {
+              "type": "ContainerHealthy",
+              "status": "True",
+              "message": "Containers became healthy.",
+              "lastTransitionTime": "2026-03-25T19:37:57.990821Z"
+            },
+            {
+              "type": "ContainerReady",
+              "status": "True",
+              "message": "Container image import completed in 1.35s.",
+              "lastTransitionTime": "2026-03-25T19:37:56.253213Z"
+            },
+            {
+              "type": "MinInstancesProvisioned",
+              "status": "False",
+              "reason": "NotProvisioned",
+              "lastTransitionTime": "2026-03-25T19:49:30.558934Z",
+              "severity": "Info"
+            },
+            {
+              "type": "ResourcesAvailable",
+              "status": "Unknown",
+              "reason": "Retired",
+              "message": "Revision retired.",
+              "lastTransitionTime": "2026-03-25T19:49:30.558934Z"
+            }
+          ],
+          "logUrl": "https://console.cloud.google.com/logs/viewer?project=mod-mail-490516&resource=cloud_run_revision/service_name/my-worker/revision_name/my-worker-00002-82n&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22my-worker%22%0Aresource.labels.revision_name%3D%22my-worker-00002-82n%22",
+          "imageDigest": "europe-west1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker@sha256:c8406ff2f7ea18a5da19792a76ef52c78c1399679f68152228e216f76e303269",
+          "containerStatuses": [
+            {
+              "name": "my-worker-1",
+              "imageDigest": "europe-west1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker@sha256:c8406ff2f7ea18a5da19792a76ef52c78c1399679f68152228e216f76e303269"
+            }
+          ]
+        },
+        "@type": "type.googleapis.com/google.cloud.run.v1.Revision"
+      }
+    },
+    "insertId": "o77pa4dc39y",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "configuration_name": "my-worker",
+        "location": "europe-west1",
+        "service_name": "my-worker",
+        "project_id": "mod-mail-490516",
+        "revision_name": "my-worker-00002-82n"
+      }
+    },
+    "timestamp": "2026-03-25T19:49:30.568032Z",
+    "severity": "INFO",
+    "logName": "projects/mod-mail-490516/logs/cloudaudit.googleapis.com%2Fsystem_event",
+    "receiveTimestamp": "2026-03-25T19:49:31.348921289Z"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "status": {
+        "message": "Ready condition status changed to True for Revision my-worker-00001-jf8 with message: The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.\n\nLogs URL: https://console.cloud.google.com/logs/viewer?project=mod-mail-490516&resource=cloud_run_revision/service_name/my-worker/revision_name/my-worker-00001-jf8&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22my-worker%22%0Aresource.labels.revision_name%3D%22my-worker-00001-jf8%22 \nFor more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start"
+      },
+      "serviceName": "run.googleapis.com",
+      "methodName": "/Services.DeleteService",
+      "resourceName": "namespaces/mod-mail-490516/revisions/my-worker-00001-jf8",
+      "response": {
+        "metadata": {
+          "name": "my-worker-00001-jf8",
+          "namespace": "376050965276",
+          "selfLink": "/apis/serving.knative.dev/v1/namespaces/376050965276/revisions/my-worker-00001-jf8",
+          "uid": "30dc9180-b90e-4eab-8312-5777ea7475f5",
+          "resourceVersion": "AAZN3pD4us0",
+          "generation": 2,
+          "creationTimestamp": "2026-03-25T19:17:32.970295Z",
+          "labels": {
+            "client.knative.dev/nonce": "yrnowwiies",
+            "serving.knative.dev/configuration": "my-worker",
+            "serving.knative.dev/configurationGeneration": "1",
+            "serving.knative.dev/service": "my-worker",
+            "serving.knative.dev/serviceUid": "61881a0a-5d38-4e16-8837-ef26e5451434",
+            "serving.knative.dev/route": "my-worker",
+            "run.googleapis.com/cascadeDelete": "true",
+            "cloud.googleapis.com/location": "europe-west1",
+            "run.googleapis.com/startupProbeType": "Default"
+          },
+          "annotations": {
+            "autoscaling.knative.dev/minScale": "1",
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "559.0.0",
+            "serving.knative.dev/creator": "github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com",
+            "run.googleapis.com/operation-id": "997cd043-d88d-4c46-a96a-9a9a4f00dee8",
+            "run.googleapis.com/startup-cpu-boost": "true"
+          },
+          "ownerReferences": [
+            {
+              "kind": "Configuration",
+              "name": "my-worker",
+              "uid": "b7542418-fbed-47cc-a35b-37b68b5a56c0",
+              "apiVersion": "serving.knative.dev/v1",
+              "controller": true,
+              "blockOwnerDeletion": true
+            }
+          ],
+          "deletionTimestamp": "2026-03-25T19:49:30.535266Z"
+        },
+        "apiVersion": "serving.knative.dev/v1",
+        "kind": "Revision",
+        "spec": {
+          "containerConcurrency": 80,
+          "timeoutSeconds": 300,
+          "serviceAccountName": "cloud-run-service@mod-mail-490516.iam.gserviceaccount.com",
+          "containers": [
+            {
+              "name": "my-worker-1",
+              "image": "europe-west1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker@sha256:4cbacb6ead02406437f69fd8741a970f8ae1f6cf8797ae140a14208822129414",
+              "ports": [
+                {
+                  "name": "http1",
+                  "containerPort": 8080
+                }
+              ],
+              "env": [
+                {
+                  "name": "DISCORD_TOKEN",
+                  "value": "***"
+                },
+                {
+                  "name": "FIRESTORE_PROJECT_ID",
+                  "value": "mod-mail-490516"
+                }
+              ],
+              "resources": {
+                "limits": {
+                  "memory": "512Mi",
+                  "cpu": "1000m"
+                }
+              },
+              "startupProbe": {
+                "timeoutSeconds": 240,
+                "periodSeconds": 240,
+                "failureThreshold": 1,
+                "tcpSocket": {
+                  "port": 8080
+                }
+              }
+            }
+          ]
+        },
+        "status": {
+          "observedGeneration": 2,
+          "conditions": [
+            {
+              "type": "Ready",
+              "status": "True",
+              "reason": "Retired",
+              "message": "The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.\n\nLogs URL: https://console.cloud.google.com/logs/viewer?project=mod-mail-490516&resource=cloud_run_revision/service_name/my-worker/revision_name/my-worker-00001-jf8&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22my-worker%22%0Aresource.labels.revision_name%3D%22my-worker-00001-jf8%22 \nFor more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start",
+              "lastTransitionTime": "2026-03-25T19:49:30.562253Z"
+            },
+            {
+              "type": "Active",
+              "status": "False",
+              "reason": "Retired",
+              "message": "Revision retired.",
+              "lastTransitionTime": "2026-03-25T19:49:30.562253Z",
+              "severity": "Info"
+            },
+            {
+              "type": "ContainerHealthy",
+              "status": "False",
+              "reason": "HealthCheckContainerError",
+              "message": "The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.\n\nLogs URL: https://console.cloud.google.com/logs/viewer?project=mod-mail-490516&resource=cloud_run_revision/service_name/my-worker/revision_name/my-worker-00001-jf8&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22my-worker%22%0Aresource.labels.revision_name%3D%22my-worker-00001-jf8%22 \nFor more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start",
+              "lastTransitionTime": "2026-03-25T19:21:35.776967Z"
+            },
+            {
+              "type": "ContainerReady",
+              "status": "True",
+              "message": "Container image import completed.",
+              "lastTransitionTime": "2026-03-25T19:17:34.159156Z"
+            },
+            {
+              "type": "MinInstancesProvisioned",
+              "status": "False",
+              "reason": "NotProvisioned",
+              "lastTransitionTime": "2026-03-25T19:49:30.562253Z",
+              "severity": "Info"
+            },
+            {
+              "type": "ResourcesAvailable",
+              "status": "Unknown",
+              "reason": "Retired",
+              "message": "Revision retired.",
+              "lastTransitionTime": "2026-03-25T19:49:30.562253Z"
+            }
+          ],
+          "logUrl": "https://console.cloud.google.com/logs/viewer?project=mod-mail-490516&resource=cloud_run_revision/service_name/my-worker/revision_name/my-worker-00001-jf8&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22my-worker%22%0Aresource.labels.revision_name%3D%22my-worker-00001-jf8%22",
+          "imageDigest": "europe-west1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker@sha256:4cbacb6ead02406437f69fd8741a970f8ae1f6cf8797ae140a14208822129414",
+          "containerStatuses": [
+            {
+              "name": "my-worker-1",
+              "imageDigest": "europe-west1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker@sha256:4cbacb6ead02406437f69fd8741a970f8ae1f6cf8797ae140a14208822129414"
+            }
+          ]
+        },
+        "@type": "type.googleapis.com/google.cloud.run.v1.Revision"
+      }
+    },
+    "insertId": "ophfheda70m",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "location": "europe-west1",
+        "configuration_name": "my-worker",
+        "project_id": "mod-mail-490516",
+        "service_name": "my-worker",
+        "revision_name": "my-worker-00001-jf8"
+      }
+    },
+    "timestamp": "2026-03-25T19:49:30.572312Z",
+    "severity": "INFO",
+    "logName": "projects/mod-mail-490516/logs/cloudaudit.googleapis.com%2Fsystem_event",
+    "receiveTimestamp": "2026-03-25T19:49:30.853087972Z"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "status": {
+        "message": "Ready condition status changed to True for Service my-worker."
+      },
+      "serviceName": "run.googleapis.com",
+      "methodName": "/Services.DeleteService",
+      "resourceName": "namespaces/mod-mail-490516/services/my-worker",
+      "response": {
+        "metadata": {
+          "name": "my-worker",
+          "namespace": "376050965276",
+          "selfLink": "/apis/serving.knative.dev/v1/namespaces/376050965276/services/my-worker",
+          "uid": "61881a0a-5d38-4e16-8837-ef26e5451434",
+          "resourceVersion": "AAZN3pEAqTI",
+          "generation": 3,
+          "creationTimestamp": "2026-03-25T19:17:32.727190Z",
+          "labels": {
+            "cloud.googleapis.com/location": "europe-west1"
+          },
+          "annotations": {
+            "serving.knative.dev/creator": "github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com",
+            "serving.knative.dev/lastModifier": "redactedusername10@gmail.com",
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "559.0.0",
+            "run.googleapis.com/operation-id": "997cd043-d88d-4c46-a96a-9a9a4f00dee8",
+            "run.googleapis.com/ingress": "all",
+            "run.googleapis.com/ingress-status": "all",
+            "run.googleapis.com/maxScale": "20",
+            "run.googleapis.com/urls": "[\"https://my-worker-376050965276.europe-west1.run.app\",\"https://my-worker-hoxuzmwl7q-ew.a.run.app\"]"
+          },
+          "deletionTimestamp": "2026-03-25T19:49:30.176661Z"
+        },
+        "apiVersion": "serving.knative.dev/v1",
+        "kind": "Service",
+        "spec": {
+          "template": {
+            "metadata": {
+              "labels": {
+                "client.knative.dev/nonce": "byxbtxanmz",
+                "run.googleapis.com/startupProbeType": "Default"
+              },
+              "annotations": {
+                "autoscaling.knative.dev/minScale": "1",
+                "run.googleapis.com/client-name": "gcloud",
+                "run.googleapis.com/client-version": "559.0.0",
+                "autoscaling.knative.dev/maxScale": "20",
+                "run.googleapis.com/startup-cpu-boost": "true"
+              }
+            },
+            "spec": {
+              "containerConcurrency": 80,
+              "timeoutSeconds": 300,
+              "serviceAccountName": "cloud-run-service@mod-mail-490516.iam.gserviceaccount.com",
+              "containers": [
+                {
+                  "image": "europe-west1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker:latest",
+                  "ports": [
+                    {
+                      "name": "http1",
+                      "containerPort": 8080
+                    }
+                  ],
+                  "env": [
+                    {
+                      "name": "DISCORD_TOKEN",
+                      "value": "***"
+                    },
+                    {
+                      "name": "FIRESTORE_PROJECT_ID",
+                      "value": "mod-mail-490516"
+                    }
+                  ],
+                  "resources": {
+                    "limits": {
+                      "cpu": "1000m",
+                      "memory": "512Mi"
+                    }
+                  },
+                  "startupProbe": {
+                    "timeoutSeconds": 240,
+                    "periodSeconds": 240,
+                    "failureThreshold": 1,
+                    "tcpSocket": {
+                      "port": 8080
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "traffic": [
+            {
+              "percent": 100,
+              "latestRevision": true
+            }
+          ]
+        },
+        "status": {
+          "observedGeneration": 3,
+          "conditions": [
+            {
+              "type": "Ready",
+              "status": "True",
+              "lastTransitionTime": "2026-03-25T19:49:31.082034Z"
+            },
+            {
+              "type": "ConfigurationsReady",
+              "status": "True",
+              "lastTransitionTime": "2026-03-25T19:37:56.349478Z"
+            },
+            {
+              "type": "RoutesReady",
+              "status": "True",
+              "lastTransitionTime": "2026-03-25T19:38:01.550842Z"
+            }
+          ],
+          "latestReadyRevisionName": "my-worker-00002-82n",
+          "latestCreatedRevisionName": "my-worker-00002-82n",
+          "traffic": [
+            {
+              "revisionName": "my-worker-00002-82n",
+              "percent": 100,
+              "latestRevision": true
+            }
+          ],
+          "url": "https://my-worker-hoxuzmwl7q-ew.a.run.app",
+          "address": {
+            "url": "https://my-worker-hoxuzmwl7q-ew.a.run.app"
+          }
+        },
+        "@type": "type.googleapis.com/google.cloud.run.v1.Service"
+      }
+    },
+    "insertId": "-laxgvkdeukw",
+    "resource": {
+      "type": "cloud_run_revision",
+      "labels": {
+        "revision_name": "",
+        "service_name": "my-worker",
+        "project_id": "mod-mail-490516",
+        "location": "europe-west1",
+        "configuration_name": ""
+      }
+    },
+    "timestamp": "2026-03-25T19:49:31.090767Z",
+    "severity": "INFO",
+    "logName": "projects/mod-mail-490516/logs/cloudaudit.googleapis.com%2Fsystem_event",
+    "receiveTimestamp": "2026-03-25T19:49:31.126494971Z"
+  }
+]
