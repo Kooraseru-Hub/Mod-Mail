@@ -7,10 +7,12 @@ on:
 
 env:
   IMAGE_NAME: my-worker
-  REGISTRY: europe-west1-docker.pkg.dev
+  REGISTRY: us-east1-docker.pkg.dev
   REPOSITORY: mod-mail
   GCP_PROJECT_ID: mod-mail-490516
-  CLOUD_RUN_REGION: europe-west1
+  ZONE: us-east1-b
+  INSTANCE_NAME: discord-bot
+  MACHINE_TYPE: e2-micro
   SERVICE_ACCOUNT_EMAIL: github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com
   WORKLOAD_IDENTITY_PROVIDER: projects/376050965276/locations/global/workloadIdentityPools/github-actions-pool/providers/github
 
@@ -35,51 +37,42 @@ jobs:
 
       # 3. Configure Docker for Artifact Registry
       - name: Configure Docker for Artifact Registry
-        run: gcloud auth configure-docker $REGISTRY
+        run: gcloud auth configure-docker ${{ env.REGISTRY }}
 
       # 4. Build Docker image
       - name: Build Docker image
-        run: docker build -t $REGISTRY/${{ env.GCP_PROJECT_ID }}/$REPOSITORY/$IMAGE_NAME:latest .
+        run: docker build -t ${{ env.REGISTRY }}/${{ env.GCP_PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE_NAME }}:latest .
 
       # 5. Push Docker image to Artifact Registry
       - name: Push Docker image
-        run: docker push $REGISTRY/${{ env.GCP_PROJECT_ID }}/$REPOSITORY/$IMAGE_NAME:latest
+        run: docker push ${{ env.REGISTRY }}/${{ env.GCP_PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE_NAME }}:latest
 
-      # 6. Deploy to Cloud Run
-      - name: Deploy to Cloud Run
+      # 6. Deploy or update Container-Optimized OS VM
+      - name: Deploy or update VM container
         run: |
-          SHORT_SHA=$(echo $GITHUB_SHA | cut -c1-7)
-          SERVICE_NAME=discord-bot-id-$SHORT_SHA
-          gcloud run deploy $SERVICE_NAME \
-            --image $REGISTRY/${{ env.GCP_PROJECT_ID }}/$REPOSITORY/$IMAGE_NAME:latest \
-            --region ${{ env.CLOUD_RUN_REGION }} \
-            --platform managed \
-            --allow-unauthenticated \
-            --service-account cloud-run-service@${{ env.GCP_PROJECT_ID }}.iam.gserviceaccount.com \
-            --min-instances 1 \
-            --update-env-vars DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }},FIRESTORE_PROJECT_ID=${{ env.GCP_PROJECT_ID }}
+          IMAGE=${{ env.REGISTRY }}/${{ env.GCP_PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE_NAME }}:latest
 
-      # 7. Disable old Cloud Run workers (logs remain in Cloud Logging after deletion)
-      - name: Disable old Cloud Run workers
-        run: |
-          SHORT_SHA=$(echo $GITHUB_SHA | cut -c1-7)
-          CURRENT_SERVICE=discord-bot-id-$SHORT_SHA
-          OLD_SERVICES=$(gcloud run services list \
-            --region ${{ env.CLOUD_RUN_REGION }} \
-            --platform managed \
-            --format="value(metadata.name)" \
-            --filter="metadata.name:discord-bot-id" \
-            | grep -v "^${CURRENT_SERVICE}$" || true)
-          if [ -n "$OLD_SERVICES" ]; then
-            echo "Disabling old workers:"
-            echo "$OLD_SERVICES"
-            while IFS= read -r service; do
-              echo "Deleting $service (logs retained in Cloud Logging)"
-              gcloud run services delete "$service" \
-                --region ${{ env.CLOUD_RUN_REGION }} \
-                --platform managed \
-                --quiet || echo "Warning: could not delete $service"
-            done <<< "$OLD_SERVICES"
+          if gcloud compute instances describe ${{ env.INSTANCE_NAME }} \
+              --zone=${{ env.ZONE }} \
+              --project=${{ env.GCP_PROJECT_ID }} > /dev/null 2>&1; then
+            echo "Instance exists — updating container image..."
+            gcloud compute instances update-container ${{ env.INSTANCE_NAME }} \
+              --zone=${{ env.ZONE }} \
+              --project=${{ env.GCP_PROJECT_ID }} \
+              --container-image=$IMAGE \
+              --container-env=DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }},FIRESTORE_PROJECT_ID=${{ env.GCP_PROJECT_ID }}
           else
-            echo "No old workers found."
+            echo "Instance not found — creating new e2-micro COS instance..."
+            gcloud compute instances create-with-container ${{ env.INSTANCE_NAME }} \
+              --zone=${{ env.ZONE }} \
+              --project=${{ env.GCP_PROJECT_ID }} \
+              --machine-type=${{ env.MACHINE_TYPE }} \
+              --image-family=cos-stable \
+              --image-project=cos-cloud \
+              --container-image=$IMAGE \
+              --container-restart-policy=always \
+              --container-env=DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }},FIRESTORE_PROJECT_ID=${{ env.GCP_PROJECT_ID }} \
+              --service-account=cloud-run-service@${{ env.GCP_PROJECT_ID }}.iam.gserviceaccount.com \
+              --scopes=cloud-platform \
+              --no-address
           fi
