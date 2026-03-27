@@ -10,9 +10,8 @@ env:
   REGISTRY: us-east1-docker.pkg.dev
   REPOSITORY: mod-mail
   GCP_PROJECT_ID: mod-mail-490516
-  ZONE: us-east1-b
-  INSTANCE_NAME: discord-bot
-  MACHINE_TYPE: e2-micro
+  REGION: us-east1
+  SERVICE_NAME: discord-bot
   SERVICE_ACCOUNT_EMAIL: github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com
   WORKLOAD_IDENTITY_PROVIDER: projects/376050965276/locations/global/workloadIdentityPools/github-actions-pool/providers/github
 
@@ -39,43 +38,27 @@ jobs:
       - name: Configure Docker for Artifact Registry
         run: gcloud auth configure-docker ${{ env.REGISTRY }}
 
-      # 5. Build Docker image
+      # 4. Build Docker image
       - name: Build Docker image
         run: docker build -t ${{ env.REGISTRY }}/${{ env.GCP_PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE_NAME }}:latest .
 
-      # 6. Push Docker image to Artifact Registry
+      # 5. Push Docker image to Artifact Registry
       - name: Push Docker image
         run: docker push ${{ env.REGISTRY }}/${{ env.GCP_PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE_NAME }}:latest
 
-      # 7. Deploy or update Container-Optimized OS VM
-      #    - First deploy: creates the instance with startup-script.sh stored in metadata
-      #    - Subsequent deploys: updates container-image metadata and resets the instance
-      #      (reset triggers a reboot which re-runs the startup script with the new image)
-      - name: Deploy or update VM container
+      # 6. Deploy to Cloud Run
+      - name: Deploy to Cloud Run
         run: |
-          IMAGE=${{ env.REGISTRY }}/${{ env.GCP_PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE_NAME }}:latest
-
-          if gcloud compute instances describe ${{ env.INSTANCE_NAME }} \
-              --zone=${{ env.ZONE }} --project=${{ env.GCP_PROJECT_ID }} > /dev/null 2>&1; then
-            echo "Instance exists — updating image metadata and rebooting..."
-            gcloud compute instances add-metadata ${{ env.INSTANCE_NAME }} \
-              --zone=${{ env.ZONE }} \
-              --project=${{ env.GCP_PROJECT_ID }} \
-              --metadata=container-image=$IMAGE,discord-token=${{ secrets.DISCORD_TOKEN }}
-            gcloud compute instances reset ${{ env.INSTANCE_NAME }} \
-              --zone=${{ env.ZONE }} \
-              --project=${{ env.GCP_PROJECT_ID }}
-          else
-            echo "Creating new e2-micro COS instance..."
-            gcloud compute instances create ${{ env.INSTANCE_NAME }} \
-              --zone=${{ env.ZONE }} \
-              --project=${{ env.GCP_PROJECT_ID }} \
-              --machine-type=${{ env.MACHINE_TYPE }} \
-              --image-family=cos-stable \
-              --image-project=cos-cloud \
-              --service-account=cloud-run-service@${{ env.GCP_PROJECT_ID }}.iam.gserviceaccount.com \
-              --scopes=cloud-platform \
-              --no-address \
-              --metadata=container-image=$IMAGE,discord-token=${{ secrets.DISCORD_TOKEN }},gcp-project=${{ env.GCP_PROJECT_ID }},registry=${{ env.REGISTRY }} \
-              --metadata-from-file=startup-script=startup-script.sh
-          fi
+          gcloud run deploy ${{ env.SERVICE_NAME }} \
+            --image=${{ env.REGISTRY }}/${{ env.GCP_PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE_NAME }}:latest \
+            --region=${{ env.REGION }} \
+            --project=${{ env.GCP_PROJECT_ID }} \
+            --platform=managed \
+            --min-instances=1 \
+            --max-instances=1 \
+            --memory=512Mi \
+            --cpu=1 \
+            --no-cpu-throttling \
+            --set-env-vars=DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }},FIRESTORE_PROJECT_ID=${{ env.GCP_PROJECT_ID }} \
+            --service-account=cloud-run-service@${{ env.GCP_PROJECT_ID }}.iam.gserviceaccount.com \
+            --no-allow-unauthenticated
