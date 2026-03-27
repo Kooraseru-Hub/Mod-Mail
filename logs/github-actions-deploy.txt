@@ -1,187 +1,1468 @@
-2026-03-27T16:31:38.2229187Z Current runner version: '2.333.0'
-2026-03-27T16:31:38.2251550Z ##[group]Runner Image Provisioner
-2026-03-27T16:31:38.2252403Z Hosted Compute Agent
-2026-03-27T16:31:38.2252997Z Version: 20260213.493
-2026-03-27T16:31:38.2253669Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
-2026-03-27T16:31:38.2254317Z Build Date: 2026-02-13T00:28:41Z
-2026-03-27T16:31:38.2254901Z Worker ID: {b3ce21d2-2acc-4be0-afc0-8c420c433992}
-2026-03-27T16:31:38.2255568Z Azure Region: westcentralus
-2026-03-27T16:31:38.2256094Z ##[endgroup]
-2026-03-27T16:31:38.2257711Z ##[group]Operating System
-2026-03-27T16:31:38.2258252Z Ubuntu
-2026-03-27T16:31:38.2258642Z 24.04.4
-2026-03-27T16:31:38.2259093Z LTS
-2026-03-27T16:31:38.2259522Z ##[endgroup]
-2026-03-27T16:31:38.2259931Z ##[group]Runner Image
-2026-03-27T16:31:38.2260456Z Image: ubuntu-24.04
-2026-03-27T16:31:38.2260927Z Version: 20260323.65.1
-2026-03-27T16:31:38.2261943Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260323.65/images/ubuntu/Ubuntu2404-Readme.md
-2026-03-27T16:31:38.2263385Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260323.65
-2026-03-27T16:31:38.2264201Z ##[endgroup]
-2026-03-27T16:31:38.2265113Z ##[group]GITHUB_TOKEN Permissions
-2026-03-27T16:31:38.2267091Z Contents: read
-2026-03-27T16:31:38.2267611Z Metadata: read
-2026-03-27T16:31:38.2268047Z ##[endgroup]
-2026-03-27T16:31:38.2270061Z Secret source: Actions
-2026-03-27T16:31:38.2270660Z Prepare workflow directory
-2026-03-27T16:31:38.2680621Z Prepare all required actions
-2026-03-27T16:31:38.2718679Z Getting action download info
-2026-03-27T16:31:38.6710075Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
-2026-03-27T16:31:38.8030071Z Download action repository 'google-github-actions/auth@v2' (SHA:c200f3691d83b41bf9bbd8638997a462592937ed)
-2026-03-27T16:31:39.6537459Z Complete job name: deploy
-2026-03-27T16:31:39.7298346Z ##[group]Run actions/checkout@v4
-2026-03-27T16:31:39.7299759Z with:
-2026-03-27T16:31:39.7300568Z   repository: Kooraseru-Hub/Mod-Mail
-2026-03-27T16:31:39.7301989Z   token: ***
-2026-03-27T16:31:39.7302798Z   ssh-strict: true
-2026-03-27T16:31:39.7303738Z   ssh-user: git
-2026-03-27T16:31:39.7304605Z   persist-credentials: true
-2026-03-27T16:31:39.7305538Z   clean: true
-2026-03-27T16:31:39.7306374Z   sparse-checkout-cone-mode: true
-2026-03-27T16:31:39.7307349Z   fetch-depth: 1
-2026-03-27T16:31:39.7308105Z   fetch-tags: false
-2026-03-27T16:31:39.7308969Z   show-progress: true
-2026-03-27T16:31:39.7309813Z   lfs: false
-2026-03-27T16:31:39.7310543Z   submodules: false
-2026-03-27T16:31:39.7311441Z   set-safe-directory: true
-2026-03-27T16:31:39.7312617Z env:
-2026-03-27T16:31:39.7313461Z   IMAGE_NAME: my-worker
-2026-03-27T16:31:39.7314429Z   REGISTRY: us-east1-docker.pkg.dev
-2026-03-27T16:31:39.7315410Z   REPOSITORY: mod-mail
-2026-03-27T16:31:39.7316293Z   GCP_PROJECT_ID: mod-mail-490516
-2026-03-27T16:31:39.7317394Z   ZONE: us-east1-b
-2026-03-27T16:31:39.7318193Z   INSTANCE_NAME: discord-bot
-2026-03-27T16:31:39.7319186Z   MACHINE_TYPE: e2-micro
-2026-03-27T16:31:39.7320545Z   SERVICE_ACCOUNT_EMAIL: github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com
-2026-03-27T16:31:39.7323151Z   WORKLOAD_IDENTITY_PROVIDER: projects/376050965276/locations/global/workloadIdentityPools/github-actions-pool/providers/github
-2026-03-27T16:31:39.7325239Z ##[endgroup]
-2026-03-27T16:31:39.8356522Z Syncing repository: Kooraseru-Hub/Mod-Mail
-2026-03-27T16:31:39.8359525Z ##[group]Getting Git version info
-2026-03-27T16:31:39.8360931Z Working directory is '/home/runner/work/Mod-Mail/Mod-Mail'
-2026-03-27T16:31:39.8362827Z [command]/usr/bin/git version
-2026-03-27T16:31:39.8371268Z git version 2.53.0
-2026-03-27T16:31:39.8497382Z ##[endgroup]
-2026-03-27T16:31:39.8507219Z Temporarily overriding HOME='/home/runner/work/_temp/8e64814b-7ac5-466a-8ae0-79b4d5c37258' before making global git config changes
-2026-03-27T16:31:39.8511653Z Adding repository directory to the temporary git global config as a safe directory
-2026-03-27T16:31:39.8515148Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Mod-Mail/Mod-Mail
-2026-03-27T16:31:39.8520387Z Deleting the contents of '/home/runner/work/Mod-Mail/Mod-Mail'
-2026-03-27T16:31:39.8522344Z ##[group]Initializing the repository
-2026-03-27T16:31:39.8523944Z [command]/usr/bin/git init /home/runner/work/Mod-Mail/Mod-Mail
-2026-03-27T16:31:39.8526345Z hint: Using 'master' as the name for the initial branch. This default branch name
-2026-03-27T16:31:39.8529214Z hint: will change to "main" in Git 3.0. To configure the initial branch name
-2026-03-27T16:31:39.8530895Z hint: to use in all of your new repositories, which will suppress this warning,
-2026-03-27T16:31:39.8532203Z hint: call:
-2026-03-27T16:31:39.8533024Z hint:
-2026-03-27T16:31:39.8534100Z hint: 	git config --global init.defaultBranch <name>
-2026-03-27T16:31:39.8535696Z hint:
-2026-03-27T16:31:39.8537401Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
-2026-03-27T16:31:39.8540122Z hint: 'development'. The just-created branch can be renamed via this command:
-2026-03-27T16:31:39.8542421Z hint:
-2026-03-27T16:31:39.8543726Z hint: 	git branch -m <name>
-2026-03-27T16:31:39.8545027Z hint:
-2026-03-27T16:31:39.8546830Z hint: Disable this message with "git config set advice.defaultBranchName false"
-2026-03-27T16:31:39.8549812Z Initialized empty Git repository in /home/runner/work/Mod-Mail/Mod-Mail/.git/
-2026-03-27T16:31:39.8554401Z [command]/usr/bin/git remote add origin https://github.com/Kooraseru-Hub/Mod-Mail
-2026-03-27T16:31:39.8557884Z ##[endgroup]
-2026-03-27T16:31:39.8560025Z ##[group]Disabling automatic garbage collection
-2026-03-27T16:31:39.8561993Z [command]/usr/bin/git config --local gc.auto 0
-2026-03-27T16:31:39.8571446Z ##[endgroup]
-2026-03-27T16:31:39.8572663Z ##[group]Setting up auth
-2026-03-27T16:31:39.8577937Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
-2026-03-27T16:31:39.8602633Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
-2026-03-27T16:31:39.8820152Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
-2026-03-27T16:31:39.8845214Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
-2026-03-27T16:31:39.9015076Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
-2026-03-27T16:31:39.9040492Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
-2026-03-27T16:31:39.9207963Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
-2026-03-27T16:31:39.9235686Z ##[endgroup]
-2026-03-27T16:31:39.9236953Z ##[group]Fetching the repository
-2026-03-27T16:31:39.9243977Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +c00d69d8bc2865c02783f773cfe87f868d3fab50:refs/remotes/origin/main
-2026-03-27T16:31:40.3850090Z From https://github.com/Kooraseru-Hub/Mod-Mail
-2026-03-27T16:31:40.3851667Z  * [new ref]         c00d69d8bc2865c02783f773cfe87f868d3fab50 -> origin/main
-2026-03-27T16:31:40.3874445Z ##[endgroup]
-2026-03-27T16:31:40.3876971Z ##[group]Determining the checkout info
-2026-03-27T16:31:40.3880197Z ##[endgroup]
-2026-03-27T16:31:40.3884288Z [command]/usr/bin/git sparse-checkout disable
-2026-03-27T16:31:40.3915393Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
-2026-03-27T16:31:40.3937220Z ##[group]Checking out the ref
-2026-03-27T16:31:40.3941048Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
-2026-03-27T16:31:40.3984992Z Switched to a new branch 'main'
-2026-03-27T16:31:40.3986614Z branch 'main' set up to track 'origin/main'.
-2026-03-27T16:31:40.3991328Z ##[endgroup]
-2026-03-27T16:31:40.4018552Z [command]/usr/bin/git log -1 --format=%H
-2026-03-27T16:31:40.4036219Z c00d69d8bc2865c02783f773cfe87f868d3fab50
-2026-03-27T16:31:40.4329181Z ##[group]Run google-github-actions/auth@v2
-2026-03-27T16:31:40.4330116Z with:
-2026-03-27T16:31:40.4331725Z   workload_identity_provider: projects/376050965276/locations/global/workloadIdentityPools/github-actions-pool/providers/github
-2026-03-27T16:31:40.4334121Z   service_account: github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com
-2026-03-27T16:31:40.4335411Z   create_credentials_file: true
-2026-03-27T16:31:40.4336260Z   export_environment_variables: true
-2026-03-27T16:31:40.4337125Z   universe: googleapis.com
-2026-03-27T16:31:40.4337909Z   cleanup_credentials: true
-2026-03-27T16:31:40.4338698Z   access_token_lifetime: 3600s
-2026-03-27T16:31:40.4339811Z   access_token_scopes: https://www.googleapis.com/auth/cloud-platform
-2026-03-27T16:31:40.4341001Z   id_token_include_email: false
-2026-03-27T16:31:40.4341751Z env:
-2026-03-27T16:31:40.4342344Z   IMAGE_NAME: my-worker
-2026-03-27T16:31:40.4343239Z   REGISTRY: us-east1-docker.pkg.dev
-2026-03-27T16:31:40.4344149Z   REPOSITORY: mod-mail
-2026-03-27T16:31:40.4344891Z   GCP_PROJECT_ID: mod-mail-490516
-2026-03-27T16:31:40.4345702Z   ZONE: us-east1-b
-2026-03-27T16:31:40.4346383Z   INSTANCE_NAME: discord-bot
-2026-03-27T16:31:40.4347161Z   MACHINE_TYPE: e2-micro
-2026-03-27T16:31:40.4348333Z   SERVICE_ACCOUNT_EMAIL: github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com
-2026-03-27T16:31:40.4350618Z   WORKLOAD_IDENTITY_PROVIDER: projects/376050965276/locations/global/workloadIdentityPools/github-actions-pool/providers/github
-2026-03-27T16:31:40.4352442Z ##[endgroup]
-2026-03-27T16:31:40.7483629Z Created credentials file at "/home/runner/work/Mod-Mail/Mod-Mail/gha-creds-1c40a4f3ba4f6ec8.json"
-2026-03-27T16:31:40.8892212Z ##[group]Run gcloud services enable compute.googleapis.com --project=mod-mail-490516
-2026-03-27T16:31:40.8894324Z [36;1mgcloud services enable compute.googleapis.com --project=mod-mail-490516[0m
-2026-03-27T16:31:40.8896207Z [36;1mgcloud services enable artifactregistry.googleapis.com --project=mod-mail-490516[0m
-2026-03-27T16:31:40.8919866Z shell: /usr/bin/bash -e {0}
-2026-03-27T16:31:40.8920670Z env:
-2026-03-27T16:31:40.8921299Z   IMAGE_NAME: my-worker
-2026-03-27T16:31:40.8922092Z   REGISTRY: us-east1-docker.pkg.dev
-2026-03-27T16:31:40.8922948Z   REPOSITORY: mod-mail
-2026-03-27T16:31:40.8923969Z   GCP_PROJECT_ID: mod-mail-490516
-2026-03-27T16:31:40.8924801Z   ZONE: us-east1-b
-2026-03-27T16:31:40.8925506Z   INSTANCE_NAME: discord-bot
-2026-03-27T16:31:40.8926314Z   MACHINE_TYPE: e2-micro
-2026-03-27T16:31:40.8927525Z   SERVICE_ACCOUNT_EMAIL: github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com
-2026-03-27T16:31:40.8929857Z   WORKLOAD_IDENTITY_PROVIDER: projects/376050965276/locations/global/workloadIdentityPools/github-actions-pool/providers/github
-2026-03-27T16:31:40.8932379Z   CLOUDSDK_AUTH_CREDENTIAL_FILE_OVERRIDE: /home/runner/work/Mod-Mail/Mod-Mail/gha-creds-1c40a4f3ba4f6ec8.json
-2026-03-27T16:31:40.8934737Z   GOOGLE_APPLICATION_CREDENTIALS: /home/runner/work/Mod-Mail/Mod-Mail/gha-creds-1c40a4f3ba4f6ec8.json
-2026-03-27T16:31:40.8936731Z   GOOGLE_GHA_CREDS_PATH: /home/runner/work/Mod-Mail/Mod-Mail/gha-creds-1c40a4f3ba4f6ec8.json
-2026-03-27T16:31:40.8938170Z   CLOUDSDK_CORE_PROJECT: mod-mail-490516
-2026-03-27T16:31:40.8939099Z   CLOUDSDK_PROJECT: mod-mail-490516
-2026-03-27T16:31:40.8939978Z   GCLOUD_PROJECT: mod-mail-490516
-2026-03-27T16:31:40.8940828Z   GCP_PROJECT: mod-mail-490516
-2026-03-27T16:31:40.8941677Z   GOOGLE_CLOUD_PROJECT: mod-mail-490516
-2026-03-27T16:31:40.8942532Z ##[endgroup]
-2026-03-27T16:31:46.5785871Z ERROR: (gcloud.services.enable) PERMISSION_DENIED: Permission denied to enable service [compute.googleapis.com]
-2026-03-27T16:31:46.5788944Z Help Token: AVnrbfk0Iehl7r4tfkw2stFkvUq58tzgDGzqr23uooZnUM_GZTVrGAuhamJ3Ugo-rkZRGZg3q6DJOcJccFLXUSYDmU6tLUOFmctlCREk6iHSaPW-. This command is authenticated as github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com using the credentials in /home/runner/work/Mod-Mail/Mod-Mail/gha-creds-1c40a4f3ba4f6ec8.json, specified by the [auth/credential_file_override] property
-2026-03-27T16:31:46.5791063Z - '@type': type.googleapis.com/google.rpc.PreconditionFailure
-2026-03-27T16:31:46.5791406Z   violations:
-2026-03-27T16:31:46.5791629Z   - subject: '110002'
-2026-03-27T16:31:46.5791865Z     type: googleapis.com
-2026-03-27T16:31:46.5792146Z - '@type': type.googleapis.com/google.rpc.ErrorInfo
-2026-03-27T16:31:46.5792466Z   domain: serviceusage.googleapis.com
-2026-03-27T16:31:46.5792742Z   reason: AUTH_PERMISSION_DENIED
-2026-03-27T16:31:46.6506185Z ##[error]Process completed with exit code 1.
-2026-03-27T16:31:46.6638947Z Post job cleanup.
-2026-03-27T16:31:46.7389887Z Removed exported credentials at "/home/runner/work/Mod-Mail/Mod-Mail/gha-creds-1c40a4f3ba4f6ec8.json".
-2026-03-27T16:31:46.7501960Z Post job cleanup.
-2026-03-27T16:31:46.8367954Z [command]/usr/bin/git version
-2026-03-27T16:31:46.8401482Z git version 2.53.0
-2026-03-27T16:31:46.8439813Z Temporarily overriding HOME='/home/runner/work/_temp/479021bb-14ba-4727-b5f9-f112df5cb363' before making global git config changes
-2026-03-27T16:31:46.8440616Z Adding repository directory to the temporary git global config as a safe directory
-2026-03-27T16:31:46.8453231Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Mod-Mail/Mod-Mail
-2026-03-27T16:31:46.8482588Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
-2026-03-27T16:31:46.8510153Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
-2026-03-27T16:31:46.8683757Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
-2026-03-27T16:31:46.8701031Z http.https://github.com/.extraheader
-2026-03-27T16:31:46.8711536Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
-2026-03-27T16:31:46.8736673Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
-2026-03-27T16:31:46.8916302Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
-2026-03-27T16:31:46.8944808Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
-2026-03-27T16:31:46.9254362Z Cleaning up orphan processes
-2026-03-27T16:31:46.9454882Z ##[warning]Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: actions/checkout@v4, google-github-actions/auth@v2. Actions will be forced to run with Node.js 24 by default starting June 2nd, 2026. Node.js 20 will be removed from the runner on September 16th, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-03-27T16:54:54.5088170Z ##[debug]Starting: deploy
+2026-03-27T16:54:54.5114743Z ##[debug]Cleaning runner temp folder: /home/runner/work/_temp
+2026-03-27T16:54:54.5231318Z ##[debug]Starting: Set up job
+2026-03-27T16:54:54.5232385Z Current runner version: '2.333.0'
+2026-03-27T16:54:54.5253021Z ##[group]Runner Image Provisioner
+2026-03-27T16:54:54.5253930Z Hosted Compute Agent
+2026-03-27T16:54:54.5254819Z Version: 20260213.493
+2026-03-27T16:54:54.5255573Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+2026-03-27T16:54:54.5256504Z Build Date: 2026-02-13T00:28:41Z
+2026-03-27T16:54:54.5257155Z Worker ID: {fb92a6d5-15f9-4ab6-a400-1a182dc760d2}
+2026-03-27T16:54:54.5257863Z Azure Region: eastus
+2026-03-27T16:54:54.5258467Z ##[endgroup]
+2026-03-27T16:54:54.5260084Z ##[group]Operating System
+2026-03-27T16:54:54.5260735Z Ubuntu
+2026-03-27T16:54:54.5261312Z 24.04.4
+2026-03-27T16:54:54.5261758Z LTS
+2026-03-27T16:54:54.5262227Z ##[endgroup]
+2026-03-27T16:54:54.5262782Z ##[group]Runner Image
+2026-03-27T16:54:54.5263359Z Image: ubuntu-24.04
+2026-03-27T16:54:54.5264130Z Version: 20260323.65.1
+2026-03-27T16:54:54.5265777Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260323.65/images/ubuntu/Ubuntu2404-Readme.md
+2026-03-27T16:54:54.5267415Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260323.65
+2026-03-27T16:54:54.5268361Z ##[endgroup]
+2026-03-27T16:54:54.5269396Z ##[group]GITHUB_TOKEN Permissions
+2026-03-27T16:54:54.5271260Z Contents: read
+2026-03-27T16:54:54.5271839Z Metadata: read
+2026-03-27T16:54:54.5272318Z ##[endgroup]
+2026-03-27T16:54:54.5274480Z Secret source: Actions
+2026-03-27T16:54:54.5275744Z ##[debug]Primary repository: Kooraseru-Hub/Mod-Mail
+2026-03-27T16:54:54.5276555Z Prepare workflow directory
+2026-03-27T16:54:54.5342587Z ##[debug]Creating pipeline directory: '/home/runner/work/Mod-Mail'
+2026-03-27T16:54:54.5346397Z ##[debug]Creating workspace directory: '/home/runner/work/Mod-Mail/Mod-Mail'
+2026-03-27T16:54:54.5347994Z ##[debug]Update context data
+2026-03-27T16:54:54.5351414Z ##[debug]Evaluating job-level environment variables
+2026-03-27T16:54:54.5637800Z ##[debug]Evaluating job container
+2026-03-27T16:54:54.5640534Z ##[debug]Evaluating job service containers
+2026-03-27T16:54:54.5643140Z ##[debug]Evaluating job defaults
+2026-03-27T16:54:54.5670657Z Prepare all required actions
+2026-03-27T16:54:54.5708556Z Getting action download info
+2026-03-27T16:54:54.8891652Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2026-03-27T16:54:54.8920732Z ##[debug]Copied action archive '/opt/actionarchivecache/actions_checkout/34e114876b0b11c390a56381ad16ebd13914f8d5.tar.gz' to '/home/runner/work/_actions/_temp_3c1e278b-d79c-4530-a323-ef1cd582d6b3/4895591a-d67d-4de9-b5c7-a18bab30b5d2.tar.gz'
+2026-03-27T16:54:54.9678992Z ##[debug]Unwrap 'actions-checkout-34e1148' to '/home/runner/work/_actions/actions/checkout/v4'
+2026-03-27T16:54:54.9825857Z ##[debug]Archive '/home/runner/work/_actions/_temp_3c1e278b-d79c-4530-a323-ef1cd582d6b3/4895591a-d67d-4de9-b5c7-a18bab30b5d2.tar.gz' has been unzipped into '/home/runner/work/_actions/actions/checkout/v4'.
+2026-03-27T16:54:54.9926364Z Download action repository 'google-github-actions/auth@v2' (SHA:c200f3691d83b41bf9bbd8638997a462592937ed)
+2026-03-27T16:54:55.1668798Z ##[debug]Download 'https://api.github.com/repos/google-github-actions/auth/tarball/c200f3691d83b41bf9bbd8638997a462592937ed' to '/home/runner/work/_actions/_temp_e7289884-63f0-4b56-880c-a0323f3a9552/aa8c0c8a-654f-4f93-81c8-ab0a0ef82d53.tar.gz'
+2026-03-27T16:54:55.1882161Z ##[debug]Unwrap 'google-github-actions-auth-c200f36' to '/home/runner/work/_actions/google-github-actions/auth/v2'
+2026-03-27T16:54:55.1936701Z ##[debug]Archive '/home/runner/work/_actions/_temp_e7289884-63f0-4b56-880c-a0323f3a9552/aa8c0c8a-654f-4f93-81c8-ab0a0ef82d53.tar.gz' has been unzipped into '/home/runner/work/_actions/google-github-actions/auth/v2'.
+2026-03-27T16:54:55.1972722Z ##[debug]action.yml for action: '/home/runner/work/_actions/actions/checkout/v4/action.yml'.
+2026-03-27T16:54:55.2845763Z ##[debug]action.yml for action: '/home/runner/work/_actions/google-github-actions/auth/v2/action.yml'.
+2026-03-27T16:54:55.2989960Z ##[debug]Set step '__actions_checkout' display name to: 'Checkout repository'
+2026-03-27T16:54:55.2993534Z ##[debug]Set step '__google-github-actions_auth' display name to: 'Authenticate to GCP'
+2026-03-27T16:54:55.2996184Z ##[debug]Set step '__run' display name to: 'Configure Docker for Artifact Registry'
+2026-03-27T16:54:55.2998396Z ##[debug]Set step '__run_2' display name to: 'Build Docker image'
+2026-03-27T16:54:55.3000475Z ##[debug]Set step '__run_3' display name to: 'Push Docker image'
+2026-03-27T16:54:55.3002584Z ##[debug]Set step '__run_4' display name to: 'Deploy or update VM container'
+2026-03-27T16:54:55.3003587Z Complete job name: deploy
+2026-03-27T16:54:55.3033059Z ##[debug]Collect running processes for tracking orphan processes.
+2026-03-27T16:54:55.3234495Z ##[debug]Finishing: Set up job
+2026-03-27T16:54:55.3350249Z ##[debug]Evaluating condition for step: 'Checkout repository'
+2026-03-27T16:54:55.3389799Z ##[debug]Evaluating: success()
+2026-03-27T16:54:55.3395270Z ##[debug]Evaluating success:
+2026-03-27T16:54:55.3411308Z ##[debug]=> true
+2026-03-27T16:54:55.3418456Z ##[debug]Result: true
+2026-03-27T16:54:55.3441469Z ##[debug]Starting: Checkout repository
+2026-03-27T16:54:55.3519186Z ##[debug]Register post job cleanup for action: actions/checkout@v4
+2026-03-27T16:54:55.3597459Z ##[debug]Loading inputs
+2026-03-27T16:54:55.3610981Z ##[debug]Evaluating: github.repository
+2026-03-27T16:54:55.3612231Z ##[debug]Evaluating Index:
+2026-03-27T16:54:55.3614175Z ##[debug]..Evaluating github:
+2026-03-27T16:54:55.3615719Z ##[debug]..=> Object
+2026-03-27T16:54:55.3621214Z ##[debug]..Evaluating String:
+2026-03-27T16:54:55.3622098Z ##[debug]..=> 'repository'
+2026-03-27T16:54:55.3626767Z ##[debug]=> 'Kooraseru-Hub/Mod-Mail'
+2026-03-27T16:54:55.3628357Z ##[debug]Result: 'Kooraseru-Hub/Mod-Mail'
+2026-03-27T16:54:55.3632302Z ##[debug]Evaluating: github.token
+2026-03-27T16:54:55.3632850Z ##[debug]Evaluating Index:
+2026-03-27T16:54:55.3633330Z ##[debug]..Evaluating github:
+2026-03-27T16:54:55.3633833Z ##[debug]..=> Object
+2026-03-27T16:54:55.3634272Z ##[debug]..Evaluating String:
+2026-03-27T16:54:55.3634970Z ##[debug]..=> 'token'
+2026-03-27T16:54:55.3635754Z ##[debug]=> '***'
+2026-03-27T16:54:55.3636345Z ##[debug]Result: '***'
+2026-03-27T16:54:55.3657138Z ##[debug]Loading env
+2026-03-27T16:54:55.3731828Z ##[group]Run actions/checkout@v4
+2026-03-27T16:54:55.3732574Z with:
+2026-03-27T16:54:55.3733009Z   repository: Kooraseru-Hub/Mod-Mail
+2026-03-27T16:54:55.3733735Z   token: ***
+2026-03-27T16:54:55.3734150Z   ssh-strict: true
+2026-03-27T16:54:55.3734788Z   ssh-user: git
+2026-03-27T16:54:55.3735241Z   persist-credentials: true
+2026-03-27T16:54:55.3735730Z   clean: true
+2026-03-27T16:54:55.3736169Z   sparse-checkout-cone-mode: true
+2026-03-27T16:54:55.3736699Z   fetch-depth: 1
+2026-03-27T16:54:55.3737138Z   fetch-tags: false
+2026-03-27T16:54:55.3737581Z   show-progress: true
+2026-03-27T16:54:55.3738025Z   lfs: false
+2026-03-27T16:54:55.3738419Z   submodules: false
+2026-03-27T16:54:55.3738872Z   set-safe-directory: true
+2026-03-27T16:54:55.3739595Z env:
+2026-03-27T16:54:55.3739998Z   IMAGE_NAME: my-worker
+2026-03-27T16:54:55.3740489Z   REGISTRY: us-east1-docker.pkg.dev
+2026-03-27T16:54:55.3741029Z   REPOSITORY: mod-mail
+2026-03-27T16:54:55.3741508Z   GCP_PROJECT_ID: mod-mail-490516
+2026-03-27T16:54:55.3742034Z   ZONE: us-east1-b
+2026-03-27T16:54:55.3742481Z   INSTANCE_NAME: discord-bot
+2026-03-27T16:54:55.3742980Z   MACHINE_TYPE: e2-micro
+2026-03-27T16:54:55.3743733Z   SERVICE_ACCOUNT_EMAIL: github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com
+2026-03-27T16:54:55.3745480Z   WORKLOAD_IDENTITY_PROVIDER: projects/376050965276/locations/global/workloadIdentityPools/github-actions-pool/providers/github
+2026-03-27T16:54:55.3746705Z ##[endgroup]
+2026-03-27T16:54:55.4760448Z ##[debug]GITHUB_WORKSPACE = '/home/runner/work/Mod-Mail/Mod-Mail'
+2026-03-27T16:54:55.4761848Z ##[debug]qualified repository = 'Kooraseru-Hub/Mod-Mail'
+2026-03-27T16:54:55.4763092Z ##[debug]ref = 'refs/heads/main'
+2026-03-27T16:54:55.4763943Z ##[debug]commit = '028912cf7d5d5baef69972e6dda7666a4704db2c'
+2026-03-27T16:54:55.4765187Z ##[debug]clean = true
+2026-03-27T16:54:55.4765905Z ##[debug]filter = undefined
+2026-03-27T16:54:55.4766629Z ##[debug]fetch depth = 1
+2026-03-27T16:54:55.4767338Z ##[debug]fetch tags = false
+2026-03-27T16:54:55.4768061Z ##[debug]show progress = true
+2026-03-27T16:54:55.4768787Z ##[debug]lfs = false
+2026-03-27T16:54:55.4769505Z ##[debug]submodules = false
+2026-03-27T16:54:55.4770231Z ##[debug]recursive submodules = false
+2026-03-27T16:54:55.4771003Z ##[debug]GitHub Host URL = 
+2026-03-27T16:54:55.4772508Z ::add-matcher::/home/runner/work/_actions/actions/checkout/v4/dist/problem-matcher.json
+2026-03-27T16:54:55.4845920Z ##[debug]Added matchers: 'checkout-git'. Problem matchers scan action output for known warning or error strings and report these inline.
+2026-03-27T16:54:55.4851027Z Syncing repository: Kooraseru-Hub/Mod-Mail
+2026-03-27T16:54:55.4852269Z ::group::Getting Git version info
+2026-03-27T16:54:55.4853482Z ##[group]Getting Git version info
+2026-03-27T16:54:55.4854190Z Working directory is '/home/runner/work/Mod-Mail/Mod-Mail'
+2026-03-27T16:54:55.4855523Z ##[debug]Getting git version
+2026-03-27T16:54:55.4856028Z [command]/usr/bin/git version
+2026-03-27T16:54:55.4875409Z git version 2.53.0
+2026-03-27T16:54:55.4898582Z ##[debug]0
+2026-03-27T16:54:55.4899856Z ##[debug]git version 2.53.0
+2026-03-27T16:54:55.4900843Z ##[debug]
+2026-03-27T16:54:55.4904195Z ##[debug]Set git useragent to: git/2.53.0 (github-actions-checkout)
+2026-03-27T16:54:55.4907911Z ::endgroup::
+2026-03-27T16:54:55.4908789Z ##[endgroup]
+2026-03-27T16:54:55.4918631Z ::add-mask::***
+2026-03-27T16:54:55.4925206Z Temporarily overriding HOME='/home/runner/work/_temp/a04f05c2-01e2-4b9f-a17d-8c1d4a41057c' before making global git config changes
+2026-03-27T16:54:55.4927077Z Adding repository directory to the temporary git global config as a safe directory
+2026-03-27T16:54:55.4933318Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Mod-Mail/Mod-Mail
+2026-03-27T16:54:55.4964061Z ##[debug]0
+2026-03-27T16:54:55.4965403Z ##[debug]
+2026-03-27T16:54:55.4971366Z Deleting the contents of '/home/runner/work/Mod-Mail/Mod-Mail'
+2026-03-27T16:54:55.4975687Z ::group::Initializing the repository
+2026-03-27T16:54:55.4976440Z ##[group]Initializing the repository
+2026-03-27T16:54:55.4981581Z [command]/usr/bin/git init /home/runner/work/Mod-Mail/Mod-Mail
+2026-03-27T16:54:55.5067355Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-03-27T16:54:55.5069311Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-03-27T16:54:55.5070936Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-03-27T16:54:55.5072577Z hint: call:
+2026-03-27T16:54:55.5073332Z hint:
+2026-03-27T16:54:55.5074375Z hint: 	git config --global init.defaultBranch <name>
+2026-03-27T16:54:55.5075877Z hint:
+2026-03-27T16:54:55.5077069Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-03-27T16:54:55.5079296Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-03-27T16:54:55.5080884Z hint:
+2026-03-27T16:54:55.5081697Z hint: 	git branch -m <name>
+2026-03-27T16:54:55.5082689Z hint:
+2026-03-27T16:54:55.5083904Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-03-27T16:54:55.5086157Z Initialized empty Git repository in /home/runner/work/Mod-Mail/Mod-Mail/.git/
+2026-03-27T16:54:55.5088016Z ##[debug]0
+2026-03-27T16:54:55.5089472Z ##[debug]Initialized empty Git repository in /home/runner/work/Mod-Mail/Mod-Mail/.git/
+2026-03-27T16:54:55.5090833Z ##[debug]
+2026-03-27T16:54:55.5092069Z [command]/usr/bin/git remote add origin https://github.com/Kooraseru-Hub/Mod-Mail
+2026-03-27T16:54:55.5119160Z ##[debug]0
+2026-03-27T16:54:55.5120358Z ##[debug]
+2026-03-27T16:54:55.5121522Z ::endgroup::
+2026-03-27T16:54:55.5122424Z ##[endgroup]
+2026-03-27T16:54:55.5123707Z ::group::Disabling automatic garbage collection
+2026-03-27T16:54:55.5125077Z ##[group]Disabling automatic garbage collection
+2026-03-27T16:54:55.5125838Z [command]/usr/bin/git config --local gc.auto 0
+2026-03-27T16:54:55.5157464Z ##[debug]0
+2026-03-27T16:54:55.5158633Z ##[debug]
+2026-03-27T16:54:55.5159770Z ::endgroup::
+2026-03-27T16:54:55.5160429Z ##[endgroup]
+2026-03-27T16:54:55.5161632Z ::group::Setting up auth
+2026-03-27T16:54:55.5162452Z ##[group]Setting up auth
+2026-03-27T16:54:55.5167713Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-03-27T16:54:55.5194081Z ##[debug]1
+2026-03-27T16:54:55.5195667Z ##[debug]
+2026-03-27T16:54:55.5201892Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-03-27T16:54:55.5494310Z ##[debug]0
+2026-03-27T16:54:55.5496426Z ##[debug]
+2026-03-27T16:54:55.5502837Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-03-27T16:54:55.5530561Z ##[debug]1
+2026-03-27T16:54:55.5531735Z ##[debug]
+2026-03-27T16:54:55.5537382Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-03-27T16:54:55.5790135Z ##[debug]0
+2026-03-27T16:54:55.5791589Z ##[debug]
+2026-03-27T16:54:55.5799484Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-03-27T16:54:55.5829649Z ##[debug]1
+2026-03-27T16:54:55.5830563Z ##[debug]
+2026-03-27T16:54:55.5835168Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-03-27T16:54:55.6066895Z ##[debug]0
+2026-03-27T16:54:55.6067693Z ##[debug]
+2026-03-27T16:54:55.6077586Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-03-27T16:54:55.6106446Z ##[debug]0
+2026-03-27T16:54:55.6107717Z ##[debug]
+2026-03-27T16:54:55.6116954Z ::endgroup::
+2026-03-27T16:54:55.6117634Z ##[endgroup]
+2026-03-27T16:54:55.6118586Z ::group::Fetching the repository
+2026-03-27T16:54:55.6119275Z ##[group]Fetching the repository
+2026-03-27T16:54:55.6130273Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +028912cf7d5d5baef69972e6dda7666a4704db2c:refs/remotes/origin/main
+2026-03-27T16:54:55.8511535Z From https://github.com/Kooraseru-Hub/Mod-Mail
+2026-03-27T16:54:55.8514323Z  * [new ref]         028912cf7d5d5baef69972e6dda7666a4704db2c -> origin/main
+2026-03-27T16:54:55.8542176Z ##[debug]0
+2026-03-27T16:54:55.8543616Z ##[debug]
+2026-03-27T16:54:55.8545472Z ::endgroup::
+2026-03-27T16:54:55.8546189Z ##[endgroup]
+2026-03-27T16:54:55.8547542Z ::group::Determining the checkout info
+2026-03-27T16:54:55.8548631Z ##[group]Determining the checkout info
+2026-03-27T16:54:55.8550209Z ::endgroup::
+2026-03-27T16:54:55.8550955Z ##[endgroup]
+2026-03-27T16:54:55.8552349Z [command]/usr/bin/git sparse-checkout disable
+2026-03-27T16:54:55.8587472Z ##[debug]0
+2026-03-27T16:54:55.8588692Z ##[debug]
+2026-03-27T16:54:55.8593629Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-03-27T16:54:55.8621325Z ##[debug]0
+2026-03-27T16:54:55.8622624Z ##[debug]
+2026-03-27T16:54:55.8623801Z ::group::Checking out the ref
+2026-03-27T16:54:55.8625143Z ##[group]Checking out the ref
+2026-03-27T16:54:55.8627486Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-03-27T16:54:55.8692933Z Switched to a new branch 'main'
+2026-03-27T16:54:55.8695639Z branch 'main' set up to track 'origin/main'.
+2026-03-27T16:54:55.8700580Z ##[debug]0
+2026-03-27T16:54:55.8702398Z ##[debug]branch 'main' set up to track 'origin/main'.
+2026-03-27T16:54:55.8703677Z ##[debug]
+2026-03-27T16:54:55.8705351Z ::endgroup::
+2026-03-27T16:54:55.8706689Z ##[endgroup]
+2026-03-27T16:54:55.8733682Z ##[debug]0
+2026-03-27T16:54:55.8735481Z ##[debug]commit 028912cf7d5d5baef69972e6dda7666a4704db2c
+2026-03-27T16:54:55.8737151Z ##[debug]Author: Henry Baker <129922068+Kooraseru@users.noreply.github.com>
+2026-03-27T16:54:55.8738861Z ##[debug]Date:   Fri Mar 27 12:35:22 2026 -0400
+2026-03-27T16:54:55.8740069Z ##[debug]
+2026-03-27T16:54:55.8740899Z ##[debug]    Remove GCP API enable step from workflow
+2026-03-27T16:54:55.8741980Z ##[debug]    
+2026-03-27T16:54:55.8747978Z ##[debug]    Remove the in-workflow step that ran `gcloud services enable` for compute.googleapis.com and artifactregistry.googleapis.com and renumber the following step to configure Docker. This avoids permission errors when the service account cannot enable APIs during the run. Add logs/github-actions-deploy.txt recording the failed workflow output (shows PERMISSION_DENIED when attempting to enable services) to aid debugging.
+2026-03-27T16:54:55.8755040Z ##[debug]
+2026-03-27T16:54:55.8755747Z [command]/usr/bin/git log -1 --format=%H
+2026-03-27T16:54:55.8762741Z 028912cf7d5d5baef69972e6dda7666a4704db2c
+2026-03-27T16:54:55.8767469Z ##[debug]0
+2026-03-27T16:54:55.8768949Z ##[debug]028912cf7d5d5baef69972e6dda7666a4704db2c
+2026-03-27T16:54:55.8770189Z ##[debug]
+2026-03-27T16:54:55.8772999Z ##[debug]Unsetting HOME override
+2026-03-27T16:54:55.8781633Z ::remove-matcher owner=checkout-git::
+2026-03-27T16:54:55.8793475Z ##[debug]Removed matchers: 'checkout-git'
+2026-03-27T16:54:55.8851408Z ##[debug]Node Action run completed with exit code 0
+2026-03-27T16:54:55.8887258Z ##[debug]Save intra-action state isPost = true
+2026-03-27T16:54:55.8888598Z ##[debug]Save intra-action state setSafeDirectory = true
+2026-03-27T16:54:55.8890317Z ##[debug]Save intra-action state repositoryPath = /home/runner/work/Mod-Mail/Mod-Mail
+2026-03-27T16:54:55.8895702Z ##[debug]Set output commit = 028912cf7d5d5baef69972e6dda7666a4704db2c
+2026-03-27T16:54:55.8897499Z ##[debug]Set output ref = refs/heads/main
+2026-03-27T16:54:55.8903728Z ##[debug]Finishing: Checkout repository
+2026-03-27T16:54:55.8929474Z ##[debug]Evaluating condition for step: 'Authenticate to GCP'
+2026-03-27T16:54:55.8933581Z ##[debug]Evaluating: success()
+2026-03-27T16:54:55.8934765Z ##[debug]Evaluating success:
+2026-03-27T16:54:55.8935711Z ##[debug]=> true
+2026-03-27T16:54:55.8936524Z ##[debug]Result: true
+2026-03-27T16:54:55.8937750Z ##[debug]Starting: Authenticate to GCP
+2026-03-27T16:54:55.9034830Z ##[debug]Register post job cleanup for action: google-github-actions/auth@v2
+2026-03-27T16:54:55.9055922Z ##[debug]Loading inputs
+2026-03-27T16:54:55.9060427Z ##[debug]Evaluating: env.WORKLOAD_IDENTITY_PROVIDER
+2026-03-27T16:54:55.9061377Z ##[debug]Evaluating Index:
+2026-03-27T16:54:55.9062016Z ##[debug]..Evaluating env:
+2026-03-27T16:54:55.9062639Z ##[debug]..=> Object
+2026-03-27T16:54:55.9063215Z ##[debug]..Evaluating String:
+2026-03-27T16:54:55.9063925Z ##[debug]..=> 'WORKLOAD_IDENTITY_PROVIDER'
+2026-03-27T16:54:55.9068069Z ##[debug]=> 'projects/376050965276/locations/global/workloadIdentityPools/github-actions-pool/providers/github'
+2026-03-27T16:54:55.9070968Z ##[debug]Result: 'projects/376050965276/locations/global/workloadIdentityPools/github-actions-pool/providers/github'
+2026-03-27T16:54:55.9073417Z ##[debug]Evaluating: env.SERVICE_ACCOUNT_EMAIL
+2026-03-27T16:54:55.9074303Z ##[debug]Evaluating Index:
+2026-03-27T16:54:55.9075142Z ##[debug]..Evaluating env:
+2026-03-27T16:54:55.9075752Z ##[debug]..=> Object
+2026-03-27T16:54:55.9076319Z ##[debug]..Evaluating String:
+2026-03-27T16:54:55.9077001Z ##[debug]..=> 'SERVICE_ACCOUNT_EMAIL'
+2026-03-27T16:54:55.9078167Z ##[debug]=> 'github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com'
+2026-03-27T16:54:55.9079737Z ##[debug]Result: 'github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com'
+2026-03-27T16:54:55.9114303Z ##[debug]Loading env
+2026-03-27T16:54:55.9125832Z ##[group]Run google-github-actions/auth@v2
+2026-03-27T16:54:55.9126607Z with:
+2026-03-27T16:54:55.9128240Z   workload_identity_provider: projects/376050965276/locations/global/workloadIdentityPools/github-actions-pool/providers/github
+2026-03-27T16:54:55.9130834Z   service_account: github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com
+2026-03-27T16:54:55.9132075Z   create_credentials_file: true
+2026-03-27T16:54:55.9132782Z   export_environment_variables: true
+2026-03-27T16:54:55.9133512Z   universe: googleapis.com
+2026-03-27T16:54:55.9134122Z   cleanup_credentials: true
+2026-03-27T16:54:55.9134916Z   access_token_lifetime: 3600s
+2026-03-27T16:54:55.9198884Z   access_token_scopes: https://www.googleapis.com/auth/cloud-platform
+2026-03-27T16:54:55.9200382Z   id_token_include_email: false
+2026-03-27T16:54:55.9201111Z env:
+2026-03-27T16:54:55.9201556Z   IMAGE_NAME: my-worker
+2026-03-27T16:54:55.9202210Z   REGISTRY: us-east1-docker.pkg.dev
+2026-03-27T16:54:55.9202949Z   REPOSITORY: mod-mail
+2026-03-27T16:54:55.9203528Z   GCP_PROJECT_ID: mod-mail-490516
+2026-03-27T16:54:55.9204197Z   ZONE: us-east1-b
+2026-03-27T16:54:55.9204995Z   INSTANCE_NAME: discord-bot
+2026-03-27T16:54:55.9205679Z   MACHINE_TYPE: e2-micro
+2026-03-27T16:54:55.9206797Z   SERVICE_ACCOUNT_EMAIL: github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com
+2026-03-27T16:54:55.9209274Z   WORKLOAD_IDENTITY_PROVIDER: projects/376050965276/locations/global/workloadIdentityPools/github-actions-pool/providers/github
+2026-03-27T16:54:55.9211219Z ##[endgroup]
+2026-03-27T16:54:56.0049760Z ##[debug]Using workload identity provider "projects/376050965276/locations/global/workloadIdentityPools/github-actions-pool/providers/github"
+2026-03-27T16:54:56.0061122Z ##[debug]ID token url is https://run-actions-3-azure-eastus.actions.githubusercontent.com/47//idtoken/290bf1b0-23d6-40e4-884a-3e12b2da0284/4aa61c1f-8812-59e2-9466-55211ad2572b?api-version=2.0&audience=https%3A%2F%2Fiam.googleapis.com%2Fprojects%2F376050965276%2Flocations%2Fglobal%2FworkloadIdentityPools%2Fgithub-actions-pool%2Fproviders%2Fgithub
+2026-03-27T16:54:56.0971141Z ::add-mask::***
+2026-03-27T16:54:56.0977821Z ##[debug]WorkloadIdentityFederationClient: Computed audience, //iam.googleapis.com/projects/376050965276/locations/global/workloadIdentityPools/github-actions-pool/providers/github
+2026-03-27T16:54:56.0981396Z ##[debug]Creating credentials file
+2026-03-27T16:54:56.0998277Z ##[debug]WorkloadIdentityFederationClient.createCredentialsFile: Enabling service account impersonation via https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com:generateAccessToken
+2026-03-27T16:54:56.1004358Z ##[debug]WorkloadIdentityFederationClient.createCredentialsFile: Creating credentials, {
+2026-03-27T16:54:56.1007416Z ##[debug]  "outputPath": "/home/runner/work/Mod-Mail/Mod-Mail/gha-creds-7dc1b08d3d70c131.json"
+2026-03-27T16:54:56.1009076Z ##[debug]}
+2026-03-27T16:54:56.1119530Z Created credentials file at "/home/runner/work/Mod-Mail/Mod-Mail/gha-creds-7dc1b08d3d70c131.json"
+2026-03-27T16:54:56.1135497Z ##[debug]WorkloadIdentityFederationClient.getToken: Built request, {
+2026-03-27T16:54:56.1137798Z ##[debug]  "method": "POST",
+2026-03-27T16:54:56.1139484Z ##[debug]  "path": "https://sts.googleapis.com/v1/token",
+2026-03-27T16:54:56.1141313Z ##[debug]  "headers": {},
+2026-03-27T16:54:56.1142938Z ##[debug]  "body": {
+2026-03-27T16:54:56.1147294Z ##[debug]    "audience": "//iam.googleapis.com/projects/376050965276/locations/global/workloadIdentityPools/github-actions-pool/providers/github",
+2026-03-27T16:54:56.1151377Z ##[debug]    "grantType": "urn:ietf:params:oauth:grant-type:token-exchange",
+2026-03-27T16:54:56.1153764Z ##[debug]    "requestedTokenType": "urn:ietf:params:oauth:token-type:access_token",
+2026-03-27T16:54:56.1156521Z ##[debug]    "scope": "https://www.googleapis.com/auth/cloud-platform",
+2026-03-27T16:54:56.1158452Z ##[debug]    "subjectTokenType": "urn:ietf:params:oauth:token-type:jwt",
+2026-03-27T16:54:56.1291016Z ##[debug]    "subjectToken": "***"
+2026-03-27T16:54:56.1292158Z ##[debug]  }
+2026-03-27T16:54:56.1293065Z ##[debug]}
+2026-03-27T16:54:56.1666628Z ##[debug]Successfully generated auth token
+2026-03-27T16:54:56.1670109Z ::add-mask::***
+2026-03-27T16:54:56.1718427Z ##[debug]Node Action run completed with exit code 0
+2026-03-27T16:54:56.1726134Z ##[debug]CLOUDSDK_AUTH_CREDENTIAL_FILE_OVERRIDE='/home/runner/work/Mod-Mail/Mod-Mail/gha-creds-7dc1b08d3d70c131.json'
+2026-03-27T16:54:56.1730771Z ##[debug]GOOGLE_APPLICATION_CREDENTIALS='/home/runner/work/Mod-Mail/Mod-Mail/gha-creds-7dc1b08d3d70c131.json'
+2026-03-27T16:54:56.1735053Z ##[debug]GOOGLE_GHA_CREDS_PATH='/home/runner/work/Mod-Mail/Mod-Mail/gha-creds-7dc1b08d3d70c131.json'
+2026-03-27T16:54:56.1737931Z ##[debug]CLOUDSDK_CORE_PROJECT='mod-mail-490516'
+2026-03-27T16:54:56.1739674Z ##[debug]CLOUDSDK_PROJECT='mod-mail-490516'
+2026-03-27T16:54:56.1741301Z ##[debug]GCLOUD_PROJECT='mod-mail-490516'
+2026-03-27T16:54:56.1742898Z ##[debug]GCP_PROJECT='mod-mail-490516'
+2026-03-27T16:54:56.1744841Z ##[debug]GOOGLE_CLOUD_PROJECT='mod-mail-490516'
+2026-03-27T16:54:56.1750729Z ##[debug]Set output credentials_file_path = /home/runner/work/Mod-Mail/Mod-Mail/gha-creds-7dc1b08d3d70c131.json
+2026-03-27T16:54:56.1753346Z ##[debug]Set output project_id = mod-mail-490516
+2026-03-27T16:54:56.1780529Z ##[debug]Set output auth_token = ***
+2026-03-27T16:54:56.1782759Z ##[debug]Finishing: Authenticate to GCP
+2026-03-27T16:54:56.1807360Z ##[debug]Evaluating condition for step: 'Configure Docker for Artifact Registry'
+2026-03-27T16:54:56.1812099Z ##[debug]Evaluating: success()
+2026-03-27T16:54:56.1813628Z ##[debug]Evaluating success:
+2026-03-27T16:54:56.1815598Z ##[debug]=> true
+2026-03-27T16:54:56.1817024Z ##[debug]Result: true
+2026-03-27T16:54:56.1818899Z ##[debug]Starting: Configure Docker for Artifact Registry
+2026-03-27T16:54:56.1839148Z ##[debug]Loading inputs
+2026-03-27T16:54:56.1848646Z ##[debug]Evaluating: format('gcloud auth configure-docker {0}', env.REGISTRY)
+2026-03-27T16:54:56.1850404Z ##[debug]Evaluating format:
+2026-03-27T16:54:56.1855324Z ##[debug]..Evaluating String:
+2026-03-27T16:54:56.1856629Z ##[debug]..=> 'gcloud auth configure-docker {0}'
+2026-03-27T16:54:56.1870154Z ##[debug]..Evaluating Index:
+2026-03-27T16:54:56.1871330Z ##[debug]....Evaluating env:
+2026-03-27T16:54:56.1872458Z ##[debug]....=> Object
+2026-03-27T16:54:56.1873491Z ##[debug]....Evaluating String:
+2026-03-27T16:54:56.1874983Z ##[debug]....=> 'REGISTRY'
+2026-03-27T16:54:56.1876180Z ##[debug]..=> 'us-east1-docker.pkg.dev'
+2026-03-27T16:54:56.1878498Z ##[debug]=> 'gcloud auth configure-docker us-east1-docker.pkg.dev'
+2026-03-27T16:54:56.1880471Z ##[debug]Result: 'gcloud auth configure-docker us-east1-docker.pkg.dev'
+2026-03-27T16:54:56.1882300Z ##[debug]Loading env
+2026-03-27T16:54:56.1908023Z ##[group]Run gcloud auth configure-docker us-east1-docker.pkg.dev
+2026-03-27T16:54:56.1910093Z [36;1mgcloud auth configure-docker us-east1-docker.pkg.dev[0m
+2026-03-27T16:54:56.1942312Z shell: /usr/bin/bash -e {0}
+2026-03-27T16:54:56.1943411Z env:
+2026-03-27T16:54:56.1944266Z   IMAGE_NAME: my-worker
+2026-03-27T16:54:56.1945589Z   REGISTRY: us-east1-docker.pkg.dev
+2026-03-27T16:54:56.1946805Z   REPOSITORY: mod-mail
+2026-03-27T16:54:56.1947970Z   GCP_PROJECT_ID: mod-mail-490516
+2026-03-27T16:54:56.1949222Z   ZONE: us-east1-b
+2026-03-27T16:54:56.1950283Z   INSTANCE_NAME: discord-bot
+2026-03-27T16:54:56.1951496Z   MACHINE_TYPE: e2-micro
+2026-03-27T16:54:56.1953327Z   SERVICE_ACCOUNT_EMAIL: github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com
+2026-03-27T16:54:56.1957101Z   WORKLOAD_IDENTITY_PROVIDER: projects/376050965276/locations/global/workloadIdentityPools/github-actions-pool/providers/github
+2026-03-27T16:54:56.1960828Z   CLOUDSDK_AUTH_CREDENTIAL_FILE_OVERRIDE: /home/runner/work/Mod-Mail/Mod-Mail/gha-creds-7dc1b08d3d70c131.json
+2026-03-27T16:54:56.1963993Z   GOOGLE_APPLICATION_CREDENTIALS: /home/runner/work/Mod-Mail/Mod-Mail/gha-creds-7dc1b08d3d70c131.json
+2026-03-27T16:54:56.1967171Z   GOOGLE_GHA_CREDS_PATH: /home/runner/work/Mod-Mail/Mod-Mail/gha-creds-7dc1b08d3d70c131.json
+2026-03-27T16:54:56.1969113Z   CLOUDSDK_CORE_PROJECT: mod-mail-490516
+2026-03-27T16:54:56.1970294Z   CLOUDSDK_PROJECT: mod-mail-490516
+2026-03-27T16:54:56.1971640Z   GCLOUD_PROJECT: mod-mail-490516
+2026-03-27T16:54:56.1972742Z   GCP_PROJECT: mod-mail-490516
+2026-03-27T16:54:56.1973814Z   GOOGLE_CLOUD_PROJECT: mod-mail-490516
+2026-03-27T16:54:56.1975067Z ##[endgroup]
+2026-03-27T16:54:56.2029682Z ##[debug]/usr/bin/bash -e /home/runner/work/_temp/0dcb81e8-556d-486d-ab4f-772c14c2698c.sh
+2026-03-27T16:55:01.2515925Z Adding credentials for: us-east1-docker.pkg.dev
+2026-03-27T16:55:01.2517567Z After update, the following will be written to your Docker config file located 
+2026-03-27T16:55:01.2518387Z at [/home/runner/.docker/config.json]:
+2026-03-27T16:55:01.2518862Z  {
+2026-03-27T16:55:01.2519303Z   "credHelpers": {
+2026-03-27T16:55:01.2519838Z     "us-east1-docker.pkg.dev": "gcloud"
+2026-03-27T16:55:01.2520467Z   }
+2026-03-27T16:55:01.2520870Z }
+2026-03-27T16:55:01.2521108Z 
+2026-03-27T16:55:01.2521429Z Do you want to continue (Y/n)?  
+2026-03-27T16:55:01.2707867Z Docker configuration file updated.
+2026-03-27T16:55:01.5283234Z ##[debug]Finishing: Configure Docker for Artifact Registry
+2026-03-27T16:55:01.5295721Z ##[debug]Evaluating condition for step: 'Build Docker image'
+2026-03-27T16:55:01.5299169Z ##[debug]Evaluating: success()
+2026-03-27T16:55:01.5299735Z ##[debug]Evaluating success:
+2026-03-27T16:55:01.5300306Z ##[debug]=> true
+2026-03-27T16:55:01.5300911Z ##[debug]Result: true
+2026-03-27T16:55:01.5302314Z ##[debug]Starting: Build Docker image
+2026-03-27T16:55:01.5316316Z ##[debug]Loading inputs
+2026-03-27T16:55:01.5319222Z ##[debug]Evaluating: format('docker build -t {0}/{1}/{2}/{3}:latest .', env.REGISTRY, env.GCP_PROJECT_ID, env.REPOSITORY, env.IMAGE_NAME)
+2026-03-27T16:55:01.5319957Z ##[debug]Evaluating format:
+2026-03-27T16:55:01.5320275Z ##[debug]..Evaluating String:
+2026-03-27T16:55:01.5320632Z ##[debug]..=> 'docker build -t {0}/{1}/{2}/{3}:latest .'
+2026-03-27T16:55:01.5321175Z ##[debug]..Evaluating Index:
+2026-03-27T16:55:01.5321461Z ##[debug]....Evaluating env:
+2026-03-27T16:55:01.5321750Z ##[debug]....=> Object
+2026-03-27T16:55:01.5322072Z ##[debug]....Evaluating String:
+2026-03-27T16:55:01.5322430Z ##[debug]....=> 'REGISTRY'
+2026-03-27T16:55:01.5322776Z ##[debug]..=> 'us-east1-docker.pkg.dev'
+2026-03-27T16:55:01.5323147Z ##[debug]..Evaluating Index:
+2026-03-27T16:55:01.5323432Z ##[debug]....Evaluating env:
+2026-03-27T16:55:01.5323739Z ##[debug]....=> Object
+2026-03-27T16:55:01.5324007Z ##[debug]....Evaluating String:
+2026-03-27T16:55:01.5324308Z ##[debug]....=> 'GCP_PROJECT_ID'
+2026-03-27T16:55:01.5324907Z ##[debug]..=> 'mod-mail-490516'
+2026-03-27T16:55:01.5325250Z ##[debug]..Evaluating Index:
+2026-03-27T16:55:01.5325543Z ##[debug]....Evaluating env:
+2026-03-27T16:55:01.5325827Z ##[debug]....=> Object
+2026-03-27T16:55:01.5326095Z ##[debug]....Evaluating String:
+2026-03-27T16:55:01.5326387Z ##[debug]....=> 'REPOSITORY'
+2026-03-27T16:55:01.5326712Z ##[debug]..=> 'mod-mail'
+2026-03-27T16:55:01.5327001Z ##[debug]..Evaluating Index:
+2026-03-27T16:55:01.5327278Z ##[debug]....Evaluating env:
+2026-03-27T16:55:01.5327625Z ##[debug]....=> Object
+2026-03-27T16:55:01.5328058Z ##[debug]....Evaluating String:
+2026-03-27T16:55:01.5328351Z ##[debug]....=> 'IMAGE_NAME'
+2026-03-27T16:55:01.5328662Z ##[debug]..=> 'my-worker'
+2026-03-27T16:55:01.5329194Z ##[debug]=> 'docker build -t us-east1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker:latest .'
+2026-03-27T16:55:01.5329994Z ##[debug]Result: 'docker build -t us-east1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker:latest .'
+2026-03-27T16:55:01.5330847Z ##[debug]Loading env
+2026-03-27T16:55:01.5336461Z ##[group]Run docker build -t us-east1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker:latest .
+2026-03-27T16:55:01.5337226Z [36;1mdocker build -t us-east1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker:latest .[0m
+2026-03-27T16:55:01.5365473Z shell: /usr/bin/bash -e {0}
+2026-03-27T16:55:01.5365789Z env:
+2026-03-27T16:55:01.5366023Z   IMAGE_NAME: my-worker
+2026-03-27T16:55:01.5366333Z   REGISTRY: us-east1-docker.pkg.dev
+2026-03-27T16:55:01.5366676Z   REPOSITORY: mod-mail
+2026-03-27T16:55:01.5367180Z   GCP_PROJECT_ID: mod-mail-490516
+2026-03-27T16:55:01.5367506Z   ZONE: us-east1-b
+2026-03-27T16:55:01.5367776Z   INSTANCE_NAME: discord-bot
+2026-03-27T16:55:01.5368085Z   MACHINE_TYPE: e2-micro
+2026-03-27T16:55:01.5368579Z   SERVICE_ACCOUNT_EMAIL: github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com
+2026-03-27T16:55:01.5369558Z   WORKLOAD_IDENTITY_PROVIDER: projects/376050965276/locations/global/workloadIdentityPools/github-actions-pool/providers/github
+2026-03-27T16:55:01.5370653Z   CLOUDSDK_AUTH_CREDENTIAL_FILE_OVERRIDE: /home/runner/work/Mod-Mail/Mod-Mail/gha-creds-7dc1b08d3d70c131.json
+2026-03-27T16:55:01.5371586Z   GOOGLE_APPLICATION_CREDENTIALS: /home/runner/work/Mod-Mail/Mod-Mail/gha-creds-7dc1b08d3d70c131.json
+2026-03-27T16:55:01.5372432Z   GOOGLE_GHA_CREDS_PATH: /home/runner/work/Mod-Mail/Mod-Mail/gha-creds-7dc1b08d3d70c131.json
+2026-03-27T16:55:01.5373018Z   CLOUDSDK_CORE_PROJECT: mod-mail-490516
+2026-03-27T16:55:01.5373375Z   CLOUDSDK_PROJECT: mod-mail-490516
+2026-03-27T16:55:01.5373719Z   GCLOUD_PROJECT: mod-mail-490516
+2026-03-27T16:55:01.5374216Z   GCP_PROJECT: mod-mail-490516
+2026-03-27T16:55:01.5374815Z   GOOGLE_CLOUD_PROJECT: mod-mail-490516
+2026-03-27T16:55:01.5375156Z ##[endgroup]
+2026-03-27T16:55:01.5403625Z ##[debug]/usr/bin/bash -e /home/runner/work/_temp/fba25079-905e-4edc-a917-b5766cfc5b08.sh
+2026-03-27T16:55:01.9193132Z #0 building with "default" instance using docker driver
+2026-03-27T16:55:01.9194042Z 
+2026-03-27T16:55:01.9194369Z #1 [internal] load build definition from Dockerfile
+2026-03-27T16:55:01.9195568Z #1 transferring dockerfile: 611B done
+2026-03-27T16:55:01.9196396Z #1 WARN: FromAsCasing: 'as' and 'FROM' keywords' casing do not match (line 2)
+2026-03-27T16:55:01.9197403Z #1 DONE 0.0s
+2026-03-27T16:55:01.9197629Z 
+2026-03-27T16:55:01.9198157Z #2 [auth] library/rust:pull token for registry-1.docker.io
+2026-03-27T16:55:01.9198791Z #2 DONE 0.0s
+2026-03-27T16:55:01.9199165Z 
+2026-03-27T16:55:01.9199617Z #3 [auth] library/debian:pull token for registry-1.docker.io
+2026-03-27T16:55:01.9200308Z #3 DONE 0.0s
+2026-03-27T16:55:01.9200536Z 
+2026-03-27T16:55:01.9200864Z #4 [internal] load metadata for docker.io/library/rust:latest
+2026-03-27T16:55:02.0111593Z #4 ...
+2026-03-27T16:55:02.0111902Z 
+2026-03-27T16:55:02.0112480Z #5 [internal] load metadata for docker.io/library/debian:bookworm-slim
+2026-03-27T16:55:02.0113736Z #5 DONE 0.3s
+2026-03-27T16:55:02.1317895Z 
+2026-03-27T16:55:02.1319291Z #4 [internal] load metadata for docker.io/library/rust:latest
+2026-03-27T16:55:02.1321011Z #4 DONE 0.4s
+2026-03-27T16:55:02.2569585Z 
+2026-03-27T16:55:02.2570676Z #6 [internal] load .dockerignore
+2026-03-27T16:55:02.2571148Z #6 transferring context: 129B done
+2026-03-27T16:55:02.2571459Z #6 DONE 0.0s
+2026-03-27T16:55:02.2571594Z 
+2026-03-27T16:55:02.2571745Z #7 [internal] load build context
+2026-03-27T16:55:02.2572096Z #7 transferring context: 201.47kB done
+2026-03-27T16:55:02.2572410Z #7 DONE 0.0s
+2026-03-27T16:55:02.2572538Z 
+2026-03-27T16:55:02.2573125Z #8 [stage-1 1/4] FROM docker.io/library/debian:bookworm-slim@sha256:f06537653ac770703bc45b4b113475bd402f451e85223f0f2837acbf89ab020a
+2026-03-27T16:55:02.2574280Z #8 resolve docker.io/library/debian:bookworm-slim@sha256:f06537653ac770703bc45b4b113475bd402f451e85223f0f2837acbf89ab020a done
+2026-03-27T16:55:02.2575522Z #8 sha256:d6b3fe87704bf89df3b8ab19d5f3ab0a248bf5b6b76a602da86d611ea9d23ae0 453B / 453B done
+2026-03-27T16:55:02.2576347Z #8 sha256:f06537653ac770703bc45b4b113475bd402f451e85223f0f2837acbf89ab020a 8.56kB / 8.56kB done
+2026-03-27T16:55:02.2577160Z #8 sha256:8af0e5095f9964007f5ebd11191dfe52dcb51bf3afa2c07f055fc5451b78ba0e 1.02kB / 1.02kB done
+2026-03-27T16:55:02.9163217Z #8 sha256:6db0909c4473287ed4d1f950d26b8bc5b7b4206d365a0e7740cb89e46979153e 4.19MB / 28.24MB 0.7s
+2026-03-27T16:55:03.0184416Z #8 sha256:6db0909c4473287ed4d1f950d26b8bc5b7b4206d365a0e7740cb89e46979153e 14.68MB / 28.24MB 0.8s
+2026-03-27T16:55:03.1242507Z #8 sha256:6db0909c4473287ed4d1f950d26b8bc5b7b4206d365a0e7740cb89e46979153e 23.07MB / 28.24MB 0.9s
+2026-03-27T16:55:03.2494402Z #8 sha256:6db0909c4473287ed4d1f950d26b8bc5b7b4206d365a0e7740cb89e46979153e 28.24MB / 28.24MB 1.0s done
+2026-03-27T16:55:03.2498949Z #8 extracting sha256:6db0909c4473287ed4d1f950d26b8bc5b7b4206d365a0e7740cb89e46979153e
+2026-03-27T16:55:04.7738464Z #8 extracting sha256:6db0909c4473287ed4d1f950d26b8bc5b7b4206d365a0e7740cb89e46979153e 1.5s done
+2026-03-27T16:55:04.7859614Z #8 DONE 2.6s
+2026-03-27T16:55:04.7869980Z 
+2026-03-27T16:55:04.7870704Z #9 [stage-1 2/4] RUN apt-get update && apt-get install -y ca-certificates && rm -rf /var/lib/apt/lists/*
+2026-03-27T16:55:05.4977684Z #9 0.654 Get:1 http://deb.debian.org/debian bookworm InRelease [151 kB]
+2026-03-27T16:55:05.4978640Z #9 0.676 Get:2 http://deb.debian.org/debian bookworm-updates InRelease [55.4 kB]
+2026-03-27T16:55:05.4979626Z #9 0.676 Get:3 http://deb.debian.org/debian-security bookworm-security InRelease [48.0 kB]
+2026-03-27T16:55:05.5966146Z #9 0.763 Get:4 http://deb.debian.org/debian bookworm/main amd64 Packages [8792 kB]
+2026-03-27T16:55:05.7411371Z #9 0.849 Get:5 http://deb.debian.org/debian bookworm-updates/main amd64 Packages [6924 B]
+2026-03-27T16:55:05.7412640Z #9 0.913 Get:6 http://deb.debian.org/debian-security bookworm-security/main amd64 Packages [294 kB]
+2026-03-27T16:55:07.0793409Z #9 2.148 Fetched 9347 kB in 2s (6189 kB/s)
+2026-03-27T16:55:07.3991002Z #9 2.148 Reading package lists...
+2026-03-27T16:55:07.8613031Z #9 2.664 Reading package lists...
+2026-03-27T16:55:07.9743552Z #9 3.099 Building dependency tree...
+2026-03-27T16:55:08.2163618Z #9 3.204 Reading state information...
+2026-03-27T16:55:08.6562933Z #9 3.295 The following additional packages will be installed:
+2026-03-27T16:55:08.6563868Z #9 3.295   libssl3 openssl
+2026-03-27T16:55:08.6565413Z #9 3.886 The following NEW packages will be installed:
+2026-03-27T16:55:08.8420340Z #9 3.886   ca-certificates libssl3 openssl
+2026-03-27T16:55:08.8421332Z #9 3.902 0 upgraded, 3 newly installed, 0 to remove and 0 not upgraded.
+2026-03-27T16:55:08.8422121Z #9 3.902 Need to get 3617 kB of archives.
+2026-03-27T16:55:08.8422936Z #9 3.902 After this operation, 8928 kB of additional disk space will be used.
+2026-03-27T16:55:08.8424320Z #9 3.902 Get:1 http://deb.debian.org/debian-security bookworm-security/main amd64 libssl3 amd64 3.0.18-1~deb12u2 [2030 kB]
+2026-03-27T16:55:08.8426273Z #9 3.917 Get:2 http://deb.debian.org/debian-security bookworm-security/main amd64 openssl amd64 3.0.18-1~deb12u2 [1433 kB]
+2026-03-27T16:55:08.8427849Z #9 3.921 Get:3 http://deb.debian.org/debian bookworm/main amd64 ca-certificates all 20230311+deb12u1 [155 kB]
+2026-03-27T16:55:09.0798761Z #9 4.214 debconf: delaying package configuration, since apt-utils is not installed
+2026-03-27T16:55:09.0800736Z #9 4.235 Fetched 3617 kB in 0s (116 MB/s)
+2026-03-27T16:55:09.0804311Z #9 4.255 Selecting previously unselected package libssl3:amd64.
+2026-03-27T16:55:09.0806092Z #9 4.255 (Reading database ... 
+2026-03-27T16:55:09.0806519Z (Reading database ... 5%
+2026-03-27T16:55:09.0806941Z (Reading database ... 10%
+2026-03-27T16:55:09.0808531Z (Reading database ... 15%
+2026-03-27T16:55:09.0808979Z (Reading database ... 20%
+2026-03-27T16:55:09.0809575Z (Reading database ... 25%
+2026-03-27T16:55:09.0810006Z (Reading database ... 30%
+2026-03-27T16:55:09.0810433Z (Reading database ... 35%
+2026-03-27T16:55:09.0810828Z (Reading database ... 40%
+2026-03-27T16:55:09.0811202Z (Reading database ... 45%
+2026-03-27T16:55:09.0811551Z (Reading database ... 50%
+2026-03-27T16:55:09.0811877Z (Reading database ... 55%
+2026-03-27T16:55:09.0812243Z (Reading database ... 60%
+2026-03-27T16:55:09.0812536Z (Reading database ... 65%
+2026-03-27T16:55:09.0812774Z (Reading database ... 70%
+2026-03-27T16:55:09.0813011Z (Reading database ... 75%
+2026-03-27T16:55:09.0813244Z (Reading database ... 80%
+2026-03-27T16:55:09.0813483Z (Reading database ... 85%
+2026-03-27T16:55:09.0813720Z (Reading database ... 90%
+2026-03-27T16:55:09.0813963Z (Reading database ... 95%
+2026-03-27T16:55:09.0814207Z (Reading database ... 100%
+2026-03-27T16:55:09.0814806Z (Reading database ... 6096 files and directories currently installed.)
+2026-03-27T16:55:09.0816119Z #9 4.263 Preparing to unpack .../libssl3_3.0.18-1~deb12u2_amd64.deb ...
+2026-03-27T16:55:09.0817011Z #9 4.265 Unpacking libssl3:amd64 (3.0.18-1~deb12u2) ...
+2026-03-27T16:55:09.1835703Z #9 4.413 Selecting previously unselected package openssl.
+2026-03-27T16:55:09.2934208Z #9 4.414 Preparing to unpack .../openssl_3.0.18-1~deb12u2_amd64.deb ...
+2026-03-27T16:55:09.2935902Z #9 4.415 Unpacking openssl (3.0.18-1~deb12u2) ...
+2026-03-27T16:55:09.4092193Z #9 4.528 Selecting previously unselected package ca-certificates.
+2026-03-27T16:55:09.4102027Z #9 4.530 Preparing to unpack .../ca-certificates_20230311+deb12u1_all.deb ...
+2026-03-27T16:55:09.4103570Z #9 4.530 Unpacking ca-certificates (20230311+deb12u1) ...
+2026-03-27T16:55:09.4104181Z #9 4.585 Setting up libssl3:amd64 (3.0.18-1~deb12u2) ...
+2026-03-27T16:55:09.4105098Z #9 4.587 Setting up openssl (3.0.18-1~deb12u2) ...
+2026-03-27T16:55:09.4105720Z #9 4.592 Setting up ca-certificates (20230311+deb12u1) ...
+2026-03-27T16:55:09.5388443Z #9 4.685 debconf: unable to initialize frontend: Dialog
+2026-03-27T16:55:09.5392158Z #9 4.685 debconf: (TERM is not set, so the dialog frontend is not usable.)
+2026-03-27T16:55:09.5392887Z #9 4.685 debconf: falling back to frontend: Readline
+2026-03-27T16:55:09.5393468Z #9 4.685 debconf: unable to initialize frontend: Readline
+2026-03-27T16:55:09.5401284Z #9 4.685 debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.36.0 /usr/local/share/perl/5.36.0 /usr/lib/x86_64-linux-gnu/perl5/5.36 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.36 /usr/share/perl/5.36 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 7.)
+2026-03-27T16:55:09.5404209Z #9 4.685 debconf: falling back to frontend: Teletype
+2026-03-27T16:55:10.0320387Z #9 5.153 Updating certificates in /etc/ssl/certs...
+2026-03-27T16:55:10.6162637Z #9 5.820 142 added, 0 removed; done.
+2026-03-27T16:55:10.6163439Z #9 5.835 Processing triggers for libc-bin (2.36-9+deb12u13) ...
+2026-03-27T16:55:10.6164419Z #9 5.846 Processing triggers for ca-certificates (20230311+deb12u1) ...
+2026-03-27T16:55:10.7686761Z #9 5.850 Updating certificates in /etc/ssl/certs...
+2026-03-27T16:55:11.1479117Z #9 6.377 0 added, 0 removed; done.
+2026-03-27T16:55:11.1479573Z #9 6.377 Running hooks in /etc/ca-certificates/update.d...
+2026-03-27T16:55:11.2649904Z #9 6.378 done.
+2026-03-27T16:55:11.3675943Z #9 DONE 6.6s
+2026-03-27T16:55:11.3680773Z 
+2026-03-27T16:55:11.3681189Z #10 [stage-1 3/4] WORKDIR /app
+2026-03-27T16:55:11.5450262Z #10 DONE 0.0s
+2026-03-27T16:55:11.5451428Z 
+2026-03-27T16:55:11.5452390Z #11 [builder 1/5] FROM docker.io/library/rust:latest@sha256:f2a0f2b3529c9bbbf5479d131611451a3cc3956d9a11374d6d4ba96f059c1dce
+2026-03-27T16:55:11.5454051Z #11 resolve docker.io/library/rust:latest@sha256:f2a0f2b3529c9bbbf5479d131611451a3cc3956d9a11374d6d4ba96f059c1dce done
+2026-03-27T16:55:11.5456316Z #11 sha256:8f6ad858d0a46fa8ee628532c70b8dc82d06179d543b0b09ec19fc03d4c5b373 49.30MB / 49.30MB 0.5s done
+2026-03-27T16:55:11.5457821Z #11 sha256:b012eb15dff0bce418c03ec940325aee6aa4300d771c325728855697e620c63a 25.62MB / 25.62MB 0.5s done
+2026-03-27T16:55:11.5459070Z #11 sha256:ee3a0e7d77f0c84203cab438fcf345647c8121bbd80506a3c692f8608a14c4f4 67.78MB / 67.78MB 0.6s done
+2026-03-27T16:55:11.5460185Z #11 sha256:f2a0f2b3529c9bbbf5479d131611451a3cc3956d9a11374d6d4ba96f059c1dce 8.99kB / 8.99kB done
+2026-03-27T16:55:11.5461261Z #11 sha256:8b9d51a5223dcfb65bd923a4fc0533fdb6adf1cb94bd2be3561575cd91dd5d99 1.93kB / 1.93kB done
+2026-03-27T16:55:11.5462212Z #11 sha256:9d7fa29551b798977dcbb8ec8ca9bdbe62cc85ebeac61f102c49eb034e21b7fb 4.87kB / 4.87kB done
+2026-03-27T16:55:11.5463261Z #11 extracting sha256:8f6ad858d0a46fa8ee628532c70b8dc82d06179d543b0b09ec19fc03d4c5b373 2.1s done
+2026-03-27T16:55:11.5464126Z #11 sha256:efe9023203e7577f314ca4e272302398978739d5a1cca6afa0942a9d7c77a76f 213.03MB / 213.03MB 4.4s done
+2026-03-27T16:55:11.5465504Z #11 sha256:8688d0f2f567884eb217c6f80efa063bdb13a1951e92e6c5cac1ae5b736f5e1b 236.08MB / 236.08MB 4.0s done
+2026-03-27T16:55:11.5466198Z #11 extracting sha256:b012eb15dff0bce418c03ec940325aee6aa4300d771c325728855697e620c63a 1.7s done
+2026-03-27T16:55:11.5467058Z #11 extracting sha256:ee3a0e7d77f0c84203cab438fcf345647c8121bbd80506a3c692f8608a14c4f4 2.4s
+2026-03-27T16:55:11.7276775Z #11 extracting sha256:ee3a0e7d77f0c84203cab438fcf345647c8121bbd80506a3c692f8608a14c4f4 2.6s done
+2026-03-27T16:55:11.7277843Z #11 extracting sha256:8688d0f2f567884eb217c6f80efa063bdb13a1951e92e6c5cac1ae5b736f5e1b
+2026-03-27T16:55:16.9045420Z #11 extracting sha256:8688d0f2f567884eb217c6f80efa063bdb13a1951e92e6c5cac1ae5b736f5e1b 5.2s
+2026-03-27T16:55:17.7353452Z #11 extracting sha256:8688d0f2f567884eb217c6f80efa063bdb13a1951e92e6c5cac1ae5b736f5e1b 6.0s done
+2026-03-27T16:55:18.8789211Z #11 extracting sha256:efe9023203e7577f314ca4e272302398978739d5a1cca6afa0942a9d7c77a76f
+2026-03-27T16:55:21.4658900Z #11 extracting sha256:efe9023203e7577f314ca4e272302398978739d5a1cca6afa0942a9d7c77a76f 2.6s done
+2026-03-27T16:55:22.7598454Z #11 DONE 20.6s
+2026-03-27T16:55:22.9462727Z 
+2026-03-27T16:55:22.9463230Z #12 [builder 2/5] WORKDIR /app
+2026-03-27T16:55:22.9463748Z #12 DONE 0.0s
+2026-03-27T16:55:22.9463969Z 
+2026-03-27T16:55:22.9464207Z #13 [builder 3/5] COPY Cargo.toml Cargo.lock* ./
+2026-03-27T16:55:22.9465155Z #13 DONE 0.0s
+2026-03-27T16:55:22.9465364Z 
+2026-03-27T16:55:22.9465537Z #14 [builder 4/5] COPY src ./src
+2026-03-27T16:55:22.9466272Z #14 DONE 0.0s
+2026-03-27T16:55:22.9466491Z 
+2026-03-27T16:55:22.9466697Z #15 [builder 5/5] RUN cargo build --release
+2026-03-27T16:55:22.9467396Z #15 0.149     Updating crates.io index
+2026-03-27T16:55:23.4367472Z #15 0.640  Downloading crates ...
+2026-03-27T16:55:23.5372129Z #15 0.699   Downloaded hyper v1.8.1
+2026-03-27T16:55:23.5372749Z #15 0.711   Downloaded tungstenite v0.21.0
+2026-03-27T16:55:23.5373345Z #15 0.716   Downloaded tinyvec v1.10.0
+2026-03-27T16:55:23.5373970Z #15 0.723   Downloaded cfg_aliases v0.2.1
+2026-03-27T16:55:23.5374791Z #15 0.725   Downloaded litemap v0.8.1
+2026-03-27T16:55:23.5375331Z #15 0.728   Downloaded log v0.4.29
+2026-03-27T16:55:23.5375847Z #15 0.732   Downloaded futures-sink v0.3.31
+2026-03-27T16:55:23.5376439Z #15 0.734   Downloaded generic-array v0.14.7
+2026-03-27T16:55:23.5377053Z #15 0.737   Downloaded idna_adapter v1.2.1
+2026-03-27T16:55:23.5377617Z #15 0.739   Downloaded num-conv v0.2.0
+2026-03-27T16:55:23.5378158Z #15 0.740   Downloaded proc-macro2 v1.0.106
+2026-03-27T16:55:23.6392630Z #15 0.745   Downloaded rand_chacha v0.3.1
+2026-03-27T16:55:23.6393230Z #15 0.747   Downloaded displaydoc v0.2.5
+2026-03-27T16:55:23.6393751Z #15 0.752   Downloaded reqwest v0.12.28
+2026-03-27T16:55:23.6394241Z #15 0.760   Downloaded httparse v1.10.1
+2026-03-27T16:55:23.6394985Z #15 0.764   Downloaded rand_core v0.6.4
+2026-03-27T16:55:23.6395524Z #15 0.767   Downloaded pin-project-lite v0.2.16
+2026-03-27T16:55:23.6396099Z #15 0.776   Downloaded potential_utf v0.1.4
+2026-03-27T16:55:23.6396694Z #15 0.778   Downloaded percent-encoding v2.3.2
+2026-03-27T16:55:23.6397246Z #15 0.780   Downloaded openssl-probe v0.1.6
+2026-03-27T16:55:23.6397762Z #15 0.782   Downloaded libc v0.2.180
+2026-03-27T16:55:23.6398248Z #15 0.837   Downloaded rustc-hash v2.1.1
+2026-03-27T16:55:23.6398722Z #15 0.840   Downloaded adler2 v2.0.1
+2026-03-27T16:55:23.6399228Z #15 0.842   Downloaded zerovec-derive v0.11.2
+2026-03-27T16:55:23.7513598Z #15 0.845   Downloaded ryu v1.0.22
+2026-03-27T16:55:23.7514191Z #15 0.851   Downloaded untrusted v0.9.0
+2026-03-27T16:55:23.7515013Z #15 0.854   Downloaded futures-task v0.3.31
+2026-03-27T16:55:23.7515589Z #15 0.857   Downloaded want v0.3.1
+2026-03-27T16:55:23.7516102Z #15 0.859   Downloaded yoke v0.8.1
+2026-03-27T16:55:23.7516610Z #15 0.862   Downloaded unicase v2.9.0
+2026-03-27T16:55:23.7517175Z #15 0.864   Downloaded openssl-macros v0.1.1
+2026-03-27T16:55:23.7517763Z #15 0.866   Downloaded tokio-rustls v0.26.4
+2026-03-27T16:55:23.7518412Z #15 0.869   Downloaded tracing-attributes v0.1.31
+2026-03-27T16:55:23.7519406Z #15 0.874   Downloaded tracing-core v0.1.36
+2026-03-27T16:55:23.7519998Z #15 0.878   Downloaded pkg-config v0.3.32
+2026-03-27T16:55:23.7520558Z #15 0.881   Downloaded tokio-util v0.7.18
+2026-03-27T16:55:23.7521125Z #15 0.892   Downloaded rand_chacha v0.9.0
+2026-03-27T16:55:23.7521724Z #15 0.895   Downloaded data-encoding v2.10.0
+2026-03-27T16:55:23.7522307Z #15 0.897   Downloaded zerovec v0.11.5
+2026-03-27T16:55:23.7522853Z #15 0.905   Downloaded icu_provider v2.1.1
+2026-03-27T16:55:23.7523427Z #15 0.909   Downloaded serde_json v1.0.149
+2026-03-27T16:55:23.7524019Z #15 0.920   Downloaded num-traits v0.2.19
+2026-03-27T16:55:23.7524821Z #15 0.924   Downloaded tokio-tungstenite v0.21.0
+2026-03-27T16:55:23.7525315Z #15 0.927   Downloaded zerofrom v0.1.6
+2026-03-27T16:55:23.7525749Z #15 0.929   Downloaded mio v1.1.1
+2026-03-27T16:55:23.7526194Z #15 0.938   Downloaded sync_wrapper v1.0.2
+2026-03-27T16:55:23.7526643Z #15 0.940   Downloaded syn v2.0.114
+2026-03-27T16:55:23.7527292Z #15 0.954   Downloaded tinystr v0.8.2
+2026-03-27T16:55:23.8693983Z #15 0.958   Downloaded hashbrown v0.16.1
+2026-03-27T16:55:23.8695080Z #15 0.965   Downloaded version_check v0.9.5
+2026-03-27T16:55:23.8695928Z #15 0.967   Downloaded tower-service v0.3.3
+2026-03-27T16:55:23.8696490Z #15 0.969   Downloaded chrono v0.4.43
+2026-03-27T16:55:23.8696952Z #15 0.979   Downloaded synstructure v0.13.2
+2026-03-27T16:55:23.8697414Z #15 0.980   Downloaded try-lock v0.2.5
+2026-03-27T16:55:23.8697850Z #15 0.982   Downloaded zmij v1.0.19
+2026-03-27T16:55:23.8698918Z #15 0.985   Downloaded zeroize v1.8.2
+2026-03-27T16:55:23.8699637Z #15 0.987   Downloaded utf-8 v0.7.6
+2026-03-27T16:55:23.8700197Z #15 0.989   Downloaded smallvec v1.15.1
+2026-03-27T16:55:23.8700824Z #15 0.992   Downloaded utf8_iter v1.0.4
+2026-03-27T16:55:23.8701278Z #15 0.994   Downloaded writeable v0.6.2
+2026-03-27T16:55:23.8701748Z #15 0.996   Downloaded serde_derive v1.0.228
+2026-03-27T16:55:23.8702255Z #15 1.001   Downloaded unicode-ident v1.0.22
+2026-03-27T16:55:23.8702774Z #15 1.005   Downloaded url v2.5.8
+2026-03-27T16:55:23.8703208Z #15 1.008   Downloaded thiserror v1.0.69
+2026-03-27T16:55:23.8703663Z #15 1.017   Downloaded typenum v1.19.0
+2026-03-27T16:55:23.8704121Z #15 1.021   Downloaded encoding_rs v0.8.35
+2026-03-27T16:55:23.8704898Z #15 1.045   Downloaded rustls-webpki v0.103.9
+2026-03-27T16:55:23.8705545Z #15 1.049   Downloaded rustls-pki-types v1.14.0
+2026-03-27T16:55:23.8706135Z #15 1.053   Downloaded tracing v0.1.44
+2026-03-27T16:55:23.8707095Z #15 1.072   Downloaded tower-layer v0.3.3
+2026-03-27T16:55:23.9753534Z #15 1.074   Downloaded typemap_rev v0.3.0
+2026-03-27T16:55:23.9754460Z #15 1.075   Downloaded tokio-native-tls v0.3.1
+2026-03-27T16:55:23.9756750Z #15 1.078   Downloaded vcpkg v0.2.15
+2026-03-27T16:55:23.9757248Z #15 1.162   Downloaded tinyvec_macros v0.1.1
+2026-03-27T16:55:23.9758775Z #15 1.163   Downloaded subtle v2.6.1
+2026-03-27T16:55:23.9759262Z #15 1.165   Downloaded zerofrom-derive v0.1.6
+2026-03-27T16:55:23.9759818Z #15 1.166   Downloaded yoke-derive v0.8.1
+2026-03-27T16:55:23.9760292Z #15 1.168   Downloaded thiserror v2.0.18
+2026-03-27T16:55:23.9760741Z #15 1.178   Downloaded sha1 v0.10.6
+2026-03-27T16:55:24.0978586Z #15 1.181   Downloaded serde_urlencoded v0.7.1
+2026-03-27T16:55:24.0979413Z #15 1.184   Downloaded shlex v1.3.0
+2026-03-27T16:55:24.0980169Z #15 1.186   Downloaded serde_cow v0.1.2
+2026-03-27T16:55:24.0980891Z #15 1.187   Downloaded tower v0.5.3
+2026-03-27T16:55:24.0981323Z #15 1.203   Downloaded secrecy v0.8.0
+2026-03-27T16:55:24.0981760Z #15 1.205   Downloaded zerotrie v0.2.3
+2026-03-27T16:55:24.0982199Z #15 1.210   Downloaded rustls v0.23.36
+2026-03-27T16:55:24.0982654Z #15 1.226   Downloaded tower-http v0.6.8
+2026-03-27T16:55:24.0983107Z #15 1.238   Downloaded serde v1.0.228
+2026-03-27T16:55:24.0984214Z #15 1.243   Downloaded tokio-macros v2.6.0
+2026-03-27T16:55:24.0985007Z #15 1.244   Downloaded thiserror-impl v1.0.69
+2026-03-27T16:55:24.0985497Z #15 1.247   Downloaded time v0.3.46
+2026-03-27T16:55:24.0986283Z #15 1.265   Downloaded zerocopy v0.8.37
+2026-03-27T16:55:24.0986925Z #15 1.301   Downloaded quinn-proto v0.11.13
+2026-03-27T16:55:24.1982185Z #15 1.310   Downloaded webpki-roots v1.0.5
+2026-03-27T16:55:24.1982749Z #15 1.314   Downloaded rustls v0.22.4
+2026-03-27T16:55:24.1983084Z #15 1.333   Downloaded serenity v0.12.5
+2026-03-27T16:55:24.1983410Z #15 1.356   Downloaded tokio-rustls v0.25.0
+2026-03-27T16:55:24.1983727Z #15 1.359   Downloaded openssl v0.10.75
+2026-03-27T16:55:24.1984030Z #15 1.372   Downloaded h2 v0.4.13
+2026-03-27T16:55:24.1984316Z #15 1.381   Downloaded futures-util v0.3.31
+2026-03-27T16:55:24.1985017Z #15 1.401   Downloaded simd-adler32 v0.3.8
+2026-03-27T16:55:24.3509551Z #15 1.404   Downloaded idna v1.1.0
+2026-03-27T16:55:24.3510391Z #15 1.408   Downloaded futures v0.3.31
+2026-03-27T16:55:24.3511147Z #15 1.415   Downloaded memchr v2.7.6
+2026-03-27T16:55:24.3511897Z #15 1.423   Downloaded indexmap v2.13.0
+2026-03-27T16:55:24.3512640Z #15 1.429   Downloaded cc v1.2.55
+2026-03-27T16:55:24.3513695Z #15 1.433   Downloaded rand v0.9.2
+2026-03-27T16:55:24.3514423Z #15 1.439   Downloaded miniz_oxide v0.8.9
+2026-03-27T16:55:24.3515307Z #15 1.442   Downloaded flate2 v1.1.8
+2026-03-27T16:55:24.3515797Z #15 1.449   Downloaded rustls-webpki v0.102.8
+2026-03-27T16:55:24.3516297Z #15 1.482   Downloaded rand v0.8.5
+2026-03-27T16:55:24.3516713Z #15 1.487   Downloaded quinn v0.11.9
+2026-03-27T16:55:24.3517133Z #15 1.492   Downloaded tokio v1.49.0
+2026-03-27T16:55:24.3517576Z #15 1.554   Downloaded openssl-sys v0.9.111
+2026-03-27T16:55:24.4528972Z #15 1.562   Downloaded base64 v0.22.1
+2026-03-27T16:55:24.4530006Z #15 1.568   Downloaded icu_properties v2.1.2
+2026-03-27T16:55:24.4530643Z #15 1.571   Downloaded bytes v1.11.0
+2026-03-27T16:55:24.4531223Z #15 1.576   Downloaded quinn-udp v0.5.14
+2026-03-27T16:55:24.4531800Z #15 1.579   Downloaded once_cell v1.21.3
+2026-03-27T16:55:24.4532413Z #15 1.582   Downloaded icu_normalizer_data v2.1.1
+2026-03-27T16:55:24.4533077Z #15 1.585   Downloaded icu_normalizer v2.1.1
+2026-03-27T16:55:24.4533759Z #15 1.590   Downloaded icu_locale_core v2.1.1
+2026-03-27T16:55:24.4534362Z #15 1.600   Downloaded fnv v1.0.7
+2026-03-27T16:55:24.4535168Z #15 1.601   Downloaded hyper-rustls v0.27.7
+2026-03-27T16:55:24.4535785Z #15 1.605   Downloaded cpufeatures v0.2.17
+2026-03-27T16:55:24.4536375Z #15 1.607   Downloaded native-tls v0.2.14
+2026-03-27T16:55:24.4536953Z #15 1.609   Downloaded mime_guess v2.0.5
+2026-03-27T16:55:24.4537599Z #15 1.612   Downloaded find-msvc-tools v0.1.9
+2026-03-27T16:55:24.4538154Z #15 1.614   Downloaded rand_core v0.9.5
+2026-03-27T16:55:24.4538667Z #15 1.616   Downloaded crc32fast v1.5.0
+2026-03-27T16:55:24.4539169Z #15 1.619   Downloaded ipnet v2.11.0
+2026-03-27T16:55:24.4539705Z #15 1.621   Downloaded iana-time-zone v0.1.65
+2026-03-27T16:55:24.4540262Z #15 1.625   Downloaded deranged v0.5.5
+2026-03-27T16:55:24.4540779Z #15 1.627   Downloaded byteorder v1.5.0
+2026-03-27T16:55:24.4541283Z #15 1.629   Downloaded autocfg v1.5.0
+2026-03-27T16:55:24.4541804Z #15 1.632   Downloaded socket2 v0.6.2
+2026-03-27T16:55:24.4542296Z #15 1.634   Downloaded quote v1.0.44
+2026-03-27T16:55:24.4542828Z #15 1.638   Downloaded futures-channel v0.3.31
+2026-03-27T16:55:24.4543379Z #15 1.640   Downloaded digest v0.10.7
+2026-03-27T16:55:24.4543873Z #15 1.643   Downloaded arrayvec v0.7.6
+2026-03-27T16:55:24.4544413Z #15 1.646   Downloaded ppv-lite86 v0.2.21
+2026-03-27T16:55:24.4545105Z #15 1.648   Downloaded http-body-util v0.1.3
+2026-03-27T16:55:24.4545667Z #15 1.650   Downloaded async-trait v0.1.89
+2026-03-27T16:55:24.4546235Z #15 1.656   Downloaded thiserror-impl v2.0.18
+2026-03-27T16:55:24.5583008Z #15 1.658   Downloaded pin-utils v0.1.0
+2026-03-27T16:55:24.5583887Z #15 1.660   Downloaded mime v0.3.17
+2026-03-27T16:55:24.5584928Z #15 1.662   Downloaded webpki-roots v0.26.11
+2026-03-27T16:55:24.5585741Z #15 1.664   Downloaded slab v0.4.12
+2026-03-27T16:55:24.5586507Z #15 1.665   Downloaded futures-macro v0.3.31
+2026-03-27T16:55:24.5587352Z #15 1.667   Downloaded atomic-waker v1.1.2
+2026-03-27T16:55:24.5588191Z #15 1.669   Downloaded time-macros v0.2.26
+2026-03-27T16:55:24.5588667Z #15 1.672   Downloaded powerfmt v0.2.0
+2026-03-27T16:55:24.5589116Z #15 1.673   Downloaded lru-slab v0.1.2
+2026-03-27T16:55:24.5589561Z #15 1.675   Downloaded hyper-tls v0.6.0
+2026-03-27T16:55:24.5590007Z #15 1.677   Downloaded http-body v1.0.1
+2026-03-27T16:55:24.5590465Z #15 1.678   Downloaded equivalent v1.0.2
+2026-03-27T16:55:24.5590965Z #15 1.679   Downloaded stable_deref_trait v1.2.1
+2026-03-27T16:55:24.5591503Z #15 1.681   Downloaded form_urlencoded v1.2.2
+2026-03-27T16:55:24.5591988Z #15 1.682   Downloaded time-core v0.1.8
+2026-03-27T16:55:24.5592452Z #15 1.683   Downloaded serde_core v1.0.228
+2026-03-27T16:55:24.5592915Z #15 1.687   Downloaded ring v0.17.14
+2026-03-27T16:55:24.5593364Z #15 1.743   Downloaded futures-io v0.3.31
+2026-03-27T16:55:24.5593838Z #15 1.744   Downloaded futures-core v0.3.31
+2026-03-27T16:55:24.5594315Z #15 1.746   Downloaded getrandom v0.2.17
+2026-03-27T16:55:24.5595192Z #15 1.750   Downloaded foreign-types-shared v0.1.1
+2026-03-27T16:55:24.5595737Z #15 1.751   Downloaded foreign-types v0.3.2
+2026-03-27T16:55:24.5596232Z #15 1.752   Downloaded icu_collections v2.1.1
+2026-03-27T16:55:24.5596715Z #15 1.761   Downloaded cfg-if v1.0.4
+2026-03-27T16:55:24.6726202Z #15 1.763   Downloaded icu_properties_data v2.1.2
+2026-03-27T16:55:24.6727199Z #15 1.778   Downloaded hyper-util v0.1.20
+2026-03-27T16:55:24.6728024Z #15 1.787   Downloaded crypto-common v0.1.7
+2026-03-27T16:55:24.6728843Z #15 1.788   Downloaded getrandom v0.3.4
+2026-03-27T16:55:24.6729619Z #15 1.793   Downloaded iri-string v0.7.10
+2026-03-27T16:55:24.6730320Z #15 1.804   Downloaded block-buffer v0.10.4
+2026-03-27T16:55:24.6730792Z #15 1.805   Downloaded bitflags v2.10.0
+2026-03-27T16:55:24.6731240Z #15 1.811   Downloaded http v1.4.0
+2026-03-27T16:55:24.6731682Z #15 1.816   Downloaded itoa v1.0.17
+2026-03-27T16:55:24.6732136Z #15 1.875    Compiling proc-macro2 v1.0.106
+2026-03-27T16:55:24.6732540Z #15 1.875    Compiling unicode-ident v1.0.22
+2026-03-27T16:55:24.8357449Z #15 1.875    Compiling quote v1.0.44
+2026-03-27T16:55:24.8359063Z #15 1.876    Compiling libc v0.2.180
+2026-03-27T16:55:24.8386885Z #15 1.939    Compiling shlex v1.3.0
+2026-03-27T16:55:25.0277278Z #15 2.038    Compiling find-msvc-tools v0.1.9
+2026-03-27T16:55:25.0279273Z #15 2.068    Compiling cfg-if v1.0.4
+2026-03-27T16:55:25.0279738Z #15 2.103    Compiling bytes v1.11.0
+2026-03-27T16:55:25.1786428Z #15 2.230    Compiling cc v1.2.55
+2026-03-27T16:55:25.8969576Z #15 2.975    Compiling syn v2.0.114
+2026-03-27T16:55:25.8971444Z #15 3.050    Compiling pin-project-lite v0.2.16
+2026-03-27T16:55:25.8972611Z #15 3.100    Compiling stable_deref_trait v1.2.1
+2026-03-27T16:55:26.0075743Z #15 3.122    Compiling futures-core v0.3.31
+2026-03-27T16:55:26.0077099Z #15 3.134    Compiling serde_core v1.0.228
+2026-03-27T16:55:26.0078192Z #15 3.210    Compiling itoa v1.0.17
+2026-03-27T16:55:26.3550933Z #15 3.311    Compiling mio v1.1.1
+2026-03-27T16:55:26.3553281Z #15 3.407    Compiling getrandom v0.2.17
+2026-03-27T16:55:26.5497518Z #15 3.594    Compiling socket2 v0.6.2
+2026-03-27T16:55:26.5498983Z #15 3.601    Compiling ring v0.17.14
+2026-03-27T16:55:26.7604500Z #15 3.963    Compiling zeroize v1.8.2
+2026-03-27T16:55:27.3985737Z #15 4.601    Compiling log v0.4.29
+2026-03-27T16:55:27.7129326Z #15 4.765    Compiling once_cell v1.21.3
+2026-03-27T16:55:27.9537425Z #15 4.949    Compiling futures-sink v0.3.31
+2026-03-27T16:55:27.9540047Z #15 5.004    Compiling rustls-pki-types v1.14.0
+2026-03-27T16:55:28.8146829Z #15 5.867    Compiling http v1.4.0
+2026-03-27T16:55:29.6846525Z #15 6.736    Compiling synstructure v0.13.2
+2026-03-27T16:55:30.0822615Z #15 7.285    Compiling untrusted v0.9.0
+2026-03-27T16:55:30.3027898Z #15 7.354    Compiling smallvec v1.15.1
+2026-03-27T16:55:30.4996108Z #15 7.553    Compiling slab v0.4.12
+2026-03-27T16:55:30.6508192Z #15 7.702    Compiling serde v1.0.228
+2026-03-27T16:55:30.8363079Z #15 7.888    Compiling futures-channel v0.3.31
+2026-03-27T16:55:30.8367331Z #15 7.888    Compiling pkg-config v0.3.32
+2026-03-27T16:55:30.9813686Z #15 8.082    Compiling litemap v0.8.1
+2026-03-27T16:55:31.1480192Z #15 8.184    Compiling zerofrom-derive v0.1.6
+2026-03-27T16:55:31.1482808Z #15 8.238    Compiling yoke-derive v0.8.1
+2026-03-27T16:55:31.2984084Z #15 8.351    Compiling zerovec-derive v0.11.2
+2026-03-27T16:55:32.0421001Z #15 9.094    Compiling tokio-macros v2.6.0
+2026-03-27T16:55:32.3062250Z #15 9.274    Compiling zerofrom v0.1.6
+2026-03-27T16:55:32.3064292Z #15 9.356    Compiling yoke v0.8.1
+2026-03-27T16:55:32.3064823Z #15 9.360    Compiling displaydoc v0.2.5
+2026-03-27T16:55:32.4204495Z #15 9.509    Compiling zerovec v0.11.5
+2026-03-27T16:55:32.4208169Z #15 9.623    Compiling tokio v1.49.0
+2026-03-27T16:55:32.6566720Z #15 9.859    Compiling serde_derive v1.0.228
+2026-03-27T16:55:32.9097944Z #15 10.11    Compiling tinystr v0.8.2
+2026-03-27T16:55:33.0608790Z #15 10.26    Compiling memchr v2.7.6
+2026-03-27T16:55:34.3505687Z #15 11.55    Compiling pin-utils v0.1.0
+2026-03-27T16:55:34.5345214Z #15 11.59    Compiling vcpkg v0.2.15
+2026-03-27T16:55:34.9746301Z #15 12.18    Compiling writeable v0.6.2
+2026-03-27T16:55:35.1486849Z #15 12.35    Compiling icu_locale_core v2.1.1
+2026-03-27T16:55:36.4019612Z #15 13.60    Compiling openssl-sys v0.9.111
+2026-03-27T16:55:36.7586132Z #15 13.96    Compiling potential_utf v0.1.4
+2026-03-27T16:55:36.8670340Z #15 14.07    Compiling zerotrie v0.2.3
+2026-03-27T16:55:37.3806432Z #15 14.47    Compiling futures-task v0.3.31
+2026-03-27T16:55:37.3807243Z #15 14.58    Compiling futures-io v0.3.31
+2026-03-27T16:55:37.5058073Z #15 14.71    Compiling icu_normalizer_data v2.1.1
+2026-03-27T16:55:37.7421130Z #15 14.79    Compiling httparse v1.10.1
+2026-03-27T16:55:37.9376054Z #15 14.99    Compiling percent-encoding v2.3.2
+2026-03-27T16:55:37.9475518Z #15 15.15    Compiling icu_properties_data v2.1.2
+2026-03-27T16:55:38.1854044Z #15 15.20    Compiling version_check v0.9.5
+2026-03-27T16:55:38.1854792Z #15 15.24    Compiling typenum v1.19.0
+2026-03-27T16:55:38.2396499Z #15 15.44    Compiling generic-array v0.14.7
+2026-03-27T16:55:38.4717209Z #15 15.49    Compiling futures-util v0.3.31
+2026-03-27T16:55:38.4717817Z #15 15.52    Compiling icu_provider v2.1.1
+2026-03-27T16:55:38.8516500Z #15 15.90    Compiling icu_collections v2.1.1
+2026-03-27T16:55:39.4740269Z #15 16.68    Compiling subtle v2.6.1
+2026-03-27T16:55:41.0602093Z #15 18.11    Compiling tracing-attributes v0.1.31
+2026-03-27T16:55:41.5116546Z #15 18.47    Compiling http-body v1.0.1
+2026-03-27T16:55:41.5117389Z #15 18.56    Compiling tracing-core v0.1.36
+2026-03-27T16:55:41.6932480Z #15 18.74    Compiling hashbrown v0.16.1
+2026-03-27T16:55:42.3176413Z #15 19.34    Compiling equivalent v1.0.2
+2026-03-27T16:55:42.3177144Z #15 19.38    Compiling zerocopy v0.8.37
+2026-03-27T16:55:42.4371782Z #15 19.52    Compiling indexmap v2.13.0
+2026-03-27T16:55:42.5888059Z #15 19.64    Compiling tracing v0.1.44
+2026-03-27T16:55:42.9918687Z #15 20.04    Compiling icu_properties v2.1.2
+2026-03-27T16:55:43.3769659Z #15 20.33    Compiling icu_normalizer v2.1.1
+2026-03-27T16:55:43.3770330Z #15 20.43    Compiling tokio-util v0.7.18
+2026-03-27T16:55:44.4820589Z #15 21.68    Compiling tower-service v0.3.3
+2026-03-27T16:55:44.6200364Z #15 21.73    Compiling foreign-types-shared v0.1.1
+2026-03-27T16:55:44.6202218Z #15 21.77    Compiling fnv v1.0.7
+2026-03-27T16:55:44.6202728Z #15 21.78    Compiling atomic-waker v1.1.2
+2026-03-27T16:55:44.7483473Z #15 21.82    Compiling openssl v0.10.75
+2026-03-27T16:55:44.7484066Z #15 21.85    Compiling try-lock v0.2.5
+2026-03-27T16:55:44.7485836Z #15 21.90    Compiling bitflags v2.10.0
+2026-03-27T16:55:44.7486366Z #15 21.91    Compiling want v0.3.1
+2026-03-27T16:55:44.9980971Z #15 21.95    Compiling h2 v0.4.13
+2026-03-27T16:55:44.9984241Z #15 22.01    Compiling foreign-types v0.3.2
+2026-03-27T16:55:44.9986159Z #15 22.05    Compiling idna_adapter v1.2.1
+2026-03-27T16:55:45.0055383Z #15 22.21    Compiling form_urlencoded v1.2.2
+2026-03-27T16:55:45.3591158Z #15 22.41    Compiling openssl-macros v0.1.1
+2026-03-27T16:55:45.5755054Z #15 22.59    Compiling utf8_iter v1.0.4
+2026-03-27T16:55:45.5755769Z #15 22.68    Compiling native-tls v0.2.14
+2026-03-27T16:55:45.8064327Z #15 22.78    Compiling rustls v0.22.4
+2026-03-27T16:55:45.8065791Z #15 22.86    Compiling rustls v0.23.36
+2026-03-27T16:55:45.9576819Z #15 23.01    Compiling idna v1.1.0
+2026-03-27T16:55:48.4521124Z #15 25.49    Compiling block-buffer v0.10.4
+2026-03-27T16:55:48.4521736Z #15 25.58    Compiling crypto-common v0.1.7
+2026-03-27T16:55:48.6036351Z #15 25.65    Compiling rustls-webpki v0.103.9
+2026-03-27T16:55:49.0198266Z #15 26.07    Compiling ppv-lite86 v0.2.21
+2026-03-27T16:55:49.2285402Z #15 26.43    Compiling hyper v1.8.1
+2026-03-27T16:55:51.4810040Z #15 28.53    Compiling rustls-webpki v0.102.8
+2026-03-27T16:55:52.5789508Z #15 29.55    Compiling webpki-roots v1.0.5
+2026-03-27T16:55:52.5790110Z #15 29.63    Compiling rand_core v0.6.4
+2026-03-27T16:55:52.7726451Z #15 29.82    Compiling openssl-probe v0.1.6
+2026-03-27T16:55:52.9640689Z #15 30.03    Compiling unicase v2.9.0
+2026-03-27T16:55:53.1158755Z #15 30.17    Compiling thiserror v1.0.69
+2026-03-27T16:55:53.2732056Z #15 30.32    Compiling base64 v0.22.1
+2026-03-27T16:55:53.6579655Z #15 30.69    Compiling ipnet v2.11.0
+2026-03-27T16:55:53.6580165Z #15 30.71    Compiling zmij v1.0.19
+2026-03-27T16:55:53.6580610Z #15 30.86    Compiling mime_guess v2.0.5
+2026-03-27T16:55:54.1647995Z #15 31.26    Compiling hyper-util v0.1.20
+2026-03-27T16:55:54.3165272Z #15 31.37    Compiling rand_chacha v0.3.1
+2026-03-27T16:55:54.9982982Z #15 32.05    Compiling digest v0.10.7
+2026-03-27T16:55:55.1702180Z #15 32.22    Compiling url v2.5.8
+2026-03-27T16:55:57.5686402Z #15 34.62    Compiling thiserror-impl v1.0.69
+2026-03-27T16:55:58.0225661Z #15 35.08    Compiling sync_wrapper v1.0.2
+2026-03-27T16:55:58.0228252Z #15 35.14    Compiling serde_json v1.0.149
+2026-03-27T16:55:58.1748278Z #15 35.23    Compiling autocfg v1.5.0
+2026-03-27T16:55:58.3369113Z #15 35.54    Compiling cpufeatures v0.2.17
+2026-03-27T16:55:58.4913115Z #15 35.57    Compiling crc32fast v1.5.0
+2026-03-27T16:55:58.6652575Z #15 35.69    Compiling tower-layer v0.3.3
+2026-03-27T16:55:58.6654372Z #15 35.78    Compiling sha1 v0.10.6
+2026-03-27T16:55:58.8175246Z #15 35.87    Compiling tower v0.5.3
+2026-03-27T16:55:59.1619241Z #15 36.21    Compiling tokio-rustls v0.26.4
+2026-03-27T16:55:59.3312092Z #15 36.42    Compiling num-traits v0.2.19
+2026-03-27T16:55:59.3312642Z #15 36.48    Compiling rand v0.8.5
+2026-03-27T16:55:59.4816029Z #15 36.53    Compiling tokio-native-tls v0.3.1
+2026-03-27T16:55:59.8882987Z #15 36.94    Compiling http-body-util v0.1.3
+2026-03-27T16:56:00.1086833Z #15 37.17    Compiling mime v0.3.17
+2026-03-27T16:56:00.2602688Z #15 37.31    Compiling iri-string v0.7.10
+2026-03-27T16:56:00.8105184Z #15 37.86    Compiling byteorder v1.5.0
+2026-03-27T16:56:01.0386514Z #15 38.09    Compiling ryu v1.0.22
+2026-03-27T16:56:01.2941630Z #15 38.37    Compiling utf-8 v0.7.6
+2026-03-27T16:56:01.4461518Z #15 38.50    Compiling data-encoding v2.10.0
+2026-03-27T16:56:03.3418317Z #15 40.30    Compiling adler2 v2.0.1
+2026-03-27T16:56:03.3418851Z #15 40.39    Compiling powerfmt v0.2.0
+2026-03-27T16:56:03.5453747Z #15 40.60    Compiling simd-adler32 v0.3.8
+2026-03-27T16:56:04.5144210Z #15 41.57    Compiling miniz_oxide v0.8.9
+2026-03-27T16:56:04.7578226Z #15 41.81    Compiling deranged v0.5.5
+2026-03-27T16:56:06.0519517Z #15 43.25    Compiling tower-http v0.6.8
+2026-03-27T16:56:06.2162237Z #15 43.27    Compiling tungstenite v0.21.0
+2026-03-27T16:56:07.1828559Z #15 44.23    Compiling serde_urlencoded v0.7.1
+2026-03-27T16:56:08.1457164Z #15 45.20    Compiling hyper-tls v0.6.0
+2026-03-27T16:56:10.2377823Z #15 47.29    Compiling hyper-rustls v0.27.7
+2026-03-27T16:56:10.4613574Z #15 47.51    Compiling tokio-rustls v0.25.0
+2026-03-27T16:56:10.6902292Z #15 47.71    Compiling webpki-roots v0.26.11
+2026-03-27T16:56:10.6902920Z #15 47.74    Compiling encoding_rs v0.8.35
+2026-03-27T16:56:10.9177299Z #15 47.93    Compiling num-conv v0.2.0
+2026-03-27T16:56:10.9179499Z #15 48.01    Compiling time-core v0.1.8
+2026-03-27T16:56:11.0633531Z #15 48.12    Compiling serenity v0.12.5
+2026-03-27T16:56:11.0635287Z #15 48.21    Compiling time v0.3.46
+2026-03-27T16:56:11.2152306Z #15 48.27    Compiling tokio-tungstenite v0.21.0
+2026-03-27T16:56:11.4866624Z #15 48.54    Compiling flate2 v1.1.8
+2026-03-27T16:56:12.0284188Z #15 49.08    Compiling reqwest v0.12.28
+2026-03-27T16:56:15.6023609Z #15 52.70    Compiling futures v0.3.31
+2026-03-27T16:56:15.6024190Z #15 52.74    Compiling serde_cow v0.1.2
+2026-03-27T16:56:15.8372425Z #15 52.81    Compiling secrecy v0.8.0
+2026-03-27T16:56:15.8373719Z #15 52.89    Compiling arrayvec v0.7.6
+2026-03-27T16:56:16.1079763Z #15 53.11    Compiling async-trait v0.1.89
+2026-03-27T16:56:16.1080383Z #15 53.16    Compiling iana-time-zone v0.1.65
+2026-03-27T16:56:16.5037300Z #15 53.60    Compiling typemap_rev v0.3.0
+2026-03-27T16:56:16.6546541Z #15 53.71    Compiling chrono v0.4.43
+2026-03-27T16:56:41.4710299Z #15 78.67    Compiling discord-bot v0.1.0 (/app)
+2026-03-27T16:57:34.4777706Z #15 131.7     Finished `release` profile [optimized] target(s) in 2m 11s
+2026-03-27T16:57:34.5804134Z #15 DONE 131.8s
+2026-03-27T16:57:34.7979305Z 
+2026-03-27T16:57:34.7982151Z #16 [stage-1 4/4] COPY --from=builder /app/target/release/discord-bot /app/
+2026-03-27T16:57:34.7985958Z #16 DONE 0.0s
+2026-03-27T16:57:34.7986283Z 
+2026-03-27T16:57:34.7986552Z #17 exporting to image
+2026-03-27T16:57:34.7986927Z #17 exporting layers
+2026-03-27T16:57:35.0096162Z #17 exporting layers 0.4s done
+2026-03-27T16:57:35.0262649Z #17 writing image sha256:652812087b6a765eb4f172363dd9468e422923f0250a97df6f44e6654ad968dd done
+2026-03-27T16:57:35.0264752Z #17 naming to us-east1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker:latest done
+2026-03-27T16:57:35.0266010Z #17 DONE 0.4s
+2026-03-27T16:57:35.0266423Z 
+2026-03-27T16:57:35.0267513Z  [33m1 warning found (use docker --debug to expand):
+2026-03-27T16:57:35.0268531Z [0m - FromAsCasing: 'as' and 'FROM' keywords' casing do not match (line 2)
+2026-03-27T16:57:35.0323768Z ##[debug]Finishing: Build Docker image
+2026-03-27T16:57:35.0333346Z ##[debug]Evaluating condition for step: 'Push Docker image'
+2026-03-27T16:57:35.0336461Z ##[debug]Evaluating: success()
+2026-03-27T16:57:35.0336940Z ##[debug]Evaluating success:
+2026-03-27T16:57:35.0337495Z ##[debug]=> true
+2026-03-27T16:57:35.0337906Z ##[debug]Result: true
+2026-03-27T16:57:35.0338630Z ##[debug]Starting: Push Docker image
+2026-03-27T16:57:35.0348059Z ##[debug]Loading inputs
+2026-03-27T16:57:35.0350931Z ##[debug]Evaluating: format('docker push {0}/{1}/{2}/{3}:latest', env.REGISTRY, env.GCP_PROJECT_ID, env.REPOSITORY, env.IMAGE_NAME)
+2026-03-27T16:57:35.0351685Z ##[debug]Evaluating format:
+2026-03-27T16:57:35.0351988Z ##[debug]..Evaluating String:
+2026-03-27T16:57:35.0352381Z ##[debug]..=> 'docker push {0}/{1}/{2}/{3}:latest'
+2026-03-27T16:57:35.0353012Z ##[debug]..Evaluating Index:
+2026-03-27T16:57:35.0353305Z ##[debug]....Evaluating env:
+2026-03-27T16:57:35.0353605Z ##[debug]....=> Object
+2026-03-27T16:57:35.0353903Z ##[debug]....Evaluating String:
+2026-03-27T16:57:35.0354224Z ##[debug]....=> 'REGISTRY'
+2026-03-27T16:57:35.0354858Z ##[debug]..=> 'us-east1-docker.pkg.dev'
+2026-03-27T16:57:35.0355358Z ##[debug]..Evaluating Index:
+2026-03-27T16:57:35.0355645Z ##[debug]....Evaluating env:
+2026-03-27T16:57:35.0355928Z ##[debug]....=> Object
+2026-03-27T16:57:35.0356188Z ##[debug]....Evaluating String:
+2026-03-27T16:57:35.0356491Z ##[debug]....=> 'GCP_PROJECT_ID'
+2026-03-27T16:57:35.0356805Z ##[debug]..=> 'mod-mail-490516'
+2026-03-27T16:57:35.0357122Z ##[debug]..Evaluating Index:
+2026-03-27T16:57:35.0357406Z ##[debug]....Evaluating env:
+2026-03-27T16:57:35.0357679Z ##[debug]....=> Object
+2026-03-27T16:57:35.0357939Z ##[debug]....Evaluating String:
+2026-03-27T16:57:35.0358227Z ##[debug]....=> 'REPOSITORY'
+2026-03-27T16:57:35.0358509Z ##[debug]..=> 'mod-mail'
+2026-03-27T16:57:35.0358786Z ##[debug]..Evaluating Index:
+2026-03-27T16:57:35.0359061Z ##[debug]....Evaluating env:
+2026-03-27T16:57:35.0359332Z ##[debug]....=> Object
+2026-03-27T16:57:35.0359833Z ##[debug]....Evaluating String:
+2026-03-27T16:57:35.0360124Z ##[debug]....=> 'IMAGE_NAME'
+2026-03-27T16:57:35.0360423Z ##[debug]..=> 'my-worker'
+2026-03-27T16:57:35.0360961Z ##[debug]=> 'docker push us-east1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker:latest'
+2026-03-27T16:57:35.0361752Z ##[debug]Result: 'docker push us-east1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker:latest'
+2026-03-27T16:57:35.0362554Z ##[debug]Loading env
+2026-03-27T16:57:35.0368053Z ##[group]Run docker push us-east1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker:latest
+2026-03-27T16:57:35.0368783Z [36;1mdocker push us-east1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker:latest[0m
+2026-03-27T16:57:35.0396008Z shell: /usr/bin/bash -e {0}
+2026-03-27T16:57:35.0396293Z env:
+2026-03-27T16:57:35.0396512Z   IMAGE_NAME: my-worker
+2026-03-27T16:57:35.0396795Z   REGISTRY: us-east1-docker.pkg.dev
+2026-03-27T16:57:35.0397108Z   REPOSITORY: mod-mail
+2026-03-27T16:57:35.0397382Z   GCP_PROJECT_ID: mod-mail-490516
+2026-03-27T16:57:35.0397690Z   ZONE: us-east1-b
+2026-03-27T16:57:35.0397933Z   INSTANCE_NAME: discord-bot
+2026-03-27T16:57:35.0398210Z   MACHINE_TYPE: e2-micro
+2026-03-27T16:57:35.0398671Z   SERVICE_ACCOUNT_EMAIL: github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com
+2026-03-27T16:57:35.0399621Z   WORKLOAD_IDENTITY_PROVIDER: projects/376050965276/locations/global/workloadIdentityPools/github-actions-pool/providers/github
+2026-03-27T16:57:35.0400710Z   CLOUDSDK_AUTH_CREDENTIAL_FILE_OVERRIDE: /home/runner/work/Mod-Mail/Mod-Mail/gha-creds-7dc1b08d3d70c131.json
+2026-03-27T16:57:35.0401620Z   GOOGLE_APPLICATION_CREDENTIALS: /home/runner/work/Mod-Mail/Mod-Mail/gha-creds-7dc1b08d3d70c131.json
+2026-03-27T16:57:35.0402476Z   GOOGLE_GHA_CREDS_PATH: /home/runner/work/Mod-Mail/Mod-Mail/gha-creds-7dc1b08d3d70c131.json
+2026-03-27T16:57:35.0403041Z   CLOUDSDK_CORE_PROJECT: mod-mail-490516
+2026-03-27T16:57:35.0403380Z   CLOUDSDK_PROJECT: mod-mail-490516
+2026-03-27T16:57:35.0403695Z   GCLOUD_PROJECT: mod-mail-490516
+2026-03-27T16:57:35.0404193Z   GCP_PROJECT: mod-mail-490516
+2026-03-27T16:57:35.0404763Z   GOOGLE_CLOUD_PROJECT: mod-mail-490516
+2026-03-27T16:57:35.0405091Z ##[endgroup]
+2026-03-27T16:57:35.0432173Z ##[debug]/usr/bin/bash -e /home/runner/work/_temp/d866d2a3-9fe2-4b1c-ba36-f22ed6f6575d.sh
+2026-03-27T16:57:36.0170951Z The push refers to repository [us-east1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker]
+2026-03-27T16:57:36.1047983Z aac385876659: Preparing
+2026-03-27T16:57:36.1049095Z 29f18c08fc29: Preparing
+2026-03-27T16:57:36.1049799Z ad0bdb5b652d: Preparing
+2026-03-27T16:57:36.1050454Z 6143ee9e3de0: Preparing
+2026-03-27T16:57:36.8466000Z 29f18c08fc29: Pushed
+2026-03-27T16:57:37.1617126Z ad0bdb5b652d: Pushed
+2026-03-27T16:57:37.4298158Z aac385876659: Pushed
+2026-03-27T16:57:39.7520459Z 6143ee9e3de0: Pushed
+2026-03-27T16:57:40.6148475Z latest: digest: sha256:5c95df1fae5c9b89ac8e7f31a0e16fbc9a38a47a0f1b9794a1771fc614a5df6d size: 1157
+2026-03-27T16:57:40.6181914Z ##[debug]Finishing: Push Docker image
+2026-03-27T16:57:40.6193429Z ##[debug]Evaluating condition for step: 'Deploy or update VM container'
+2026-03-27T16:57:40.6197009Z ##[debug]Evaluating: success()
+2026-03-27T16:57:40.6197561Z ##[debug]Evaluating success:
+2026-03-27T16:57:40.6198138Z ##[debug]=> true
+2026-03-27T16:57:40.6198628Z ##[debug]Result: true
+2026-03-27T16:57:40.6199387Z ##[debug]Starting: Deploy or update VM container
+2026-03-27T16:57:40.6208605Z ##[debug]Loading inputs
+2026-03-27T16:57:40.6211978Z ##[debug]Evaluating: format('IMAGE={0}/{1}/{2}/{3}:latest
+2026-03-27T16:57:40.6212422Z ##[debug]
+2026-03-27T16:57:40.6212718Z ##[debug]if gcloud compute instances describe {4} \
+2026-03-27T16:57:40.6213203Z ##[debug]    --zone={5} --project={6} > /dev/null 2>&1; then
+2026-03-27T16:57:40.6213794Z ##[debug]  echo "Instance exists — updating image metadata and rebooting..."
+2026-03-27T16:57:40.6214379Z ##[debug]  gcloud compute instances add-metadata {7} \
+2026-03-27T16:57:40.6215071Z ##[debug]    --zone={8} \
+2026-03-27T16:57:40.6215417Z ##[debug]    --project={9} \
+2026-03-27T16:57:40.6216040Z ##[debug]    --metadata=container-image=$IMAGE,discord-token={10}
+2026-03-27T16:57:40.6216552Z ##[debug]  gcloud compute instances reset {11} \
+2026-03-27T16:57:40.6216941Z ##[debug]    --zone={12} \
+2026-03-27T16:57:40.6217240Z ##[debug]    --project={13}
+2026-03-27T16:57:40.6217525Z ##[debug]else
+2026-03-27T16:57:40.6217837Z ##[debug]  echo "Creating new e2-micro COS instance..."
+2026-03-27T16:57:40.6218289Z ##[debug]  gcloud compute instances create {14} \
+2026-03-27T16:57:40.6218672Z ##[debug]    --zone={15} \
+2026-03-27T16:57:40.6218959Z ##[debug]    --project={16} \
+2026-03-27T16:57:40.6219284Z ##[debug]    --machine-type={17} \
+2026-03-27T16:57:40.6219632Z ##[debug]    --image-family=cos-stable \
+2026-03-27T16:57:40.6220000Z ##[debug]    --image-project=cos-cloud \
+2026-03-27T16:57:40.6220523Z ##[debug]    --service-account=cloud-run-service@{18}.iam.gserviceaccount.com \
+2026-03-27T16:57:40.6221079Z ##[debug]    --scopes=cloud-platform \
+2026-03-27T16:57:40.6221439Z ##[debug]    --no-address \
+2026-03-27T16:57:40.6222001Z ##[debug]    --metadata=container-image=$IMAGE,discord-token={19},gcp-project={20},registry={21} \
+2026-03-27T16:57:40.6222711Z ##[debug]    --metadata-from-file=startup-script=startup-script.sh
+2026-03-27T16:57:40.6223119Z ##[debug]fi
+2026-03-27T16:57:40.6225085Z ##[debug]', env.REGISTRY, env.GCP_PROJECT_ID, env.REPOSITORY, env.IMAGE_NAME, env.INSTANCE_NAME, env.ZONE, env.GCP_PROJECT_ID, env.INSTANCE_NAME, env.ZONE, env.GCP_PROJECT_ID, secrets.DISCORD_TOKEN, env.INSTANCE_NAME, env.ZONE, env.GCP_PROJECT_ID, env.INSTANCE_NAME, env.ZONE, env.GCP_PROJECT_ID, env.MACHINE_TYPE, env.GCP_PROJECT_ID, secrets.DISCORD_TOKEN, env.GCP_PROJECT_ID, env.REGISTRY)
+2026-03-27T16:57:40.6226980Z ##[debug]Evaluating format:
+2026-03-27T16:57:40.6227273Z ##[debug]..Evaluating String:
+2026-03-27T16:57:40.6227625Z ##[debug]..=> 'IMAGE={0}/{1}/{2}/{3}:latest
+2026-03-27T16:57:40.6227930Z ##[debug]
+2026-03-27T16:57:40.6228191Z ##[debug]if gcloud compute instances describe {4} \
+2026-03-27T16:57:40.6228623Z ##[debug]    --zone={5} --project={6} > /dev/null 2>&1; then
+2026-03-27T16:57:40.6229143Z ##[debug]  echo "Instance exists — updating image metadata and rebooting..."
+2026-03-27T16:57:40.6229663Z ##[debug]  gcloud compute instances add-metadata {7} \
+2026-03-27T16:57:40.6230024Z ##[debug]    --zone={8} \
+2026-03-27T16:57:40.6230294Z ##[debug]    --project={9} \
+2026-03-27T16:57:40.6230663Z ##[debug]    --metadata=container-image=$IMAGE,discord-token={10}
+2026-03-27T16:57:40.6231107Z ##[debug]  gcloud compute instances reset {11} \
+2026-03-27T16:57:40.6231453Z ##[debug]    --zone={12} \
+2026-03-27T16:57:40.6231718Z ##[debug]    --project={13}
+2026-03-27T16:57:40.6231977Z ##[debug]else
+2026-03-27T16:57:40.6232258Z ##[debug]  echo "Creating new e2-micro COS instance..."
+2026-03-27T16:57:40.6232640Z ##[debug]  gcloud compute instances create {14} \
+2026-03-27T16:57:40.6232962Z ##[debug]    --zone={15} \
+2026-03-27T16:57:40.6233213Z ##[debug]    --project={16} \
+2026-03-27T16:57:40.6233660Z ##[debug]    --machine-type={17} \
+2026-03-27T16:57:40.6233956Z ##[debug]    --image-family=cos-stable \
+2026-03-27T16:57:40.6234274Z ##[debug]    --image-project=cos-cloud \
+2026-03-27T16:57:40.6234951Z ##[debug]    --service-account=cloud-run-service@{18}.iam.gserviceaccount.com \
+2026-03-27T16:57:40.6235422Z ##[debug]    --scopes=cloud-platform \
+2026-03-27T16:57:40.6235711Z ##[debug]    --no-address \
+2026-03-27T16:57:40.6236182Z ##[debug]    --metadata=container-image=$IMAGE,discord-token={19},gcp-project={20},registry={21} \
+2026-03-27T16:57:40.6236797Z ##[debug]    --metadata-from-file=startup-script=startup-script.sh
+2026-03-27T16:57:40.6237171Z ##[debug]fi
+2026-03-27T16:57:40.6237353Z ##[debug]'
+2026-03-27T16:57:40.6237866Z ##[debug]..Evaluating Index:
+2026-03-27T16:57:40.6238137Z ##[debug]....Evaluating env:
+2026-03-27T16:57:40.6238411Z ##[debug]....=> Object
+2026-03-27T16:57:40.6238675Z ##[debug]....Evaluating String:
+2026-03-27T16:57:40.6238943Z ##[debug]....=> 'REGISTRY'
+2026-03-27T16:57:40.6239416Z ##[debug]..=> 'us-east1-docker.pkg.dev'
+2026-03-27T16:57:40.6239739Z ##[debug]..Evaluating Index:
+2026-03-27T16:57:40.6240006Z ##[debug]....Evaluating env:
+2026-03-27T16:57:40.6240262Z ##[debug]....=> Object
+2026-03-27T16:57:40.6240499Z ##[debug]....Evaluating String:
+2026-03-27T16:57:40.6240772Z ##[debug]....=> 'GCP_PROJECT_ID'
+2026-03-27T16:57:40.6241065Z ##[debug]..=> 'mod-mail-490516'
+2026-03-27T16:57:40.6241355Z ##[debug]..Evaluating Index:
+2026-03-27T16:57:40.6241615Z ##[debug]....Evaluating env:
+2026-03-27T16:57:40.6241876Z ##[debug]....=> Object
+2026-03-27T16:57:40.6242116Z ##[debug]....Evaluating String:
+2026-03-27T16:57:40.6242378Z ##[debug]....=> 'REPOSITORY'
+2026-03-27T16:57:40.6242638Z ##[debug]..=> 'mod-mail'
+2026-03-27T16:57:40.6242898Z ##[debug]..Evaluating Index:
+2026-03-27T16:57:40.6243152Z ##[debug]....Evaluating env:
+2026-03-27T16:57:40.6243413Z ##[debug]....=> Object
+2026-03-27T16:57:40.6243651Z ##[debug]....Evaluating String:
+2026-03-27T16:57:40.6243923Z ##[debug]....=> 'IMAGE_NAME'
+2026-03-27T16:57:40.6244210Z ##[debug]..=> 'my-worker'
+2026-03-27T16:57:40.6244476Z ##[debug]..Evaluating Index:
+2026-03-27T16:57:40.6245025Z ##[debug]....Evaluating env:
+2026-03-27T16:57:40.6245290Z ##[debug]....=> Object
+2026-03-27T16:57:40.6245534Z ##[debug]....Evaluating String:
+2026-03-27T16:57:40.6245795Z ##[debug]....=> 'INSTANCE_NAME'
+2026-03-27T16:57:40.6246086Z ##[debug]..=> 'discord-bot'
+2026-03-27T16:57:40.6246363Z ##[debug]..Evaluating Index:
+2026-03-27T16:57:40.6246620Z ##[debug]....Evaluating env:
+2026-03-27T16:57:40.6246874Z ##[debug]....=> Object
+2026-03-27T16:57:40.6247110Z ##[debug]....Evaluating String:
+2026-03-27T16:57:40.6247389Z ##[debug]....=> 'ZONE'
+2026-03-27T16:57:40.6247629Z ##[debug]..=> 'us-east1-b'
+2026-03-27T16:57:40.6247887Z ##[debug]..Evaluating Index:
+2026-03-27T16:57:40.6248144Z ##[debug]....Evaluating env:
+2026-03-27T16:57:40.6248389Z ##[debug]....=> Object
+2026-03-27T16:57:40.6248625Z ##[debug]....Evaluating String:
+2026-03-27T16:57:40.6248903Z ##[debug]....=> 'GCP_PROJECT_ID'
+2026-03-27T16:57:40.6249189Z ##[debug]..=> 'mod-mail-490516'
+2026-03-27T16:57:40.6249476Z ##[debug]..Evaluating Index:
+2026-03-27T16:57:40.6249736Z ##[debug]....Evaluating env:
+2026-03-27T16:57:40.6249989Z ##[debug]....=> Object
+2026-03-27T16:57:40.6250230Z ##[debug]....Evaluating String:
+2026-03-27T16:57:40.6250497Z ##[debug]....=> 'INSTANCE_NAME'
+2026-03-27T16:57:40.6250759Z ##[debug]..=> 'discord-bot'
+2026-03-27T16:57:40.6251023Z ##[debug]..Evaluating Index:
+2026-03-27T16:57:40.6251285Z ##[debug]....Evaluating env:
+2026-03-27T16:57:40.6251537Z ##[debug]....=> Object
+2026-03-27T16:57:40.6251783Z ##[debug]....Evaluating String:
+2026-03-27T16:57:40.6252036Z ##[debug]....=> 'ZONE'
+2026-03-27T16:57:40.6252272Z ##[debug]..=> 'us-east1-b'
+2026-03-27T16:57:40.6252535Z ##[debug]..Evaluating Index:
+2026-03-27T16:57:40.6252793Z ##[debug]....Evaluating env:
+2026-03-27T16:57:40.6253087Z ##[debug]....=> Object
+2026-03-27T16:57:40.6253325Z ##[debug]....Evaluating String:
+2026-03-27T16:57:40.6253747Z ##[debug]....=> 'GCP_PROJECT_ID'
+2026-03-27T16:57:40.6254046Z ##[debug]..=> 'mod-mail-490516'
+2026-03-27T16:57:40.6254322Z ##[debug]..Evaluating Index:
+2026-03-27T16:57:40.6254849Z ##[debug]....Evaluating secrets:
+2026-03-27T16:57:40.6255136Z ##[debug]....=> Object
+2026-03-27T16:57:40.6255382Z ##[debug]....Evaluating String:
+2026-03-27T16:57:40.6255670Z ##[debug]....=> 'DISCORD_TOKEN'
+2026-03-27T16:57:40.6256430Z ##[debug]..=> '***'
+2026-03-27T16:57:40.6256683Z ##[debug]..Evaluating Index:
+2026-03-27T16:57:40.6256949Z ##[debug]....Evaluating env:
+2026-03-27T16:57:40.6257210Z ##[debug]....=> Object
+2026-03-27T16:57:40.6257452Z ##[debug]....Evaluating String:
+2026-03-27T16:57:40.6257730Z ##[debug]....=> 'INSTANCE_NAME'
+2026-03-27T16:57:40.6258000Z ##[debug]..=> 'discord-bot'
+2026-03-27T16:57:40.6258263Z ##[debug]..Evaluating Index:
+2026-03-27T16:57:40.6258522Z ##[debug]....Evaluating env:
+2026-03-27T16:57:40.6258776Z ##[debug]....=> Object
+2026-03-27T16:57:40.6259016Z ##[debug]....Evaluating String:
+2026-03-27T16:57:40.6259435Z ##[debug]....=> 'ZONE'
+2026-03-27T16:57:40.6259677Z ##[debug]..=> 'us-east1-b'
+2026-03-27T16:57:40.6259941Z ##[debug]..Evaluating Index:
+2026-03-27T16:57:40.6260208Z ##[debug]....Evaluating env:
+2026-03-27T16:57:40.6260470Z ##[debug]....=> Object
+2026-03-27T16:57:40.6260703Z ##[debug]....Evaluating String:
+2026-03-27T16:57:40.6260974Z ##[debug]....=> 'GCP_PROJECT_ID'
+2026-03-27T16:57:40.6261251Z ##[debug]..=> 'mod-mail-490516'
+2026-03-27T16:57:40.6261522Z ##[debug]..Evaluating Index:
+2026-03-27T16:57:40.6261782Z ##[debug]....Evaluating env:
+2026-03-27T16:57:40.6262029Z ##[debug]....=> Object
+2026-03-27T16:57:40.6262264Z ##[debug]....Evaluating String:
+2026-03-27T16:57:40.6262526Z ##[debug]....=> 'INSTANCE_NAME'
+2026-03-27T16:57:40.6262781Z ##[debug]..=> 'discord-bot'
+2026-03-27T16:57:40.6263027Z ##[debug]..Evaluating Index:
+2026-03-27T16:57:40.6263265Z ##[debug]....Evaluating env:
+2026-03-27T16:57:40.6263500Z ##[debug]....=> Object
+2026-03-27T16:57:40.6263727Z ##[debug]....Evaluating String:
+2026-03-27T16:57:40.6263972Z ##[debug]....=> 'ZONE'
+2026-03-27T16:57:40.6264199Z ##[debug]..=> 'us-east1-b'
+2026-03-27T16:57:40.6264476Z ##[debug]..Evaluating Index:
+2026-03-27T16:57:40.6265001Z ##[debug]....Evaluating env:
+2026-03-27T16:57:40.6265256Z ##[debug]....=> Object
+2026-03-27T16:57:40.6265481Z ##[debug]....Evaluating String:
+2026-03-27T16:57:40.6265731Z ##[debug]....=> 'GCP_PROJECT_ID'
+2026-03-27T16:57:40.6265998Z ##[debug]..=> 'mod-mail-490516'
+2026-03-27T16:57:40.6266257Z ##[debug]..Evaluating Index:
+2026-03-27T16:57:40.6266497Z ##[debug]....Evaluating env:
+2026-03-27T16:57:40.6266733Z ##[debug]....=> Object
+2026-03-27T16:57:40.6266949Z ##[debug]....Evaluating String:
+2026-03-27T16:57:40.6267196Z ##[debug]....=> 'MACHINE_TYPE'
+2026-03-27T16:57:40.6267442Z ##[debug]..=> 'e2-micro'
+2026-03-27T16:57:40.6267677Z ##[debug]..Evaluating Index:
+2026-03-27T16:57:40.6267923Z ##[debug]....Evaluating env:
+2026-03-27T16:57:40.6268155Z ##[debug]....=> Object
+2026-03-27T16:57:40.6268399Z ##[debug]....Evaluating String:
+2026-03-27T16:57:40.6268654Z ##[debug]....=> 'GCP_PROJECT_ID'
+2026-03-27T16:57:40.6268937Z ##[debug]..=> 'mod-mail-490516'
+2026-03-27T16:57:40.6269206Z ##[debug]..Evaluating Index:
+2026-03-27T16:57:40.6269449Z ##[debug]....Evaluating secrets:
+2026-03-27T16:57:40.6269695Z ##[debug]....=> Object
+2026-03-27T16:57:40.6269922Z ##[debug]....Evaluating String:
+2026-03-27T16:57:40.6270169Z ##[debug]....=> 'DISCORD_TOKEN'
+2026-03-27T16:57:40.6270656Z ##[debug]..=> '***'
+2026-03-27T16:57:40.6270882Z ##[debug]..Evaluating Index:
+2026-03-27T16:57:40.6271123Z ##[debug]....Evaluating env:
+2026-03-27T16:57:40.6271354Z ##[debug]....=> Object
+2026-03-27T16:57:40.6271578Z ##[debug]....Evaluating String:
+2026-03-27T16:57:40.6271835Z ##[debug]....=> 'GCP_PROJECT_ID'
+2026-03-27T16:57:40.6272095Z ##[debug]..=> 'mod-mail-490516'
+2026-03-27T16:57:40.6272350Z ##[debug]..Evaluating Index:
+2026-03-27T16:57:40.6272583Z ##[debug]....Evaluating env:
+2026-03-27T16:57:40.6272816Z ##[debug]....=> Object
+2026-03-27T16:57:40.6273182Z ##[debug]....Evaluating String:
+2026-03-27T16:57:40.6273439Z ##[debug]....=> 'REGISTRY'
+2026-03-27T16:57:40.6273705Z ##[debug]..=> 'us-east1-docker.pkg.dev'
+2026-03-27T16:57:40.6274221Z ##[debug]=> 'IMAGE=us-east1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker:latest
+2026-03-27T16:57:40.6274884Z ##[debug]
+2026-03-27T16:57:40.6275148Z ##[debug]if gcloud compute instances describe discord-bot \
+2026-03-27T16:57:40.6275604Z ##[debug]    --zone=us-east1-b --project=mod-mail-490516 > /dev/null 2>&1; then
+2026-03-27T16:57:40.6276133Z ##[debug]  echo "Instance exists — updating image metadata and rebooting..."
+2026-03-27T16:57:40.6276619Z ##[debug]  gcloud compute instances add-metadata discord-bot \
+2026-03-27T16:57:40.6276977Z ##[debug]    --zone=us-east1-b \
+2026-03-27T16:57:40.6277240Z ##[debug]    --project=mod-mail-490516 \
+2026-03-27T16:57:40.6277929Z ##[debug]    --metadata=container-image=$IMAGE,discord-token=***
+2026-03-27T16:57:40.6278336Z ##[debug]  gcloud compute instances reset discord-bot \
+2026-03-27T16:57:40.6278814Z ##[debug]    --zone=us-east1-b \
+2026-03-27T16:57:40.6279080Z ##[debug]    --project=mod-mail-490516
+2026-03-27T16:57:40.6279338Z ##[debug]else
+2026-03-27T16:57:40.6279576Z ##[debug]  echo "Creating new e2-micro COS instance..."
+2026-03-27T16:57:40.6279944Z ##[debug]  gcloud compute instances create discord-bot \
+2026-03-27T16:57:40.6280270Z ##[debug]    --zone=us-east1-b \
+2026-03-27T16:57:40.6280526Z ##[debug]    --project=mod-mail-490516 \
+2026-03-27T16:57:40.6280812Z ##[debug]    --machine-type=e2-micro \
+2026-03-27T16:57:40.6281092Z ##[debug]    --image-family=cos-stable \
+2026-03-27T16:57:40.6281376Z ##[debug]    --image-project=cos-cloud \
+2026-03-27T16:57:40.6281831Z ##[debug]    --service-account=cloud-run-service@mod-mail-490516.iam.gserviceaccount.com \
+2026-03-27T16:57:40.6282313Z ##[debug]    --scopes=cloud-platform \
+2026-03-27T16:57:40.6282583Z ##[debug]    --no-address \
+2026-03-27T16:57:40.6283450Z ##[debug]    --metadata=container-image=$IMAGE,discord-token=***,gcp-project=mod-mail-490516,registry=us-east1-docker.pkg.dev \
+2026-03-27T16:57:40.6284140Z ##[debug]    --metadata-from-file=startup-script=startup-script.sh
+2026-03-27T16:57:40.6284467Z ##[debug]fi
+2026-03-27T16:57:40.6284872Z ##[debug]'
+2026-03-27T16:57:40.6285288Z ##[debug]Result: 'IMAGE=us-east1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker:latest
+2026-03-27T16:57:40.6285708Z ##[debug]
+2026-03-27T16:57:40.6285942Z ##[debug]if gcloud compute instances describe discord-bot \
+2026-03-27T16:57:40.6286372Z ##[debug]    --zone=us-east1-b --project=mod-mail-490516 > /dev/null 2>&1; then
+2026-03-27T16:57:40.6286856Z ##[debug]  echo "Instance exists — updating image metadata and rebooting..."
+2026-03-27T16:57:40.6287297Z ##[debug]  gcloud compute instances add-metadata discord-bot \
+2026-03-27T16:57:40.6287631Z ##[debug]    --zone=us-east1-b \
+2026-03-27T16:57:40.6287884Z ##[debug]    --project=mod-mail-490516 \
+2026-03-27T16:57:40.6288535Z ##[debug]    --metadata=container-image=$IMAGE,discord-token=***
+2026-03-27T16:57:40.6288974Z ##[debug]  gcloud compute instances reset discord-bot \
+2026-03-27T16:57:40.6289278Z ##[debug]    --zone=us-east1-b \
+2026-03-27T16:57:40.6289526Z ##[debug]    --project=mod-mail-490516
+2026-03-27T16:57:40.6289776Z ##[debug]else
+2026-03-27T16:57:40.6290001Z ##[debug]  echo "Creating new e2-micro COS instance..."
+2026-03-27T16:57:40.6290341Z ##[debug]  gcloud compute instances create discord-bot \
+2026-03-27T16:57:40.6290651Z ##[debug]    --zone=us-east1-b \
+2026-03-27T16:57:40.6290899Z ##[debug]    --project=mod-mail-490516 \
+2026-03-27T16:57:40.6291169Z ##[debug]    --machine-type=e2-micro \
+2026-03-27T16:57:40.6291427Z ##[debug]    --image-family=cos-stable \
+2026-03-27T16:57:40.6291695Z ##[debug]    --image-project=cos-cloud \
+2026-03-27T16:57:40.6292121Z ##[debug]    --service-account=cloud-run-service@mod-mail-490516.iam.gserviceaccount.com \
+2026-03-27T16:57:40.6292584Z ##[debug]    --scopes=cloud-platform \
+2026-03-27T16:57:40.6292834Z ##[debug]    --no-address \
+2026-03-27T16:57:40.6293804Z ##[debug]    --metadata=container-image=$IMAGE,discord-token=***,gcp-project=mod-mail-490516,registry=us-east1-docker.pkg.dev \
+2026-03-27T16:57:40.6294464Z ##[debug]    --metadata-from-file=startup-script=startup-script.sh
+2026-03-27T16:57:40.6295036Z ##[debug]fi
+2026-03-27T16:57:40.6295205Z ##[debug]'
+2026-03-27T16:57:40.6295608Z ##[debug]Loading env
+2026-03-27T16:57:40.6299275Z ##[group]Run IMAGE=us-east1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker:latest
+2026-03-27T16:57:40.6299874Z [36;1mIMAGE=us-east1-docker.pkg.dev/mod-mail-490516/mod-mail/my-worker:latest[0m
+2026-03-27T16:57:40.6300271Z [36;1m[0m
+2026-03-27T16:57:40.6300516Z [36;1mif gcloud compute instances describe discord-bot \[0m
+2026-03-27T16:57:40.6300946Z [36;1m    --zone=us-east1-b --project=mod-mail-490516 > /dev/null 2>&1; then[0m
+2026-03-27T16:57:40.6301440Z [36;1m  echo "Instance exists — updating image metadata and rebooting..."[0m
+2026-03-27T16:57:40.6301935Z [36;1m  gcloud compute instances add-metadata discord-bot \[0m
+2026-03-27T16:57:40.6302433Z [36;1m    --zone=us-east1-b \[0m
+2026-03-27T16:57:40.6312789Z [36;1m    --project=mod-mail-490516 \[0m
+2026-03-27T16:57:40.6313530Z [36;1m    --metadata=container-image=$IMAGE,discord-token=***[0m
+2026-03-27T16:57:40.6313929Z [36;1m  gcloud compute instances reset discord-bot \[0m
+2026-03-27T16:57:40.6314237Z [36;1m    --zone=us-east1-b \[0m
+2026-03-27T16:57:40.6314486Z [36;1m    --project=mod-mail-490516[0m
+2026-03-27T16:57:40.6314999Z [36;1melse[0m
+2026-03-27T16:57:40.6315234Z [36;1m  echo "Creating new e2-micro COS instance..."[0m
+2026-03-27T16:57:40.6315571Z [36;1m  gcloud compute instances create discord-bot \[0m
+2026-03-27T16:57:40.6315869Z [36;1m    --zone=us-east1-b \[0m
+2026-03-27T16:57:40.6316106Z [36;1m    --project=mod-mail-490516 \[0m
+2026-03-27T16:57:40.6316365Z [36;1m    --machine-type=e2-micro \[0m
+2026-03-27T16:57:40.6316619Z [36;1m    --image-family=cos-stable \[0m
+2026-03-27T16:57:40.6316885Z [36;1m    --image-project=cos-cloud \[0m
+2026-03-27T16:57:40.6317297Z [36;1m    --service-account=cloud-run-service@mod-mail-490516.iam.gserviceaccount.com \[0m
+2026-03-27T16:57:40.6317736Z [36;1m    --scopes=cloud-platform \[0m
+2026-03-27T16:57:40.6317982Z [36;1m    --no-address \[0m
+2026-03-27T16:57:40.6318802Z [36;1m    --metadata=container-image=$IMAGE,discord-token=***,gcp-project=mod-mail-490516,registry=us-east1-docker.pkg.dev \[0m
+2026-03-27T16:57:40.6319424Z [36;1m    --metadata-from-file=startup-script=startup-script.sh[0m
+2026-03-27T16:57:40.6319737Z [36;1mfi[0m
+2026-03-27T16:57:40.6345823Z shell: /usr/bin/bash -e {0}
+2026-03-27T16:57:40.6346067Z env:
+2026-03-27T16:57:40.6346253Z   IMAGE_NAME: my-worker
+2026-03-27T16:57:40.6346496Z   REGISTRY: us-east1-docker.pkg.dev
+2026-03-27T16:57:40.6346764Z   REPOSITORY: mod-mail
+2026-03-27T16:57:40.6346997Z   GCP_PROJECT_ID: mod-mail-490516
+2026-03-27T16:57:40.6347255Z   ZONE: us-east1-b
+2026-03-27T16:57:40.6347479Z   INSTANCE_NAME: discord-bot
+2026-03-27T16:57:40.6347720Z   MACHINE_TYPE: e2-micro
+2026-03-27T16:57:40.6348115Z   SERVICE_ACCOUNT_EMAIL: github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com
+2026-03-27T16:57:40.6348938Z   WORKLOAD_IDENTITY_PROVIDER: projects/376050965276/locations/global/workloadIdentityPools/github-actions-pool/providers/github
+2026-03-27T16:57:40.6349856Z   CLOUDSDK_AUTH_CREDENTIAL_FILE_OVERRIDE: /home/runner/work/Mod-Mail/Mod-Mail/gha-creds-7dc1b08d3d70c131.json
+2026-03-27T16:57:40.6350632Z   GOOGLE_APPLICATION_CREDENTIALS: /home/runner/work/Mod-Mail/Mod-Mail/gha-creds-7dc1b08d3d70c131.json
+2026-03-27T16:57:40.6351320Z   GOOGLE_GHA_CREDS_PATH: /home/runner/work/Mod-Mail/Mod-Mail/gha-creds-7dc1b08d3d70c131.json
+2026-03-27T16:57:40.6351805Z   CLOUDSDK_CORE_PROJECT: mod-mail-490516
+2026-03-27T16:57:40.6352101Z   CLOUDSDK_PROJECT: mod-mail-490516
+2026-03-27T16:57:40.6352373Z   GCLOUD_PROJECT: mod-mail-490516
+2026-03-27T16:57:40.6352628Z   GCP_PROJECT: mod-mail-490516
+2026-03-27T16:57:40.6352885Z   GOOGLE_CLOUD_PROJECT: mod-mail-490516
+2026-03-27T16:57:40.6353316Z ##[endgroup]
+2026-03-27T16:57:40.6380157Z ##[debug]/usr/bin/bash -e /home/runner/work/_temp/2be18f2c-ff7f-4ca0-9cc9-9c167a9a0604.sh
+2026-03-27T16:57:43.1551043Z Creating new e2-micro COS instance...
+2026-03-27T16:57:54.7020829Z ERROR: (gcloud.compute.instances.create) Could not fetch resource:
+2026-03-27T16:57:54.7021511Z ---
+2026-03-27T16:57:54.7021870Z code: ZONE_RESOURCE_POOL_EXHAUSTED
+2026-03-27T16:57:54.7022298Z errorDetails:
+2026-03-27T16:57:54.7022602Z - help:
+2026-03-27T16:57:54.7022881Z     links:
+2026-03-27T16:57:54.7023250Z     - description: Troubleshooting documentation
+2026-03-27T16:57:54.7023910Z       url: https://cloud.google.com/compute/docs/resource-error
+2026-03-27T16:57:54.7024488Z - localizedMessage:
+2026-03-27T16:57:54.7025172Z     locale: en-US
+2026-03-27T16:57:54.7025757Z     message: A e2-micro VM instance is currently unavailable in the us-east1-b zone.
+2026-03-27T16:57:54.7026794Z       Alternatively, you can try your request again with a different VM hardware configuration
+2026-03-27T16:57:54.7028075Z       or at a later time. For more information, see the troubleshooting documentation.
+2026-03-27T16:57:54.7028747Z - errorInfo:
+2026-03-27T16:57:54.7029116Z     domain: compute.googleapis.com
+2026-03-27T16:57:54.7029530Z     metadatas:
+2026-03-27T16:57:54.7029841Z       attachment: ''
+2026-03-27T16:57:54.7030175Z       vmType: e2-micro
+2026-03-27T16:57:54.7030533Z       zone: us-east1-b
+2026-03-27T16:57:54.7030879Z       zonesAvailable: ''
+2026-03-27T16:57:54.7031256Z     reason: resource_availability
+2026-03-27T16:57:54.7031922Z message: The zone 'projects/mod-mail-490516/zones/us-east1-b' does not have enough
+2026-03-27T16:57:54.7032866Z   resources available to fulfill the request.  Try a different zone, or try again
+2026-03-27T16:57:54.7033542Z   later.
+2026-03-27T16:57:54.7033713Z 
+2026-03-27T16:57:54.9974993Z ##[error]Process completed with exit code 1.
+2026-03-27T16:57:54.9989482Z ##[debug]Finishing: Deploy or update VM container
+2026-03-27T16:57:55.0010526Z ##[debug]Evaluating condition for step: 'Post Authenticate to GCP'
+2026-03-27T16:57:55.0013273Z ##[debug]Evaluating: always()
+2026-03-27T16:57:55.0013717Z ##[debug]Evaluating always:
+2026-03-27T16:57:55.0014741Z ##[debug]=> true
+2026-03-27T16:57:55.0015245Z ##[debug]Result: true
+2026-03-27T16:57:55.0015904Z ##[debug]Starting: Post Authenticate to GCP
+2026-03-27T16:57:55.0084920Z ##[debug]Loading inputs
+2026-03-27T16:57:55.0086448Z ##[debug]Evaluating: env.WORKLOAD_IDENTITY_PROVIDER
+2026-03-27T16:57:55.0086787Z ##[debug]Evaluating Index:
+2026-03-27T16:57:55.0087024Z ##[debug]..Evaluating env:
+2026-03-27T16:57:55.0087263Z ##[debug]..=> Object
+2026-03-27T16:57:55.0087485Z ##[debug]..Evaluating String:
+2026-03-27T16:57:55.0087745Z ##[debug]..=> 'WORKLOAD_IDENTITY_PROVIDER'
+2026-03-27T16:57:55.0088386Z ##[debug]=> 'projects/376050965276/locations/global/workloadIdentityPools/github-actions-pool/providers/github'
+2026-03-27T16:57:55.0089255Z ##[debug]Result: 'projects/376050965276/locations/global/workloadIdentityPools/github-actions-pool/providers/github'
+2026-03-27T16:57:55.0090099Z ##[debug]Evaluating: env.SERVICE_ACCOUNT_EMAIL
+2026-03-27T16:57:55.0090392Z ##[debug]Evaluating Index:
+2026-03-27T16:57:55.0090618Z ##[debug]..Evaluating env:
+2026-03-27T16:57:55.0090837Z ##[debug]..=> Object
+2026-03-27T16:57:55.0091039Z ##[debug]..Evaluating String:
+2026-03-27T16:57:55.0091280Z ##[debug]..=> 'SERVICE_ACCOUNT_EMAIL'
+2026-03-27T16:57:55.0091654Z ##[debug]=> 'github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com'
+2026-03-27T16:57:55.0092153Z ##[debug]Result: 'github-deploy-bot@mod-mail-490516.iam.gserviceaccount.com'
+2026-03-27T16:57:55.0103785Z ##[debug]Loading env
+2026-03-27T16:57:55.0108365Z Post job cleanup.
+2026-03-27T16:57:55.0941040Z Removed exported credentials at "/home/runner/work/Mod-Mail/Mod-Mail/gha-creds-7dc1b08d3d70c131.json".
+2026-03-27T16:57:55.0985273Z ##[debug]Node Action run completed with exit code 0
+2026-03-27T16:57:55.0988405Z ##[debug]Finishing: Post Authenticate to GCP
+2026-03-27T16:57:55.0999342Z ##[debug]Evaluating condition for step: 'Post Checkout repository'
+2026-03-27T16:57:55.1001627Z ##[debug]Evaluating: always()
+2026-03-27T16:57:55.1002151Z ##[debug]Evaluating always:
+2026-03-27T16:57:55.1002670Z ##[debug]=> true
+2026-03-27T16:57:55.1003147Z ##[debug]Result: true
+2026-03-27T16:57:55.1003942Z ##[debug]Starting: Post Checkout repository
+2026-03-27T16:57:55.1060738Z ##[debug]Loading inputs
+2026-03-27T16:57:55.1062139Z ##[debug]Evaluating: github.repository
+2026-03-27T16:57:55.1062423Z ##[debug]Evaluating Index:
+2026-03-27T16:57:55.1062657Z ##[debug]..Evaluating github:
+2026-03-27T16:57:55.1062898Z ##[debug]..=> Object
+2026-03-27T16:57:55.1063113Z ##[debug]..Evaluating String:
+2026-03-27T16:57:55.1063352Z ##[debug]..=> 'repository'
+2026-03-27T16:57:55.1063711Z ##[debug]=> 'Kooraseru-Hub/Mod-Mail'
+2026-03-27T16:57:55.1064003Z ##[debug]Result: 'Kooraseru-Hub/Mod-Mail'
+2026-03-27T16:57:55.1066231Z ##[debug]Evaluating: github.token
+2026-03-27T16:57:55.1066539Z ##[debug]Evaluating Index:
+2026-03-27T16:57:55.1066965Z ##[debug]..Evaluating github:
+2026-03-27T16:57:55.1067222Z ##[debug]..=> Object
+2026-03-27T16:57:55.1067449Z ##[debug]..Evaluating String:
+2026-03-27T16:57:55.1067687Z ##[debug]..=> 'token'
+2026-03-27T16:57:55.1068128Z ##[debug]=> '***'
+2026-03-27T16:57:55.1068451Z ##[debug]Result: '***'
+2026-03-27T16:57:55.1079385Z ##[debug]Loading env
+2026-03-27T16:57:55.1083778Z Post job cleanup.
+2026-03-27T16:57:55.2038136Z ##[debug]Getting git version
+2026-03-27T16:57:55.2052835Z [command]/usr/bin/git version
+2026-03-27T16:57:55.2090041Z git version 2.53.0
+2026-03-27T16:57:55.2112390Z ##[debug]0
+2026-03-27T16:57:55.2115285Z ##[debug]git version 2.53.0
+2026-03-27T16:57:55.2115826Z ##[debug]
+2026-03-27T16:57:55.2116844Z ##[debug]Set git useragent to: git/2.53.0 (github-actions-checkout)
+2026-03-27T16:57:55.2118051Z ::add-mask::***
+2026-03-27T16:57:55.2133882Z Temporarily overriding HOME='/home/runner/work/_temp/1ee606f9-7fed-468a-bea1-3349e72f04e4' before making global git config changes
+2026-03-27T16:57:55.2136035Z Adding repository directory to the temporary git global config as a safe directory
+2026-03-27T16:57:55.2140235Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Mod-Mail/Mod-Mail
+2026-03-27T16:57:55.2173809Z ##[debug]0
+2026-03-27T16:57:55.2174165Z ##[debug]
+2026-03-27T16:57:55.2181524Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-03-27T16:57:55.2207868Z ##[debug]1
+2026-03-27T16:57:55.2208476Z ##[debug]
+2026-03-27T16:57:55.2213846Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-03-27T16:57:55.2432661Z ##[debug]0
+2026-03-27T16:57:55.2433395Z ##[debug]
+2026-03-27T16:57:55.2442094Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-03-27T16:57:55.2464051Z http.https://github.com/.extraheader
+2026-03-27T16:57:55.2471446Z ##[debug]0
+2026-03-27T16:57:55.2472433Z ##[debug]http.https://github.com/.extraheader
+2026-03-27T16:57:55.2473091Z ##[debug]
+2026-03-27T16:57:55.2478591Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-03-27T16:57:55.2503846Z ##[debug]0
+2026-03-27T16:57:55.2504437Z ##[debug]
+2026-03-27T16:57:55.2509691Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-03-27T16:57:55.2726309Z ##[debug]0
+2026-03-27T16:57:55.2726895Z ##[debug]
+2026-03-27T16:57:55.2734044Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-03-27T16:57:55.2760444Z ##[debug]1
+2026-03-27T16:57:55.2761094Z ##[debug]
+2026-03-27T16:57:55.2766929Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-03-27T16:57:55.2989119Z ##[debug]0
+2026-03-27T16:57:55.2989657Z ##[debug]
+2026-03-27T16:57:55.2990617Z ##[debug]Unsetting HOME override
+2026-03-27T16:57:55.3064870Z ##[debug]Node Action run completed with exit code 0
+2026-03-27T16:57:55.3067808Z ##[debug]Finishing: Post Checkout repository
+2026-03-27T16:57:55.3130322Z ##[debug]Starting: Complete job
+2026-03-27T16:57:55.3132353Z Uploading runner diagnostic logs
+2026-03-27T16:57:55.3143785Z ##[debug]Starting diagnostic file upload.
+2026-03-27T16:57:55.3144201Z ##[debug]Setting up diagnostic log folders.
+2026-03-27T16:57:55.3146306Z ##[debug]Creating diagnostic log files folder.
+2026-03-27T16:57:55.3154281Z ##[debug]Copying 1 worker diagnostic logs.
+2026-03-27T16:57:55.3162559Z ##[debug]Copying 1 runner diagnostic logs.
+2026-03-27T16:57:55.3163624Z ##[debug]Zipping diagnostic files.
+2026-03-27T16:57:55.3241567Z ##[debug]Uploading diagnostic metadata file.
+2026-03-27T16:57:55.3270484Z ##[debug]Diagnostic file upload complete.
+2026-03-27T16:57:55.3271053Z Completed runner diagnostic log upload
+2026-03-27T16:57:55.3271534Z Cleaning up orphan processes
+2026-03-27T16:57:55.3663190Z ##[warning]Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: actions/checkout@v4, google-github-actions/auth@v2. Actions will be forced to run with Node.js 24 by default starting June 2nd, 2026. Node.js 20 will be removed from the runner on September 16th, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-03-27T16:57:55.3667724Z ##[debug]Finishing: Complete job
+2026-03-27T16:57:55.3699552Z ##[debug]Finishing: deploy
