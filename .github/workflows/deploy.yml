@@ -35,13 +35,7 @@ jobs:
           workload_identity_provider: ${{ env.WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ env.SERVICE_ACCOUNT_EMAIL }}
 
-      # 3. Enable required APIs (no-op if already enabled)
-      - name: Enable required GCP APIs
-        run: |
-          gcloud services enable compute.googleapis.com --project=${{ env.GCP_PROJECT_ID }}
-          gcloud services enable artifactregistry.googleapis.com --project=${{ env.GCP_PROJECT_ID }}
-
-      # 4. Configure Docker for Artifact Registry
+      # 3. Configure Docker for Artifact Registry
       - name: Configure Docker for Artifact Registry
         run: gcloud auth configure-docker ${{ env.REGISTRY }}
 
