@@ -1,7 +1,2 @@
 /target
-
-# Local directory
-.actrc
-/.local
-/.run-logs
-/data
+/logs
